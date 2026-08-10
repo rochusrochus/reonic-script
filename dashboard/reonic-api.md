@@ -19,7 +19,18 @@ Hinweise aus der Reonic-Mail:
 Bei Fragen ist euer Ansprechpartner bei Reonic: **Niklas Cosmann** (Head of Partnerships),
 niklas.cosmann@reonic.de – Referenz: Client-ID `47d9ba16-c5c7-4757-9c8d-ba923f27709b`.
 
-## Schritt 2: Schlüssel sicher an Claude übergeben
+## Schritt 2: Netzwerkzugriff auf reonic.de freischalten
+
+Die Claude-Code-Umgebung blockiert standardmäßig fremde Domains. Damit Claude die Reonic-API
+erreichen kann: claude.ai/code → **Environments** → eure Umgebung → **Network access** →
+folgende Domains erlauben (oder Netzwerkzugriff auf „alle Domains" stellen):
+
+- `reonic.de` inkl. Subdomains (`apps.reonic.de`, `docs.reonic.de`, ggf. `api.reonic.de`)
+
+Die offizielle API-Doku liegt unter: https://docs.reonic.de/docs/integrations/rest/
+(API-Schlüssel werden laut Doku unter **Einstellungen → Integrationen** generiert.)
+
+## Schritt 3: Schlüssel sicher an Claude übergeben
 
 **Den Schlüssel NIEMALS in dieses Repository committen oder per unverschlüsselter Mail verschicken.**
 
