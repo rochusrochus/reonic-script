@@ -68,13 +68,14 @@
   }
   .tooltip .t-x { color: var(--muted); }
 
-  .rows { display: flex; flex-direction: column; gap: 8px; }
-  .rows .row { display: flex; align-items: baseline; gap: 12px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; }
-  .rows .num { font-size: clamp(24px, 2.2vw, 42px); font-weight: 700; min-width: 2.6em; text-align: right; }
-  .rows .desc { font-size: clamp(12px, 1vw, 17px); color: var(--ink-2); line-height: 1.3; }
-  .rows .row.r1 .num { color: var(--s1); }
-  .rows .row.r2 .num { color: var(--accent); }
-  .rows .row.r3 .num { color: var(--s2); }
+  .wm-item { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; }
+  .wm-item .wm-label { font-size: clamp(13px, 1.05vw, 18px); color: var(--ink-2); margin-bottom: 6px; }
+  .wm-vals { display: flex; gap: clamp(14px, 1.5vw, 30px); }
+  .wm-val .n { font-size: clamp(30px, 2.8vw, 54px); font-weight: 700; line-height: 1.1; }
+  .wm-val .l { font-size: clamp(11px, 0.9vw, 15px); color: var(--muted); }
+  .wm-item.c1 .n { color: var(--s1); }
+  .wm-item.c2 .n { color: var(--good); }
+  .wm-hint { font-size: clamp(10px, 0.85vw, 14px); color: var(--muted); margin-top: 4px; }
   .note { font-size: clamp(10px, 0.85vw, 14px); color: var(--muted); margin-top: 10px; line-height: 1.4; }
 
   .events { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
@@ -119,10 +120,10 @@
 
     <div class="col right">
       <section class="card">
-        <h2>Pipeline &amp; Montage</h2>
-        <p class="sub">Live aus Reonic</p>
-        <div class="rows" id="pipeline"></div>
-        <div class="note" id="pipeline-note"></div>
+        <h2>Diese Woche &amp; dieser Monat</h2>
+        <p class="sub" id="wm-sub"></p>
+        <div id="wm"></div>
+        <div class="note" id="wm-note"></div>
       </section>
       <section class="card" style="flex:1">
         <h2>Nächste Termine</h2>
@@ -141,7 +142,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "10.08.2026, 18:12 Uhr",
+  stand: "10.08.2026, 18:17 Uhr",
   heute: "Montag, 10. August 2026",
 
   umsatzKpis: [
@@ -188,12 +189,14 @@ const DATA = {
     { label: "KW 33", sub: "ab 10.08.", werte: [1, 0], laufend: true }
   ],
 
-  pipeline: [
-    { cls: "r1", num: "786", desc: "offene Angebote beim Kunden" },
-    { cls: "r2", num: "48", desc: "verkauft – Montage noch nicht gestartet" },
-    { cls: "r3", num: "187", desc: "Anlagen in der Montagephase" }
-  ],
-  pipelineNote: "Team-/Elektriker-Auslastung erscheint hier, sobald die Einsatzplanung (Kalender) in Reonic gepflegt wird.",
+  wochenMonat: {
+    sub: "KW 33 · August 2026",
+    items: [
+      { cls: "c1", label: "Angebote versendet", woche: 1, monat: 2, hint: "Juli gesamt: 28" },
+      { cls: "c2", label: "Aufträge signiert", woche: 0, monat: 0, hint: "zuletzt gewonnen: 16.07. · Juli gesamt: 20" }
+    ],
+    note: "Team-Auslastung folgt, sobald die Einsatzplanung in Reonic gepflegt wird."
+  },
 
   termineHinweis: "Diese Woche (KW 33) sind keine Termine im Kalender – Ausblick auf KW 34:",
   termine: [
@@ -309,17 +312,24 @@ function drawGroupedBars(svgId, wrapId, gruppen, serien, yStep, einheit, H) {
 drawGroupedBars("umsatz-chart", "umsatz-chartwrap", DATA.umsatzMonate, DATA.umsatzSerien, 200, DATA.umsatzEinheit, 260);
 drawGroupedBars("auftrag-chart", "auftrag-chartwrap", DATA.auftragWochen, DATA.auftragSerien, 5, "", 200);
 
-/* Pipeline */
-const pipeEl = document.getElementById("pipeline");
-for (const p of DATA.pipeline) {
+/* Diese Woche & dieser Monat */
+document.getElementById("wm-sub").textContent = DATA.wochenMonat.sub;
+const wmEl = document.getElementById("wm");
+for (const it of DATA.wochenMonat.items) {
   const d = document.createElement("div");
-  d.className = "row " + p.cls;
-  d.innerHTML = `<span class="num"></span><span class="desc"></span>`;
-  d.querySelector(".num").textContent = p.num;
-  d.querySelector(".desc").textContent = p.desc;
-  pipeEl.appendChild(d);
+  d.className = "wm-item " + it.cls;
+  d.innerHTML = `<div class="wm-label"></div>
+    <div class="wm-vals">
+      <div class="wm-val"><div class="n n1"></div><div class="l">diese Woche</div></div>
+      <div class="wm-val"><div class="n n2"></div><div class="l">diesen Monat</div></div>
+    </div><div class="wm-hint"></div>`;
+  d.querySelector(".wm-label").textContent = it.label;
+  d.querySelector(".n1").textContent = it.woche;
+  d.querySelector(".n2").textContent = it.monat;
+  d.querySelector(".wm-hint").textContent = it.hint || "";
+  wmEl.appendChild(d);
 }
-document.getElementById("pipeline-note").textContent = DATA.pipelineNote;
+document.getElementById("wm-note").textContent = DATA.wochenMonat.note || "";
 
 /* Termine */
 document.getElementById("events-sub").textContent = DATA.termineHinweis || "";
