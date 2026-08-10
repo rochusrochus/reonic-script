@@ -78,6 +78,14 @@
   .wm-hint { font-size: clamp(10px, 0.85vw, 14px); color: var(--muted); margin-top: 4px; }
   .note { font-size: clamp(10px, 0.85vw, 14px); color: var(--muted); margin-top: 10px; line-height: 1.4; }
 
+  .tabs { display: flex; gap: 8px; margin: 0 0 10px; flex-wrap: wrap; }
+  .tabs button {
+    font: inherit; font-size: clamp(12px, 1vw, 17px); font-weight: 600;
+    color: var(--ink-2); background: var(--surface-2);
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 14px; cursor: pointer;
+  }
+  .tabs button.active { color: #0d0f0e; background: var(--accent); border-color: var(--accent); }
   .events { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
   .events li { display: flex; gap: 10px; align-items: baseline; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; }
   .events .when { min-width: 9em; color: var(--accent); font-weight: 600; font-size: clamp(12px, 0.95vw, 16px); white-space: nowrap; }
@@ -127,6 +135,7 @@
       </section>
       <section class="card" style="flex:1">
         <h2>Nächste Termine</h2>
+        <div class="tabs" id="ev-tabs"></div>
         <p class="sub" id="events-sub"></p>
         <ul class="events" id="events"></ul>
       </section>
@@ -142,7 +151,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "10.08.2026, 18:17 Uhr",
+  stand: "10.08.2026, 18:22 Uhr",
   heute: "Montag, 10. August 2026",
 
   umsatzKpis: [
@@ -195,17 +204,46 @@ const DATA = {
       { cls: "c1", label: "Angebote versendet", woche: 1, monat: 2, hint: "Juli gesamt: 28" },
       { cls: "c2", label: "Aufträge signiert", woche: 0, monat: 0, hint: "zuletzt gewonnen: 16.07. · Juli gesamt: 20" }
     ],
-    note: "Team-Auslastung folgt, sobald die Einsatzplanung in Reonic gepflegt wird."
+    note: "Reiter für den Elektriker-Kalender folgt, sobald der Kalendername geklärt ist."
   },
 
-  termineHinweis: "Diese Woche (KW 33) sind keine Termine im Kalender – Ausblick auf KW 34:",
-  termine: [
-    { when: "Mo 17.08. · 08:30", what: "Termin Xpeng" },
-    { when: "Di 18.08. · 08:00", what: "Jürgen Höfler – Besichtigung" },
-    { when: "Mi 19.08. · 09:00", what: "Josef Schlinger Ben", flag: "unter Vorbehalt" },
-    { when: "Do 20.08. · 08:30", what: "Andrea Chladek-Schreiblehner – Besichtigung" },
-    { when: "Fr 21.08. · 08:00", what: "Avdyl Bajrami" }
-  ]
+  termineTabs: [
+    {
+      name: "Montageteam A",
+      hinweis: "Montagen (Outlook-Kalender) · belegt: 3 von 10 Arbeitstagen in den nächsten 2 Wochen",
+      termine: [
+        { when: "Mo 17.–Di 18.08.", what: "Cindy Marvan – Gerasdorf b. Wien", flag: "vorläufig" },
+        { when: "Mo 17.–Di 18.08.", what: "Caspar Graf von Moy – 1190 Wien", flag: "vorläufig" },
+        { when: "Fr 21.–Sa 22.08.", what: "Ulrike Horniatschek – Korneuburg", flag: "vorläufig" },
+        { when: "Mo 24.–Di 25.08.", what: "Christian Sulzer – 1220 Wien", flag: "vorläufig" },
+        { when: "Mi 26.–Do 27.08.", what: "Ferdinand Schmidt – Judenau", flag: "vorläufig" },
+        { when: "Mo 31.08.–Di 01.09.", what: "Andreas Simon – Würmla", flag: "vorläufig" }
+      ]
+    },
+    {
+      name: "Montageteam B",
+      hinweis: "Montagen (Outlook-Kalender) · belegt: 2 von 10 Arbeitstagen in den nächsten 2 Wochen",
+      termine: [
+        { when: "Mi 19.–Do 20.08.", what: "Mario Höritzmiller – 1220 Wien", flag: "vorläufig" },
+        { when: "Mi 19.–Do 20.08.", what: "Gerald Höritzmiller – 1220 Wien", flag: "vorläufig" },
+        { when: "Mo 24.–Di 25.08.", what: "Gerald Nitschmann – Langenzersdorf", flag: "vorläufig" },
+        { when: "Mi 26.–Do 27.08.", what: "Nedzib Babic – 1210 Wien", flag: "vorläufig" },
+        { when: "Mo 31.08.–Di 01.09.", what: "Dr. Nabeel Umar – 1220 Wien", flag: "vorläufig" }
+      ]
+    },
+    {
+      name: "Büro",
+      hinweis: "Besichtigungen & Termine (Kalender R. Hutterer) – diese Woche keine, Ausblick KW 34:",
+      termine: [
+        { when: "Mo 17.08. · 08:30", what: "Termin Xpeng" },
+        { when: "Di 18.08. · 08:00", what: "Jürgen Höfler – Besichtigung" },
+        { when: "Mi 19.08. · 09:00", what: "Josef Schlinger Ben", flag: "unter Vorbehalt" },
+        { when: "Do 20.08. · 08:30", what: "Andrea Chladek-Schreiblehner – Besichtigung" },
+        { when: "Fr 21.08. · 08:00", what: "Avdyl Bajrami" }
+      ]
+    }
+  ],
+  termineTabWechselSekunden: 20
 };
 /* ==== ENDE DATA ==== */
 
@@ -331,29 +369,57 @@ for (const it of DATA.wochenMonat.items) {
 }
 document.getElementById("wm-note").textContent = DATA.wochenMonat.note || "";
 
-/* Termine */
-document.getElementById("events-sub").textContent = DATA.termineHinweis || "";
-const evEl = document.getElementById("events");
-if (!DATA.termine.length) {
-  const d = document.createElement("div");
-  d.className = "sub";
-  d.textContent = "Keine anstehenden Termine im Kalender.";
-  evEl.replaceWith(d);
-} else {
-  for (const t of DATA.termine) {
-    const li = document.createElement("li");
-    li.innerHTML = `<span class="when"></span><span class="what"></span>`;
-    li.querySelector(".when").textContent = t.when;
-    li.querySelector(".what").textContent = t.what;
-    if (t.flag) {
-      const f = document.createElement("span");
-      f.className = "flag";
-      f.textContent = "(" + t.flag + ")";
-      li.querySelector(".what").appendChild(f);
+/* Termine mit umschaltbaren Reitern (klickbar + Auto-Wechsel) */
+(function () {
+  const tabs = DATA.termineTabs || [];
+  const tabsEl = document.getElementById("ev-tabs");
+  const subEl = document.getElementById("events-sub");
+  const evEl = document.getElementById("events");
+  let active = 0, lastClick = 0;
+
+  function show(i) {
+    active = i;
+    [...tabsEl.children].forEach((b, j) => b.classList.toggle("active", j === i));
+    const tab = tabs[i];
+    subEl.textContent = tab.hinweis || "";
+    evEl.innerHTML = "";
+    if (!tab.termine.length) {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="what"></span>`;
+      li.querySelector(".what").textContent = "Keine anstehenden Termine in diesem Kalender.";
+      evEl.appendChild(li);
+      return;
     }
-    evEl.appendChild(li);
+    for (const t of tab.termine) {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="when"></span><span class="what"></span>`;
+      li.querySelector(".when").textContent = t.when;
+      li.querySelector(".what").textContent = t.what;
+      if (t.flag) {
+        const f = document.createElement("span");
+        f.className = "flag";
+        f.textContent = "(" + t.flag + ")";
+        li.querySelector(".what").appendChild(f);
+      }
+      evEl.appendChild(li);
+    }
   }
-}
+
+  tabs.forEach((tab, i) => {
+    const b = document.createElement("button");
+    b.textContent = tab.name;
+    b.addEventListener("click", () => { lastClick = Date.now(); show(i); });
+    tabsEl.appendChild(b);
+  });
+  if (tabs.length) show(0);
+
+  const wechsel = (DATA.termineTabWechselSekunden || 0) * 1000;
+  if (wechsel > 0 && tabs.length > 1) {
+    setInterval(() => {
+      if (Date.now() - lastClick > 120000) show((active + 1) % tabs.length);
+    }, wechsel);
+  }
+})();
 
 /* Display lädt alle 15 Minuten neu, um neue Versionen zu holen */
 setTimeout(() => location.reload(), 15 * 60 * 1000);

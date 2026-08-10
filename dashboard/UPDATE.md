@@ -58,10 +58,26 @@ Regeln für Checklisten-Mails: Projektname steht in der Summary (z.B. `"Installa
 
 KPI „Aufträge gewonnen" (letzte 30 Tage + Jahr) kommt aus der API (`deal.decidedAt`), nicht aus Mails.
 
-### 4. Termine aus dem Outlook-Kalender
+### 4. Termine aus den Outlook-Kalendern (Reiter)
 
-`outlook_calendar_search` mit `query: "*"`, `afterDateTime: heute`, `beforeDateTime: heute + 14 Tage`, `order: "oldest"`.
-Zeiten nach Europe/Vienna umrechnen, Format `Mo 17.08. · 08:30`; `showAs: "tentative"` → `flag: "unter Vorbehalt"`; max. 6 Einträge; `termineHinweis` sinnvoll setzen.
+Die Termin-Kachel hat umschaltbare Reiter (`DATA.termineTabs`), je Reiter ein Outlook-Kalender.
+Abruf jeweils mit `outlook_calendar_search`, `query: "*"`, `afterDateTime: heute`, `beforeDateTime: heute + 21 Tage`, `order: "oldest"`:
+
+| Reiter | Abruf |
+|---|---|
+| `Montageteam A` | `calendarName: "Montageteam A"` |
+| `Montageteam B` | `calendarName: "Montageteam B"` |
+| `Büro` | ohne `calendarName` (Standardkalender von Hutterer@oh-solar.at) |
+
+Formatierung:
+- Zeiten nach Europe/Vienna umrechnen. Termine mit Uhrzeit: `Mo 17.08. · 08:30`. Ganztägige Mehrtages-Termine: `Mo 17.–Di 18.08.` (Achtung: `end` ist exklusiv – letzter Tag = end − 1 Tag).
+- Montage-Termine: `what` = Kundenname + Ort (Ortsteil/PLZ aus `location`); Betreff „…Vorläufiger Montagetermin" → `flag: "vorläufig"`. `showAs: "tentative"` → `flag: "unter Vorbehalt"`.
+- Max. 6 Einträge je Reiter.
+- `hinweis` der Montage-Reiter: **Auslastung** = Anzahl der durch Termine belegten Arbeitstage (Mo–Fr, Vereinigungsmenge der Termintage) in den nächsten 2 Wochen ÷ 10, z.B. `belegt: 3 von 10 Arbeitstagen in den nächsten 2 Wochen`.
+- `termineTabWechselSekunden` (Auto-Wechsel der Reiter) unverändert lassen.
+
+Geplant: zusätzlicher Reiter für den **Elektriker-Kalender** – exakter Kalendername muss noch vom
+Nutzer genannt werden (unter „Elektriker"/„Elektro" in Hutterers Postfach nicht auffindbar, Stand 10.08.2026).
 
 ### 5. Seite rendern
 
