@@ -68,14 +68,18 @@
   }
   .tooltip .t-x { color: var(--muted); }
 
-  .wm-item { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; }
-  .wm-item .wm-label { font-size: clamp(13px, 1.05vw, 18px); color: var(--ink-2); margin-bottom: 6px; }
-  .wm-vals { display: flex; gap: clamp(14px, 1.5vw, 30px); }
-  .wm-val .n { font-size: clamp(30px, 2.8vw, 54px); font-weight: 700; line-height: 1.1; }
-  .wm-val .l { font-size: clamp(11px, 0.9vw, 15px); color: var(--muted); }
-  .wm-item.c1 .n { color: var(--s1); }
-  .wm-item.c2 .n { color: var(--good); }
-  .wm-hint { font-size: clamp(10px, 0.85vw, 14px); color: var(--muted); margin-top: 4px; }
+  .goal { margin-bottom: clamp(8px, 0.9vw, 14px); }
+  .goal .g-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .goal .g-label { font-size: clamp(12px, 1vw, 17px); color: var(--ink-2); }
+  .goal .g-vals { font-size: clamp(14px, 1.15vw, 20px); font-weight: 700; white-space: nowrap; }
+  .goal .g-vals .g-ziel { color: var(--muted); font-weight: 600; }
+  .goal .g-bar { position: relative; height: clamp(12px, 1vw, 18px); border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); }
+  .goal .g-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--s1); min-width: 4px; }
+  .goal.done .g-fill { background: var(--good); }
+  .goal .g-soll { position: absolute; top: -4px; bottom: -4px; width: 3px; border-radius: 2px; background: var(--accent); box-shadow: 0 0 6px rgba(255,185,46,0.7); }
+  .goal .g-status { font-size: clamp(11px, 0.9vw, 15px); color: var(--muted); margin-top: 3px; }
+  .erfolge { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .erfolge span { background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-size: clamp(11px, 0.95vw, 16px); color: var(--ink-2); }
   .note { font-size: clamp(10px, 0.85vw, 14px); color: var(--muted); margin-top: 10px; line-height: 1.4; }
 
   .tabs { display: flex; gap: 8px; margin: 0 0 10px; flex-wrap: wrap; }
@@ -127,11 +131,11 @@
     </div>
 
     <div class="col right">
-      <section class="card">
-        <h2>Diese Woche &amp; dieser Monat</h2>
-        <p class="sub" id="wm-sub"></p>
-        <div id="wm"></div>
-        <div class="note" id="wm-note"></div>
+      <section class="card" style="flex:1.5">
+        <h2>🎯 Ziele &amp; Erfolge</h2>
+        <p class="sub" id="ziele-sub"></p>
+        <div id="ziele"></div>
+        <div class="erfolge" id="erfolge"></div>
       </section>
       <section class="card" style="flex:1">
         <h2>Nächste Termine</h2>
@@ -151,7 +155,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "10.08.2026, 18:22 Uhr",
+  stand: "10.08.2026, 22:36 Uhr",
   heute: "Montag, 10. August 2026",
 
   umsatzKpis: [
@@ -198,13 +202,23 @@ const DATA = {
     { label: "KW 33", sub: "ab 10.08.", werte: [1, 0], laufend: true }
   ],
 
-  wochenMonat: {
-    sub: "KW 33 · August 2026",
+  ziele: {
+    sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { cls: "c1", label: "Angebote versendet", woche: 1, monat: 2, hint: "Juli gesamt: 28" },
-      { cls: "c2", label: "Aufträge signiert", woche: 0, monat: 0, hint: "zuletzt gewonnen: 16.07. · Juli gesamt: 20" }
+      { label: "Angebote versendet – KW 33", ist: 1, ziel: 8, anzeige: "1", zielText: "/ 8", soll: 0.20,
+        status: "💪 Noch 1 bis zur goldenen Linie – Juli-Schnitt: 6/Woche" },
+      { label: "Aufträge signiert – KW 33", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.20,
+        status: "💪 Der erste Abschluss der Woche wartet!" },
+      { label: "Umsatz August", ist: 0, ziel: 250000, anzeige: "0 €", zielText: "/ 250 T€", soll: 0.32,
+        status: "🔓 Noch offen – Juli schaffte 188 T€" },
+      { label: "Umsatz Jahresziel 2026", ist: 1792771, ziel: 3000000, anzeige: "1,79 Mio", zielText: "/ 3,0 Mio €", soll: 0.61,
+        status: "🔥 Fast auf Kurs – nur 32 T€ bis zur goldenen Linie" }
     ],
-    note: "Reiter für den Elektriker-Kalender folgt, sobald der Kalendername geklärt ist."
+    erfolge: [
+      "🏆 Rekordmonat: April – 653 T€",
+      "⚡ 136 Anlagen in 2026",
+      "🚀 Stärkste Woche: KW 31 – 14 Angebote"
+    ]
   },
 
   termineTabs: [
@@ -216,8 +230,7 @@ const DATA = {
         { when: "Mo 17.–Di 18.08.", what: "Caspar Graf von Moy – 1190 Wien", flag: "vorläufig" },
         { when: "Fr 21.–Sa 22.08.", what: "Ulrike Horniatschek – Korneuburg", flag: "vorläufig" },
         { when: "Mo 24.–Di 25.08.", what: "Christian Sulzer – 1220 Wien", flag: "vorläufig" },
-        { when: "Mi 26.–Do 27.08.", what: "Ferdinand Schmidt – Judenau", flag: "vorläufig" },
-        { when: "Mo 31.08.–Di 01.09.", what: "Andreas Simon – Würmla", flag: "vorläufig" }
+        { when: "Mi 26.–Do 27.08.", what: "Ferdinand Schmidt – Judenau", flag: "vorläufig" }
       ]
     },
     {
@@ -350,24 +363,32 @@ function drawGroupedBars(svgId, wrapId, gruppen, serien, yStep, einheit, H) {
 drawGroupedBars("umsatz-chart", "umsatz-chartwrap", DATA.umsatzMonate, DATA.umsatzSerien, 200, DATA.umsatzEinheit, 260);
 drawGroupedBars("auftrag-chart", "auftrag-chartwrap", DATA.auftragWochen, DATA.auftragSerien, 5, "", 200);
 
-/* Diese Woche & dieser Monat */
-document.getElementById("wm-sub").textContent = DATA.wochenMonat.sub;
-const wmEl = document.getElementById("wm");
-for (const it of DATA.wochenMonat.items) {
+/* Ziele & Erfolge */
+document.getElementById("ziele-sub").textContent = DATA.ziele.sub || "";
+const zieleEl = document.getElementById("ziele");
+for (const z of DATA.ziele.items) {
+  const pct = Math.min(z.ist / z.ziel, 1) * 100;
   const d = document.createElement("div");
-  d.className = "wm-item " + it.cls;
-  d.innerHTML = `<div class="wm-label"></div>
-    <div class="wm-vals">
-      <div class="wm-val"><div class="n n1"></div><div class="l">diese Woche</div></div>
-      <div class="wm-val"><div class="n n2"></div><div class="l">diesen Monat</div></div>
-    </div><div class="wm-hint"></div>`;
-  d.querySelector(".wm-label").textContent = it.label;
-  d.querySelector(".n1").textContent = it.woche;
-  d.querySelector(".n2").textContent = it.monat;
-  d.querySelector(".wm-hint").textContent = it.hint || "";
-  wmEl.appendChild(d);
+  d.className = "goal" + (z.ist >= z.ziel ? " done" : "");
+  d.innerHTML = `<div class="g-top"><span class="g-label"></span><span class="g-vals"><span class="g-ist"></span> <span class="g-ziel"></span></span></div>
+    <div class="g-bar"><div class="g-fill"></div><div class="g-soll"></div></div>
+    <div class="g-status"></div>`;
+  d.querySelector(".g-label").textContent = z.label;
+  d.querySelector(".g-ist").textContent = z.anzeige;
+  d.querySelector(".g-ziel").textContent = z.zielText;
+  d.querySelector(".g-fill").style.width = pct + "%";
+  const soll = d.querySelector(".g-soll");
+  if (z.soll != null) soll.style.left = "calc(" + Math.min(z.soll * 100, 100) + "% - 1px)";
+  else soll.remove();
+  d.querySelector(".g-status").textContent = z.status || "";
+  zieleEl.appendChild(d);
 }
-document.getElementById("wm-note").textContent = DATA.wochenMonat.note || "";
+const erfolgeEl = document.getElementById("erfolge");
+for (const e of (DATA.ziele.erfolge || [])) {
+  const s = document.createElement("span");
+  s.textContent = e;
+  erfolgeEl.appendChild(s);
+}
 
 /* Termine mit umschaltbaren Reitern (klickbar + Auto-Wechsel) */
 (function () {

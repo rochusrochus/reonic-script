@@ -10,8 +10,8 @@ Ziel: das Kennzahlen-Dashboard unter der festen Artifact-URL neu publizieren.
 | Dashboard-Bereich | Quelle |
 |---|---|
 | Umsatz & Gewinn 2026 (KPIs + Monats-Chart) | Reonic-API |
-| Diese Woche & dieser Monat: „Aufträge signiert" | Reonic-API |
-| Diese Woche & dieser Monat: „Angebote versendet" | Reonic-Mails |
+| Ziele & Erfolge: „Aufträge signiert", Umsatz-Ziele | Reonic-API |
+| Ziele & Erfolge: „Angebote versendet" | Reonic-Mails |
 | KPI „Aufträge gewonnen" | Reonic-API |
 | Übrige KPIs + Wochen-Chart (Angebote, Montagen, Anfragen) | Reonic-Benachrichtigungsmails |
 | Nächste Termine | Outlook-Kalender |
@@ -35,10 +35,21 @@ Abrufe:
    - **Umsatz** = `totalPrice.net`
    - **Rohertrag** = Summe `margin.total` über alle `systems.*.lineItems` (Positionen ohne `margin` überspringen)
    - Nach Monat von `decidedAt` gruppieren → Monats-Chart (Werte in T€, gerundet), Jahres-/Monats-KPIs, Ø pro Auftrag.
-3. **Kachel „Diese Woche & dieser Monat":**
-   - „Aufträge signiert": Won-Projekte mit `deal.decidedAt` in der laufenden ISO-Woche bzw. im laufenden Monat zählen (aus dem Abruf in Schritt 1). Im `hint` das Datum des zuletzt gewonnenen Auftrags und den Vormonatswert angeben.
-   - „Angebote versendet": aus den Reonic-Mails (Schritt 3) – Anzahl der Angebots-Mails in der laufenden Woche bzw. im laufenden Monat; `hint` = Vormonat gesamt.
-   - `sub` = z.B. `KW 33 · August 2026`.
+3. **Kachel „🎯 Ziele & Erfolge" (`DATA.ziele`):** vier Fortschrittsbalken mit goldener Soll-Linie.
+
+   **Zielwerte (hier ändern, wenn der Chef neue Ziele vorgibt):**
+   | Ziel | Wert |
+   |---|---|
+   | Angebote versendet pro Woche | **8** (aus Mails, laufende KW) |
+   | Aufträge signiert pro Woche | **5** (API, `decidedAt` in laufender KW) |
+   | Umsatz pro Monat | **250.000 €** netto (API, `decidedAt` im laufenden Monat) |
+   | Umsatz Jahresziel | **3.000.000 €** netto (API, laufendes Jahr) |
+
+   Berechnung je Balken:
+   - `ist`/`ziel` numerisch, `anzeige`/`zielText` als Anzeige-Strings (deutsch formatiert, Mio/T€ kürzen).
+   - **`soll` (goldene Linie)** = zeitanteiliger Sollwert: Woche = vergangene Arbeitstage inkl. heute ÷ 5; Monat = Tag ÷ Tage im Monat; Jahr = Tag im Jahr ÷ 365.
+   - **`status`**: motivierender Kurztext mit Emoji. Ziel erreicht → `✅ Ziel erreicht – stark!`; vor der Linie → `🚀 Vor Plan!` (+Abstand); hinter der Linie → Differenz zur Linie freundlich benennen (`💪 Noch X bis zur goldenen Linie`). Nie vorwurfsvoll.
+   - **`erfolge`**: genau 3 Chips aus echten Daten, z.B. Rekordmonat (höchster Monatsumsatz), Anlagen-Zähler des Jahres, stärkste Angebots-Woche. Bei neuen Rekorden aktualisieren – Rekorde nie stillschweigend verschlechtern.
 
 Hinweis: Die API cached Antworten 1 Stunde – das passt zum Stundenrhythmus. Für die ~136+ Variantenabrufe gilt: geduldig sequenziell/gedrosselt arbeiten (dauert 1–2 Minuten).
 
@@ -72,7 +83,7 @@ Abruf jeweils mit `outlook_calendar_search`, `query: "*"`, `afterDateTime: heute
 Formatierung:
 - Zeiten nach Europe/Vienna umrechnen. Termine mit Uhrzeit: `Mo 17.08. · 08:30`. Ganztägige Mehrtages-Termine: `Mo 17.–Di 18.08.` (Achtung: `end` ist exklusiv – letzter Tag = end − 1 Tag).
 - Montage-Termine: `what` = Kundenname + Ort (Ortsteil/PLZ aus `location`); Betreff „…Vorläufiger Montagetermin" → `flag: "vorläufig"`. `showAs: "tentative"` → `flag: "unter Vorbehalt"`.
-- Max. 6 Einträge je Reiter.
+- Max. 5 Einträge je Reiter (sonst wird die Karte abgeschnitten).
 - `hinweis` der Montage-Reiter: **Auslastung** = Anzahl der durch Termine belegten Arbeitstage (Mo–Fr, Vereinigungsmenge der Termintage) in den nächsten 2 Wochen ÷ 10, z.B. `belegt: 3 von 10 Arbeitstagen in den nächsten 2 Wochen`.
 - `termineTabWechselSekunden` (Auto-Wechsel der Reiter) unverändert lassen.
 
