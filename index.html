@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Energie-Dashboard – Ihre Ersparnis mit Photovoltaik</title>
+<style>
+  :root {
+    color-scheme: light;
+    /* ground */
+    --page:          #f9f8f4;
+    --surface-1:     #fcfcfb;
+    --surface-2:     #f2f1ec;
+    --border:        rgba(20,19,15,0.10);
+    /* ink */
+    --text-primary:  #14130f;
+    --text-secondary:#54524b;
+    --text-muted:    #8b8880;
+    --grid:          #e5e4dc;
+    --baseline:      #c6c4ba;
+    /* series (validated categorical palette) */
+    --series-1:      #2a78d6;  /* blue   – Ersparnis / mit PV */
+    --series-2:      #eb6834;  /* orange – Netzkosten / ohne PV Kontext */
+    --series-3:      #1baf7a;  /* aqua   – Speicher/Netzbezug-Alternative */
+    --series-4:      #eda100;  /* gelb   – PV-Erzeugung */
+    --series-1-wash: rgba(42,120,214,0.10);
+    --series-4-wash: rgba(237,161,0,0.14);
+    --gray-series:   #a5a29a;  /* De-Emphasis: „ohne PV" */
+    --gray-wash:     rgba(165,162,154,0.14);
+    --good-text:     #006300;
+    --accent-warm:   #b97900;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --page:          #111110;
+      --surface-1:     #1a1a19;
+      --surface-2:     #232322;
+      --border:        rgba(255,255,255,0.10);
+      --text-primary:  #ffffff;
+      --text-secondary:#c3c2b7;
+      --text-muted:    #8b8880;
+      --grid:          #2c2c2a;
+      --baseline:      #3a3a37;
+      --series-1:      #3987e5;
+      --series-2:      #d95926;
+      --series-3:      #199e70;
+      --series-4:      #c98500;
+      --series-1-wash: rgba(57,135,229,0.14);
+      --series-4-wash: rgba(201,133,0,0.16);
+      --gray-series:   #7d7b74;
+      --gray-wash:     rgba(125,123,116,0.18);
+      --good-text:     #0ca30c;
+      --accent-warm:   #e0a52e;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page:          #111110;
+    --surface-1:     #1a1a19;
+    --surface-2:     #232322;
+    --border:        rgba(255,255,255,0.10);
+    --text-primary:  #ffffff;
+    --text-secondary:#c3c2b7;
+    --text-muted:    #8b8880;
+    --grid:          #2c2c2a;
+    --baseline:      #3a3a37;
+    --series-1:      #3987e5;
+    --series-2:      #d95926;
+    --series-3:      #199e70;
+    --series-4:      #c98500;
+    --series-1-wash: rgba(57,135,229,0.14);
+    --series-4-wash: rgba(201,133,0,0.16);
+    --gray-series:   #7d7b74;
+    --gray-wash:     rgba(125,123,116,0.18);
+    --good-text:     #0ca30c;
+    --accent-warm:   #e0a52e;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--page);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 24px 64px; }
+
+  /* ---------- header ---------- */
+  header.top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  .brandline { display:flex; align-items: center; gap: 10px; }
+  .sunmark { width: 26px; height: 26px; flex: none; }
+  h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  .subtitle { margin: 2px 0 26px; color: var(--text-secondary); max-width: 68ch; }
+  .eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); }
+
+  /* ---------- controls ---------- */
+  .controls {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px 14px;
+    margin-bottom: 22px;
+  }
+  .controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 14px 26px; }
+  .ctl label { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 13px; color: var(--text-secondary); margin-bottom: 2px; }
+  .ctl output { font-weight: 650; color: var(--text-primary); font-size: 14px; white-space: nowrap; }
+  input[type=range] { width: 100%; accent-color: var(--series-1); margin: 0; height: 22px; }
+  input[type=range]:focus-visible, .toggle input:focus-visible + .knob, button:focus-visible, input[type=number]:focus-visible, details summary:focus-visible {
+    outline: 2px solid var(--series-1); outline-offset: 2px;
+  }
+  .ctl-section-title { margin: 14px 0 10px; display: flex; align-items: center; gap: 10px; }
+  .ctl-section-title .rule { flex: 1; height: 1px; background: var(--border); }
+  .gewerbe-head { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .toggle { position: relative; display: inline-flex; align-items: center; cursor: pointer; gap: 9px; user-select: none; }
+  .toggle input { position: absolute; opacity: 0; width: 40px; height: 22px; margin: 0; cursor: pointer; }
+  .toggle .knob { width: 38px; height: 21px; border-radius: 11px; background: var(--surface-2); border: 1px solid var(--border); position: relative; transition: background .15s; flex: none; }
+  .toggle .knob::after { content: ""; position: absolute; top: 2px; left: 2px; width: 15px; height: 15px; border-radius: 50%; background: var(--text-muted); transition: transform .15s, background .15s; }
+  .toggle input:checked + .knob { background: var(--series-1); border-color: var(--series-1); }
+  .toggle input:checked + .knob::after { transform: translateX(17px); background: #fff; }
+  .toggle .tlabel { font-weight: 600; font-size: 14px; }
+  #gewerbeControls { margin-top: 12px; }
+  #gewerbeControls[hidden] { display: none; }
+  .invest-row { display: flex; align-items: center; gap: 8px; }
+  input[type=number] {
+    width: 110px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--surface-2); color: var(--text-primary); font: inherit; font-weight: 650;
+    font-variant-numeric: tabular-nums;
+  }
+  .hint { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  button.reset {
+    font: inherit; font-size: 13px; color: var(--text-secondary); background: none;
+    border: 1px solid var(--border); border-radius: 6px; padding: 4px 12px; cursor: pointer;
+  }
+  button.reset:hover { background: var(--surface-2); }
+
+  /* ---------- KPI row ---------- */
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 26px; }
+  .kpi { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px 12px; }
+  .kpi .label { font-size: 12.5px; color: var(--text-secondary); }
+  .kpi .value { font-size: 30px; font-weight: 650; letter-spacing: -0.01em; margin-top: 2px; line-height: 1.15; }
+  .kpi .note { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+  .kpi .value .unit { font-size: 16px; font-weight: 600; color: var(--text-secondary); margin-left: 2px; }
+  .kpi.hero { grid-column: span 2; background: var(--surface-1); border-color: var(--series-1); }
+  .kpi.hero .value { font-size: 46px; color: var(--text-primary); }
+  .kpi.hero .value .unit { font-size: 22px; }
+  @media (max-width: 640px) { .kpi.hero { grid-column: span 1; } }
+
+  /* ---------- chart cards ---------- */
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 18px 18px 10px; min-width: 0; }
+  .card.wide { grid-column: 1 / -1; }
+  @media (max-width: 880px) { .charts { grid-template-columns: 1fr; } }
+  .card h2 { font-size: 16px; font-weight: 650; margin: 0 0 2px; letter-spacing: -0.005em; }
+  .card .desc { font-size: 13px; color: var(--text-secondary); margin: 0 0 10px; max-width: 78ch; }
+  .chart { position: relative; }
+  .chart svg { display: block; width: 100%; height: auto; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 8px 0 2px; font-size: 12.5px; color: var(--text-secondary); }
+  .legend .item { display: inline-flex; align-items: center; gap: 7px; }
+  .legend .key-line { width: 16px; height: 0; border-top: 2.5px solid; border-radius: 2px; }
+  .legend .key-rect { width: 11px; height: 11px; border-radius: 3px; }
+  .legend .dashed { border-top-style: dashed; }
+
+  /* tooltip */
+  .tip {
+    position: absolute; pointer-events: none; z-index: 5;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.13);
+    padding: 8px 11px; font-size: 12.5px; min-width: 130px;
+    opacity: 0; transition: opacity .08s;
+  }
+  .tip.on { opacity: 1; }
+  .tip .t-head { color: var(--text-muted); font-size: 11.5px; margin-bottom: 4px; }
+  .tip .t-row { display: flex; align-items: center; gap: 7px; margin-top: 2px; }
+  .tip .t-key { width: 12px; height: 0; border-top: 2.5px solid; border-radius: 2px; flex: none; }
+  .tip .t-val { font-weight: 650; color: var(--text-primary); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .tip .t-name { color: var(--text-secondary); }
+
+  /* table view */
+  details.tableview { margin: 6px 0 6px; }
+  details.tableview summary { cursor: pointer; font-size: 12.5px; color: var(--text-muted); user-select: none; width: fit-content; padding: 2px 4px; }
+  details.tableview summary:hover { color: var(--text-secondary); }
+  .tbl-scroll { overflow-x: auto; }
+  table.data { border-collapse: collapse; font-size: 12.5px; margin-top: 6px; min-width: 100%; }
+  table.data th, table.data td { padding: 4px 12px 4px 0; text-align: right; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  table.data th:first-child, table.data td:first-child { text-align: left; }
+  table.data th { color: var(--text-muted); font-weight: 600; }
+
+  .annotation { font-size: 12px; fill: var(--text-secondary); }
+  .footer-note { margin-top: 30px; font-size: 12.5px; color: var(--text-muted); max-width: 90ch; }
+  .footer-note p { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <div class="brandline">
+        <svg class="sunmark" viewBox="0 0 26 26" aria-hidden="true">
+          <circle cx="13" cy="13" r="5.2" fill="var(--series-4)"/>
+          <g stroke="var(--series-4)" stroke-width="1.8" stroke-linecap="round">
+            <line x1="13" y1="1.5" x2="13" y2="5"/><line x1="13" y1="21" x2="13" y2="24.5"/>
+            <line x1="1.5" y1="13" x2="5" y2="13"/><line x1="21" y1="13" x2="24.5" y2="13"/>
+            <line x1="4.9" y1="4.9" x2="7.4" y2="7.4"/><line x1="18.6" y1="18.6" x2="21.1" y2="21.1"/>
+            <line x1="21.1" y1="4.9" x2="18.6" y2="7.4"/><line x1="7.4" y1="18.6" x2="4.9" y2="21.1"/>
+          </g>
+        </svg>
+        <h1>Ihre Energie&shy;zukunft mit Photovoltaik</h1>
+      </div>
+      <p class="subtitle">Stellen Sie unten Ihre Anlage und Ihren Verbrauch ein – alle Auswertungen rechnen sofort mit:
+        Ersparnis, Amortisation, Strompreis- und Netzkosten-Entwicklung seit 2020 sowie der Blick auf Österreichs Strombedarf bis 2040.</p>
+    </div>
+    <button class="reset" id="btnReset" type="button">Zurücksetzen</button>
+  </header>
+
+  <!-- ============ Eingaben ============ -->
+  <section class="controls" aria-label="Eingaben">
+    <div class="eyebrow" style="margin-bottom:12px">Ihre Anlage &amp; Ihr Verbrauch</div>
+    <div class="controls-grid">
+      <div class="ctl">
+        <label for="inVerbrauch">Stromverbrauch pro Jahr <output id="outVerbrauch"></output></label>
+        <input type="range" id="inVerbrauch" min="1500" max="60000" step="500" value="5500">
+      </div>
+      <div class="ctl">
+        <label for="inKwp">PV-Anlagengröße <output id="outKwp"></output></label>
+        <input type="range" id="inKwp" min="2" max="60" step="0.5" value="10">
+      </div>
+      <div class="ctl">
+        <label for="inSpeicher">Stromspeicher <output id="outSpeicher"></output></label>
+        <input type="range" id="inSpeicher" min="0" max="40" step="0.5" value="10">
+      </div>
+      <div class="ctl">
+        <label for="inPreis">Strompreis heute (gesamt) <output id="outPreis"></output></label>
+        <input type="range" id="inPreis" min="14" max="50" step="0.5" value="27">
+      </div>
+      <div class="ctl">
+        <label for="inEsc">Strompreis-Steigerung pro Jahr <output id="outEsc"></output></label>
+        <input type="range" id="inEsc" min="0" max="8" step="0.5" value="3">
+      </div>
+      <div class="ctl">
+        <label for="inEinspeise">Einspeisevergütung <output id="outEinspeise"></output></label>
+        <input type="range" id="inEinspeise" min="0" max="15" step="0.5" value="5">
+      </div>
+      <div class="ctl">
+        <label for="inJahre">Betrachtungszeitraum <output id="outJahre"></output></label>
+        <input type="range" id="inJahre" min="10" max="30" step="1" value="25">
+      </div>
+      <div class="ctl">
+        <label for="inInvest">Investition (schlüsselfertig)</label>
+        <div class="invest-row">
+          <input type="number" id="inInvest" min="1000" max="500000" step="500">
+          <span style="color:var(--text-secondary)">€</span>
+          <button class="reset" id="btnInvestAuto" type="button" title="Automatisch aus Anlagengröße schätzen">auto</button>
+        </div>
+        <div class="hint" id="investHint"></div>
+      </div>
+    </div>
+
+    <div class="gewerbe-head">
+      <label class="toggle">
+        <input type="checkbox" id="inGewerbe">
+        <span class="knob" aria-hidden="true"></span>
+        <span class="tlabel">Gewerbe mit Leistungsmessung (Lastspitzen)</span>
+      </label>
+      <span class="hint" style="margin-top:0">Ab 15-minütiger Leistungsmessung zahlen Betriebe zusätzlich pro kW Lastspitze – ein Speicher kappt diese Spitzen.</span>
+    </div>
+    <div id="gewerbeControls" hidden>
+      <div class="controls-grid">
+        <div class="ctl">
+          <label for="inLastspitze">Bisherige Lastspitze <output id="outLastspitze"></output></label>
+          <input type="range" id="inLastspitze" min="10" max="300" step="5" value="60">
+        </div>
+        <div class="ctl">
+          <label for="inLp">Leistungspreis (Netz) <output id="outLp"></output></label>
+          <input type="range" id="inLp" min="20" max="150" step="5" value="70">
+        </div>
+        <div class="ctl">
+          <label for="inKappung">Lastspitzen-Kappung durch PV + Speicher <output id="outKappung"></output></label>
+          <input type="range" id="inKappung" min="0" max="60" step="5" value="25">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KPIs ============ -->
+  <section class="kpis" aria-label="Kennzahlen">
+    <div class="kpi hero">
+      <div class="label">Gesamtersparnis über <span id="kpiJahreLabel"></span> Jahre</div>
+      <div class="value" id="kpiGesamt"></div>
+      <div class="note" id="kpiGesamtNote"></div>
+    </div>
+    <div class="kpi">
+      <div class="label">Ersparnis im 1. Jahr</div>
+      <div class="value" id="kpiJahr1"></div>
+      <div class="note">inkl. Einspeisevergütung</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Amortisation</div>
+      <div class="value" id="kpiAmort"></div>
+      <div class="note" id="kpiAmortNote"></div>
+    </div>
+    <div class="kpi">
+      <div class="label">Unabhängigkeit (Autarkie)</div>
+      <div class="value" id="kpiAutarkie"></div>
+      <div class="note" id="kpiAutarkieNote"></div>
+    </div>
+    <div class="kpi">
+      <div class="label">CO₂-Einsparung pro Jahr</div>
+      <div class="value" id="kpiCo2"></div>
+      <div class="note">ca.-Wert, Strommix Österreich</div>
+    </div>
+  </section>
+
+  <!-- ============ Charts ============ -->
+  <section class="charts">
+
+    <div class="card">
+      <h2>Strompreis &amp; Netzkosten seit 2020</h2>
+      <p class="desc">Durchschnittlicher Haushaltsstrompreis in Österreich (alle Bestandteile) und der darin enthaltene
+        Netzkosten-Anteil. Ab 2026 Fortschreibung mit Ihrer eingestellten Preissteigerung (strichliert).</p>
+      <div class="legend" id="legendPreis"></div>
+      <div class="chart" id="chartPreis"></div>
+      <details class="tableview"><summary>Werte als Tabelle</summary><div class="tbl-scroll" id="tablePreis"></div></details>
+    </div>
+
+    <div class="card">
+      <h2>Jährliche Stromkosten: ohne und mit PV</h2>
+      <p class="desc">Was Sie pro Jahr an den Energieversorger zahlen – ohne Anlage steigen die Kosten mit dem Strompreis,
+        mit PV&nbsp;+&nbsp;Speicher bleibt nur der Reststrombezug (abzüglich Einspeiseerlös).</p>
+      <div class="legend" id="legendKosten"></div>
+      <div class="chart" id="chartKosten"></div>
+      <details class="tableview"><summary>Werte als Tabelle</summary><div class="tbl-scroll" id="tableKosten"></div></details>
+    </div>
+
+    <div class="card wide">
+      <h2>Kumulierte Ersparnis und Amortisation</h2>
+      <p class="desc">Die aufsummierte Ersparnis Jahr für Jahr. Wo die blaue Linie die Investitionslinie kreuzt,
+        hat sich Ihre Anlage bezahlt gemacht – ab dann verdient sie Geld.</p>
+      <div class="legend" id="legendAmort"></div>
+      <div class="chart" id="chartAmort"></div>
+      <details class="tableview"><summary>Werte als Tabelle</summary><div class="tbl-scroll" id="tableAmort"></div></details>
+    </div>
+
+    <div class="card">
+      <h2>Tagesverlauf: Last, PV-Erzeugung &amp; Lastspitze</h2>
+      <p class="desc" id="descLast">Typischer sonniger Tag: Ihr Verbrauch, die PV-Erzeugung und der verbleibende Netzbezug
+        mit Speicher. Die Markierungen zeigen die Lastspitze ohne und mit Anlage.</p>
+      <div class="legend" id="legendLast"></div>
+      <div class="chart" id="chartLast"></div>
+      <details class="tableview"><summary>Werte als Tabelle</summary><div class="tbl-scroll" id="tableLast"></div></details>
+    </div>
+
+    <div class="card">
+      <h2>Österreichs Strombedarf bis 2040</h2>
+      <p class="desc">Experten – etwa Österreichs&nbsp;Energie, APG und Umweltbundesamt – erwarten durch E-Mobilität,
+        Wärmepumpen und Industrie&shy;elektrifizierung bis 2040 rund eine <strong>Verdopplung</strong> des Strombedarfs.
+        Diese Energie muss erzeugt werden – am günstigsten am eigenen Dach. (Hellere Säulen: Prognosewerte.)</p>
+      <div class="chart" id="chartAT"></div>
+      <details class="tableview"><summary>Werte als Tabelle</summary><div class="tbl-scroll" id="tableAT"></div></details>
+    </div>
+
+  </section>
+
+  <div class="footer-note">
+    <p><strong>Hinweise:</strong> Alle Werte sind Richtwerte zur Veranschaulichung und ersetzen kein individuelles Angebot.
+      Historische Strompreise: Ø Haushaltsstrompreis Österreich (E-Control&nbsp;/ Statistik Austria, gerundet).
+      Netzkosten: durchschnittliche Entwicklung der Strom-Netzentgelte laut E-Control; die Netzentgelte sind
+      2024/2025 besonders stark gestiegen (Netzausbau). Strombedarfs-Prognose: Studien von Österreichs&nbsp;Energie,
+      APG und Umweltbundesamt (~140&nbsp;TWh bis 2040). Ertragsannahme: ca. 1.000&nbsp;kWh pro kWp und Jahr;
+      CO₂: ca. 0,2&nbsp;kg pro kWh Strommix.</p>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* =====================================================================
+   Kunden-Dashboard – interaktive PV-Ersparnisrechnung
+   Alles Vanilla JS + SVG, keine externen Abhängigkeiten.
+   ===================================================================== */
+
+const $ = id => document.getElementById(id);
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+const fmtEur0  = new Intl.NumberFormat("de-AT", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+const fmtNum0  = new Intl.NumberFormat("de-AT", { maximumFractionDigits: 0 });
+const fmtNum1  = new Intl.NumberFormat("de-AT", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const eur0 = v => fmtEur0.format(v);
+const num0 = v => fmtNum0.format(v);
+const num1 = v => fmtNum1.format(v);
+
+/* ---------- historische Daten (Österreich, gerundete Ø-Werte) ---------- */
+// Ø Haushaltsstrompreis gesamt (Energie + Netz + Steuern/Abgaben), ct/kWh
+const HIST_PREIS = { 2020: 20.5, 2021: 22.1, 2022: 27.9, 2023: 32.5, 2024: 28.9, 2025: 27.0 };
+// darin enthaltener Netzkosten-Anteil (Netzentgelte inkl. Verlust), ct/kWh
+const HIST_NETZ  = { 2020: 7.6,  2021: 7.7,  2022: 7.9,  2023: 8.4,  2024: 9.6,  2025: 11.6 };
+const HIST_LAST_YEAR = 2025;
+const NETZ_ESC = 0.04; // angenommene weitere Netzkosten-Steigerung p.a. (Netzausbau)
+
+// Österreich: Strombedarf in TWh (gerundet; Prognose lt. Studien)
+const AT_BEDARF = [
+  { jahr: 2020, twh: 71,  prognose: false },
+  { jahr: 2025, twh: 74,  prognose: false },
+  { jahr: 2030, twh: 92,  prognose: true  },
+  { jahr: 2035, twh: 114, prognose: true  },
+  { jahr: 2040, twh: 140, prognose: true  },
+];
+
+const ERTRAG_PRO_KWP = 1000;   // kWh je kWp und Jahr (Österreich-Richtwert)
+const CO2_PRO_KWH    = 0.2;    // kg CO2 je kWh Strommix (ca.)
+const START_JAHR     = new Date().getFullYear() + 1; // Betrieb ab nächstem Jahr
+
+/* ---------- Zustand ---------- */
+const DEFAULTS = {
+  verbrauch: 5500, kwp: 10, speicher: 10, preis: 27, esc: 3, einspeise: 5, jahre: 25,
+  gewerbe: false, lastspitze: 60, lp: 70, kappung: 25,
+};
+const state = { ...DEFAULTS, invest: null, investAuto: true };
+
+function investSchaetzung(s) {
+  return Math.round((s.kwp * 1450 + s.speicher * 650) / 100) * 100;
+}
+
+/* ---------- Rechenmodell ---------- */
+function berechne(s) {
+  const erzeugung = s.kwp * ERTRAG_PRO_KWP;
+  const r = erzeugung / s.verbrauch;
+  // Eigenverbrauchsanteil ohne Speicher: ~30 % bei Erzeugung = Verbrauch, mehr bei kleiner Anlage
+  const sc0 = Math.min(1, Math.max(0.12, 0.30 * Math.pow(Math.max(r, 0.15), -0.55)));
+  // Speicher verschiebt Überschuss in den Abend (~300 Vollzyklen/Jahr wirksam)
+  const boost = erzeugung > 0 ? Math.min(1 - sc0, (s.speicher * 300) / erzeugung) : 0;
+  const sc = Math.min(1, sc0 + boost);
+  // saisonale Deckelung: im Winter deckt PV nur einen Teil, mehr als ~85 % Autarkie sind unrealistisch
+  const eigen = Math.min(erzeugung * sc, s.verbrauch * 0.85);
+  const scEff = erzeugung > 0 ? eigen / erzeugung : 0;
+  const ueberschuss = Math.max(0, erzeugung - eigen);
+  const autarkie = eigen / s.verbrauch;
+
+  const lpSave = s.gewerbe ? Math.min(s.kappung, s.lastspitze) * s.lp : 0;
+  const lpBase = s.gewerbe ? s.lastspitze * s.lp : 0;
+
+  const jahre = [];
+  let kum = 0;
+  for (let t = 0; t < s.jahre; t++) {
+    const jahr = START_JAHR + t;
+    const preis = s.preis * Math.pow(1 + s.esc / 100, t); // ct/kWh
+    const ohne = s.verbrauch * preis / 100 + lpBase;
+    const mit  = (s.verbrauch - eigen) * preis / 100 - ueberschuss * s.einspeise / 100 + (lpBase - lpSave);
+    const ersparnis = ohne - mit;
+    kum += ersparnis;
+    jahre.push({ jahr, preis, ohne, mit, ersparnis, kum });
+  }
+
+  const invest = s.investAuto ? investSchaetzung(s) : s.invest;
+  let amort = null;
+  for (const j of jahre) { if (j.kum >= invest) { amort = j; break; } }
+  let amortJahre = null;
+  if (amort) {
+    const i = jahre.indexOf(amort);
+    const prev = i > 0 ? jahre[i - 1].kum : 0;
+    amortJahre = i + (invest - prev) / (amort.kum - prev);
+  }
+
+  return { erzeugung, sc: scEff, eigen, ueberschuss, autarkie, jahre, invest, amortJahre,
+           co2: erzeugung * CO2_PRO_KWH / 1000, lpSave };
+}
+
+/* ---------- Preisreihe (Chart 1) ---------- */
+function preisReihe(s) {
+  const jahre = [];
+  const endJahr = START_JAHR + s.jahre - 1;
+  for (let j = 2020; j <= endJahr; j++) jahre.push(j);
+  const gesamt = [], netz = [];
+  let lastP = HIST_PREIS[HIST_LAST_YEAR], lastN = HIST_NETZ[HIST_LAST_YEAR];
+  for (const j of jahre) {
+    if (j <= HIST_LAST_YEAR) {
+      gesamt.push(HIST_PREIS[j]); netz.push(HIST_NETZ[j]);
+    } else {
+      lastP = lastP * (1 + s.esc / 100);
+      lastN = lastN * (1 + NETZ_ESC);
+      gesamt.push(lastP); netz.push(Math.min(lastN, lastP * 0.75));
+    }
+  }
+  return { jahre, gesamt, netz };
+}
+
+/* ---------- Tageslastgang (Chart 4) ---------- */
+function tagesprofil(s, calc) {
+  const H = 24, stunden = [...Array(H).keys()];
+  // Lastform: Grundlast + Morgen- und Abendspitze (Haushalt) bzw. Betriebszeitprofil (Gewerbe)
+  let form;
+  if (s.gewerbe) {
+    form = stunden.map(h => 0.35 + (h >= 6 && h < 18 ? 1.0 : 0) + (h >= 8 && h < 12 ? 0.35 : 0));
+  } else {
+    form = stunden.map(h =>
+      0.55
+      + 0.9 * Math.exp(-Math.pow(h - 7.5, 2) / 3.5)
+      + 1.5 * Math.exp(-Math.pow(h - 19, 2) / 5));
+  }
+  let last;
+  if (s.gewerbe) {
+    // Gewerbe: Profil auf die eingestellte Lastspitze skalieren
+    const fMax = Math.max(...form);
+    last = form.map(f => f / fMax * s.lastspitze);
+  } else {
+    const tagesVerbrauch = s.verbrauch / 365 * 1.05; // leicht überdurchschnittlicher Tag
+    const fSum = form.reduce((a, b) => a + b, 0);
+    last = form.map(f => f / fSum * tagesVerbrauch);
+  }
+
+  // PV: Glockenkurve, sonniger Tag ≈ 1,7-facher Jahresmittel-Tagesertrag, gedeckelt durch kWp
+  const pvTag = calc.erzeugung / 365 * 1.7;
+  const pvForm = stunden.map(h => (h > 5 && h < 21) ? Math.max(0, Math.sin((h - 5.5) / 15 * Math.PI)) ** 1.6 : 0);
+  const pSum = pvForm.reduce((a, b) => a + b, 0) || 1;
+  let pv = pvForm.map(f => f / pSum * pvTag);
+  pv = pv.map(v => Math.min(v, s.kwp * 0.85)); // physikalische Obergrenze je Stunde
+
+  // Speicher: lädt aus Überschuss, entlädt bei Bedarf (einfacher Tageszyklus)
+  const kap = s.speicher * 0.9;
+  let soc = kap * 0.25;
+  const netz = [];
+  for (const h of stunden) {
+    let bedarf = last[h] - pv[h];
+    if (bedarf <= 0) {
+      const laden = Math.min(-bedarf, kap - soc);
+      soc += laden;
+      netz.push(0);
+    } else {
+      const entladen = Math.min(bedarf, soc);
+      soc -= entladen;
+      netz.push(bedarf - entladen);
+    }
+  }
+  const peakOhne = Math.max(...last);
+  const peakMit  = Math.max(...netz);
+  return { stunden, last, pv, netz, peakOhne, peakMit };
+}
+
+/* =====================================================================
+   SVG-Chart-Helfer
+   ===================================================================== */
+const charts = []; // Render-Funktionen für Resize
+
+function svgEl(tag, attrs) {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const k in attrs) el.setAttribute(k, attrs[k]);
+  return el;
+}
+function niceTicks(max, n = 4) {
+  if (max <= 0) return [0, 1];
+  const raw = max / n;
+  const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= raw) || 10 * mag;
+  const ticks = [];
+  let v = 0;
+  while (v < max - step * 1e-6) { ticks.push(v); v += step; }
+  ticks.push(v); // oberste Gridline liegt immer über dem Maximum
+  return ticks;
+}
+function clearNode(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+
+function makeTip(container) {
+  let tip = container.querySelector(".tip");
+  if (!tip) { tip = document.createElement("div"); tip.className = "tip"; container.appendChild(tip); }
+  return tip;
+}
+function tipShow(tip, container, px, py, head, rows) {
+  clearNode(tip);
+  const h = document.createElement("div"); h.className = "t-head"; h.textContent = head; tip.appendChild(h);
+  for (const r of rows) {
+    const row = document.createElement("div"); row.className = "t-row";
+    const key = document.createElement("span"); key.className = "t-key"; key.style.borderTopColor = r.color;
+    if (r.dashed) key.style.borderTopStyle = "dashed";
+    const name = document.createElement("span"); name.className = "t-name"; name.textContent = r.name;
+    const val = document.createElement("span"); val.className = "t-val"; val.textContent = r.value;
+    row.append(key, name, val); tip.appendChild(row);
+  }
+  tip.classList.add("on");
+  const cw = container.clientWidth;
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let x = px + 14; if (x + tw > cw - 4) x = px - tw - 14;
+  let y = py - th - 10; if (y < 0) y = py + 14;
+  tip.style.left = x + "px"; tip.style.top = Math.max(0, y) + "px";
+}
+function tipHide(tip) { tip.classList.remove("on"); }
+
+/* Linien-Chart mit Crosshair-Tooltip.
+   series: [{name, color(), values[], dashedFrom (Index) , washTo (Flächen-Wash bis Baseline), width}]
+   xs: X-Beschriftungen (Jahre/Stunden) */
+function lineChart(containerId, cfg) {
+  const container = $(containerId);
+  const render = () => {
+    clearNode(container);
+    const W = Math.max(320, container.clientWidth);
+    const Hplot = cfg.height || 240;
+    const m = { t: 20, r: 30, b: 26, l: 44 };
+    const H = Hplot + m.t + m.b;
+    const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: "img", "aria-label": cfg.aria || "" });
+    container.appendChild(svg);
+    const iw = W - m.l - m.r, ih = Hplot;
+    const n = cfg.xs.length;
+    const maxY = cfg.maxY || Math.max(...cfg.series.flatMap(s => s.values)) * 1.08;
+    const ticks = niceTicks(maxY);
+    const yMax = ticks[ticks.length - 1];
+    const X = i => m.l + (n === 1 ? iw / 2 : i / (n - 1) * iw);
+    const Y = v => m.t + ih - v / yMax * ih;
+
+    // Grid + Y-Achse
+    for (const t of ticks) {
+      svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t), stroke: t === 0 ? css("--baseline") : css("--grid"), "stroke-width": 1 }));
+      const lbl = svgEl("text", { x: m.l - 8, y: Y(t) + 4, "text-anchor": "end", "font-size": 11, fill: css("--text-muted") });
+      lbl.textContent = cfg.yTickFmt ? cfg.yTickFmt(t) : num0(t);
+      svg.appendChild(lbl);
+    }
+    // X-Beschriftung (ausgedünnt)
+    const every = Math.ceil(n / Math.max(3, Math.floor(iw / 70)));
+    cfg.xs.forEach((x, i) => {
+      const isLast = i === n - 1;
+      if (!isLast && (i % every !== 0 || n - 1 - i < every)) return;
+      const t = svgEl("text", { x: X(i), y: m.t + ih + 18, "text-anchor": "middle", "font-size": 11, fill: css("--text-muted") });
+      t.textContent = cfg.xFmt ? cfg.xFmt(x) : x;
+      svg.appendChild(t);
+    });
+
+    // Flächen-Wash
+    for (const s of cfg.series) {
+      if (!s.wash) continue;
+      let d = `M ${X(0)} ${Y(s.values[0])}`;
+      s.values.forEach((v, i) => { if (i) d += ` L ${X(i)} ${Y(v)}`; });
+      d += ` L ${X(n - 1)} ${Y(0)} L ${X(0)} ${Y(0)} Z`;
+      svg.appendChild(svgEl("path", { d, fill: s.wash, stroke: "none" }));
+    }
+    // Linien (ggf. geteilt in solide + strichlierte Projektion)
+    for (const s of cfg.series) {
+      const col = s.color();
+      const seg = (from, to, dashed) => {
+        if (to <= from) return;
+        let d = `M ${X(from)} ${Y(s.values[from])}`;
+        for (let i = from + 1; i <= to; i++) d += ` L ${X(i)} ${Y(s.values[i])}`;
+        const p = svgEl("path", { d, fill: "none", stroke: col, "stroke-width": s.width || 2, "stroke-linejoin": "round", "stroke-linecap": "round" });
+        if (dashed) p.setAttribute("stroke-dasharray", "5 5");
+        svg.appendChild(p);
+      };
+      if (s.dashedFrom != null && s.dashedFrom < n - 1) {
+        seg(0, s.dashedFrom, false);
+        seg(s.dashedFrom, n - 1, true);
+      } else {
+        seg(0, n - 1, false);
+      }
+      // Endpunkt-Marker + Endlabel
+      const lastV = s.values[n - 1];
+      svg.appendChild(svgEl("circle", { cx: X(n - 1), cy: Y(lastV), r: 4.5, fill: col, stroke: css("--surface-1"), "stroke-width": 2 }));
+      if (s.endLabel) {
+        const t = svgEl("text", { x: X(n - 1) - 8, y: Math.max(Y(lastV) - 9, 12), "text-anchor": "end", "font-size": 11.5, "font-weight": 650, fill: css("--text-primary") });
+        t.textContent = s.endLabel(lastV);
+        svg.appendChild(t);
+      }
+    }
+    // Referenzlinie (z. B. Investition)
+    if (cfg.refLine) {
+      const y = Y(cfg.refLine.value);
+      svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: y, y2: y, stroke: css("--text-muted"), "stroke-width": 1 }));
+      const t = svgEl("text", { x: m.l + 6, y: y - 6, "font-size": 11.5, fill: css("--text-secondary") });
+      t.textContent = cfg.refLine.label;
+      svg.appendChild(t);
+    }
+    // Punkt-Annotation (z. B. Amortisation)
+    if (cfg.marker && cfg.marker.i != null) {
+      const mx = X(cfg.marker.i), my = Y(cfg.marker.y);
+      svg.appendChild(svgEl("circle", { cx: mx, cy: my, r: 5.5, fill: css("--series-1"), stroke: css("--surface-1"), "stroke-width": 2 }));
+      const t = svgEl("text", { x: Math.min(mx + 9, W - 150), y: my + (my < 40 ? 22 : -12), "font-size": 12, "font-weight": 650, fill: css("--text-primary") });
+      t.textContent = cfg.marker.label;
+      svg.appendChild(t);
+    }
+
+    // Crosshair + Tooltip
+    const tip = makeTip(container);
+    const cross = svgEl("line", { y1: m.t, y2: m.t + ih, stroke: css("--baseline"), "stroke-width": 1, opacity: 0 });
+    svg.appendChild(cross);
+    const hover = svgEl("rect", { x: m.l, y: m.t, width: iw, height: ih, fill: "transparent" });
+    svg.appendChild(hover);
+    const onMove = ev => {
+      const rect = svg.getBoundingClientRect();
+      const px = (ev.clientX - rect.left) * (W / rect.width);
+      const i = Math.round((px - m.l) / iw * (n - 1));
+      if (i < 0 || i > n - 1) return;
+      cross.setAttribute("x1", X(i)); cross.setAttribute("x2", X(i)); cross.setAttribute("opacity", 1);
+      const rows = cfg.series.map(s => ({
+        name: s.name, color: s.color(),
+        dashed: s.dashedFrom != null && i > s.dashedFrom,
+        value: cfg.valFmt(s.values[i]),
+      }));
+      tipShow(tip, container, X(i) * (rect.width / W), Y(0) * (rect.height / (H)), (cfg.xFmt ? cfg.xFmt(cfg.xs[i]) : cfg.xs[i]) + (cfg.tipSuffix || ""), rows);
+    };
+    hover.addEventListener("pointermove", onMove);
+    hover.addEventListener("pointerleave", () => { cross.setAttribute("opacity", 0); tipHide(tip); });
+  };
+  charts.push(render);
+  return render;
+}
+
+/* Säulen-Chart mit Mark-Tooltip (einfarbig, direkte Beschriftung) */
+function colChart(containerId, cfg) {
+  const container = $(containerId);
+  const render = () => {
+    clearNode(container);
+    const W = Math.max(320, container.clientWidth);
+    const Hplot = cfg.height || 230;
+    const m = { t: 26, r: 10, b: 26, l: 40 };
+    const H = Hplot + m.t + m.b;
+    const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: "img", "aria-label": cfg.aria || "" });
+    container.appendChild(svg);
+    const iw = W - m.l - m.r, ih = Hplot;
+    const data = cfg.data;
+    const maxY = Math.max(...data.map(d => d.value)) * 1.12;
+    const ticks = niceTicks(maxY);
+    const yMax = ticks[ticks.length - 1];
+    const Y = v => m.t + ih - v / yMax * ih;
+    for (const t of ticks) {
+      svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t), stroke: t === 0 ? css("--baseline") : css("--grid"), "stroke-width": 1 }));
+      const lbl = svgEl("text", { x: m.l - 8, y: Y(t) + 4, "text-anchor": "end", "font-size": 11, fill: css("--text-muted") });
+      lbl.textContent = num0(t);
+      svg.appendChild(lbl);
+    }
+    const band = iw / data.length;
+    const bw = Math.min(46, band * 0.55);
+    const tip = makeTip(container);
+    data.forEach((d, i) => {
+      const cx = m.l + band * (i + 0.5);
+      const y = Y(d.value), h = Y(0) - y;
+      const r = Math.min(4, h);
+      const col = css(d.prognose ? "--series-1" : "--series-1");
+      const path = svgEl("path", {
+        d: `M ${cx - bw / 2} ${Y(0)} L ${cx - bw / 2} ${y + r} Q ${cx - bw / 2} ${y} ${cx - bw / 2 + r} ${y} L ${cx + bw / 2 - r} ${y} Q ${cx + bw / 2} ${y} ${cx + bw / 2} ${y + r} L ${cx + bw / 2} ${Y(0)} Z`,
+        fill: col, opacity: d.prognose ? 0.62 : 1, tabindex: 0,
+      });
+      svg.appendChild(path);
+      // Wert auf der Kappe
+      const t = svgEl("text", { x: cx, y: y - 7, "text-anchor": "middle", "font-size": 12, "font-weight": 650, fill: css("--text-primary") });
+      t.textContent = cfg.valFmt(d.value);
+      svg.appendChild(t);
+      const xl = svgEl("text", { x: cx, y: m.t + ih + 18, "text-anchor": "middle", "font-size": 11.5, fill: css("--text-muted") });
+      xl.textContent = d.label;
+      svg.appendChild(xl);
+      // Hover
+      const hit = svgEl("rect", { x: cx - band / 2, y: m.t, width: band, height: ih, fill: "transparent" });
+      hit.addEventListener("pointermove", ev => {
+        path.setAttribute("opacity", d.prognose ? 0.8 : 0.88);
+        const rect = svg.getBoundingClientRect();
+        tipShow(tip, container, (cx) * (rect.width / W), y * (rect.height / H),
+          d.label + (d.prognose ? " · Prognose" : ""), [{ name: cfg.seriesName, color: col, value: cfg.valFmt(d.value) + (cfg.unit || "") }]);
+      });
+      hit.addEventListener("pointerleave", () => { path.setAttribute("opacity", d.prognose ? 0.62 : 1); tipHide(tip); });
+      svg.appendChild(hit);
+    });
+    if (cfg.annotate) cfg.annotate(svg, { X: i => m.l + band * (i + 0.5), Y, W, m, ih });
+  };
+  charts.push(render);
+  return render;
+}
+
+/* Legende */
+function legend(id, items) {
+  const el = $(id);
+  clearNode(el);
+  for (const it of items) {
+    const s = document.createElement("span"); s.className = "item";
+    const key = document.createElement("span");
+    key.className = it.rect ? "key-rect" : "key-line" + (it.dashed ? " dashed" : "");
+    if (it.rect) key.style.background = it.color(); else key.style.borderTopColor = it.color();
+    const name = document.createElement("span"); name.textContent = it.name;
+    s.append(key, name); el.appendChild(s);
+  }
+}
+
+/* Tabellen-Ansicht */
+function table(id, head, rows) {
+  const el = $(id);
+  clearNode(el);
+  const t = document.createElement("table"); t.className = "data";
+  const tr = document.createElement("tr");
+  for (const h of head) { const th = document.createElement("th"); th.textContent = h; tr.appendChild(th); }
+  t.appendChild(tr);
+  for (const r of rows) {
+    const trr = document.createElement("tr");
+    for (const c of r) { const td = document.createElement("td"); td.textContent = c; trr.appendChild(td); }
+    t.appendChild(trr);
+  }
+  el.appendChild(t);
+}
+
+/* =====================================================================
+   Rendering / Update
+   ===================================================================== */
+let renderPreis, renderKosten, renderAmort, renderLast, renderAT;
+
+function update() {
+  const s = state;
+  const calc = berechne(s);
+
+  /* --- Ausgaben an den Reglern --- */
+  $("outVerbrauch").textContent = num0(s.verbrauch) + " kWh";
+  $("outKwp").textContent = num1(s.kwp) + " kWp";
+  $("outSpeicher").textContent = num1(s.speicher) + " kWh";
+  $("outPreis").textContent = num1(s.preis) + " ct/kWh";
+  $("outEsc").textContent = "+" + num1(s.esc) + " % p.a.";
+  $("outEinspeise").textContent = num1(s.einspeise) + " ct/kWh";
+  $("outJahre").textContent = s.jahre + " Jahre";
+  if (s.investAuto) $("inInvest").value = calc.invest;
+  $("investHint").textContent = s.investAuto
+    ? "automatisch geschätzt (" + num0(1450) + " €/kWp + " + num0(650) + " €/kWh Speicher)"
+    : "manuell eingegeben – „auto“ setzt zurück";
+  $("outLastspitze").textContent = num0(s.lastspitze) + " kW";
+  $("outLp").textContent = num0(s.lp) + " €/kW·a";
+  $("outKappung").textContent = num0(Math.min(s.kappung, s.lastspitze)) + " kW";
+
+  /* --- KPIs --- */
+  const last = calc.jahre[calc.jahre.length - 1];
+  $("kpiJahreLabel").textContent = s.jahre;
+  $("kpiGesamt").textContent = eur0(last.kum);
+  $("kpiGesamtNote").textContent = "bei +" + num1(s.esc) + " % Strompreis p.a. · Investition " + eur0(calc.invest);
+  $("kpiJahr1").textContent = eur0(calc.jahre[0].ersparnis);
+  if (calc.amortJahre) {
+    $("kpiAmort").innerHTML = "";
+    $("kpiAmort").append(num1(calc.amortJahre), Object.assign(document.createElement("span"), { className: "unit", textContent: " Jahre" }));
+    $("kpiAmortNote").textContent = "ab " + String(START_JAHR + Math.ceil(calc.amortJahre) - 1) + " verdient die Anlage Geld";
+  } else {
+    $("kpiAmort").textContent = "> " + s.jahre + " J.";
+    $("kpiAmortNote").textContent = "im gewählten Zeitraum nicht erreicht";
+  }
+  $("kpiAutarkie").innerHTML = "";
+  $("kpiAutarkie").append(num0(calc.autarkie * 100), Object.assign(document.createElement("span"), { className: "unit", textContent: " %" }));
+  $("kpiAutarkieNote").textContent = "Eigenverbrauch: " + num0(calc.sc * 100) + " % der PV-Erzeugung (" + num0(calc.erzeugung) + " kWh/a)";
+  $("kpiCo2").innerHTML = "";
+  $("kpiCo2").append(num1(calc.co2), Object.assign(document.createElement("span"), { className: "unit", textContent: " t" }));
+
+  /* --- Chart 1: Preisentwicklung --- */
+  const pr = preisReihe(s);
+  const histIdx = pr.jahre.indexOf(HIST_LAST_YEAR);
+  legend("legendPreis", [
+    { name: "Strompreis gesamt (ct/kWh)", color: () => css("--series-1") },
+    { name: "davon Netzkosten (ct/kWh)", color: () => css("--series-2") },
+    { name: "Prognose", color: () => css("--text-muted"), dashed: true },
+  ]);
+  renderPreis = lineChart("chartPreis", {
+    xs: pr.jahre, height: 230, aria: "Strompreis- und Netzkostenentwicklung",
+    yTickFmt: v => num0(v), valFmt: v => num1(v) + " ct/kWh",
+    series: [
+      { name: "Strompreis gesamt", color: () => css("--series-1"), values: pr.gesamt, dashedFrom: histIdx, endLabel: v => num0(v) + " ct" },
+      { name: "davon Netzkosten", color: () => css("--series-2"), values: pr.netz, dashedFrom: histIdx },
+    ],
+  });
+  renderPreis();
+  table("tablePreis", ["Jahr", "Strompreis gesamt (ct/kWh)", "davon Netzkosten (ct/kWh)"],
+    pr.jahre.map((j, i) => [j + (j > HIST_LAST_YEAR ? " *" : ""), num1(pr.gesamt[i]), num1(pr.netz[i])]));
+
+  /* --- Chart 2: Jahreskosten ohne/mit --- */
+  legend("legendKosten", [
+    { name: "ohne PV-Anlage", color: () => css("--gray-series") },
+    { name: "mit PV + Speicher", color: () => css("--series-1") },
+  ]);
+  renderKosten = lineChart("chartKosten", {
+    xs: calc.jahre.map(j => j.jahr), height: 230, aria: "Jährliche Stromkosten ohne und mit PV",
+    yTickFmt: v => num0(v / 1000) + (v >= 1000 ? "k" : ""), valFmt: v => eur0(v),
+    series: [
+      { name: "ohne PV-Anlage", color: () => css("--gray-series"), values: calc.jahre.map(j => j.ohne), wash: css("--gray-wash"), endLabel: v => eur0(v) },
+      { name: "mit PV + Speicher", color: () => css("--series-1"), values: calc.jahre.map(j => Math.max(0, j.mit)), wash: css("--series-1-wash"), endLabel: v => eur0(v) },
+    ],
+  });
+  renderKosten();
+  table("tableKosten", ["Jahr", "ohne PV", "mit PV + Speicher", "Ersparnis"],
+    calc.jahre.map(j => [j.jahr, eur0(j.ohne), eur0(j.mit), eur0(j.ersparnis)]));
+
+  /* --- Chart 3: Kumulierte Ersparnis --- */
+  legend("legendAmort", [
+    { name: "kumulierte Ersparnis", color: () => css("--series-1") },
+    { name: "Investition", color: () => css("--text-muted") },
+  ]);
+  let markerI = null;
+  if (calc.amortJahre) markerI = Math.min(calc.jahre.length - 1, Math.round(calc.amortJahre) - 1);
+  renderAmort = lineChart("chartAmort", {
+    xs: calc.jahre.map(j => j.jahr), height: 260, aria: "Kumulierte Ersparnis und Amortisation",
+    maxY: Math.max(calc.jahre[calc.jahre.length - 1].kum, calc.invest) * 1.1,
+    yTickFmt: v => num0(v / 1000) + "k", valFmt: v => eur0(v),
+    series: [
+      { name: "kumulierte Ersparnis", color: () => css("--series-1"), values: calc.jahre.map(j => j.kum), wash: css("--series-1-wash"), width: 2.5 },
+    ],
+    refLine: { value: calc.invest, label: "Investition " + eur0(calc.invest) },
+    marker: calc.amortJahre ? { i: markerI, y: calc.jahre[markerI].kum, label: "amortisiert nach " + num1(calc.amortJahre) + " Jahren" } : null,
+  });
+  renderAmort();
+  table("tableAmort", ["Jahr", "Ersparnis im Jahr", "kumuliert"],
+    calc.jahre.map(j => [j.jahr, eur0(j.ersparnis), eur0(j.kum)]));
+
+  /* --- Chart 4: Tageslastgang --- */
+  const tp = tagesprofil(s, calc);
+  const items = [
+    { name: "Ihr Verbrauch (kW)", color: () => css("--gray-series") },
+    { name: "PV-Erzeugung (kW)", color: () => css("--series-4") },
+    { name: "Netzbezug mit PV + Speicher (kW)", color: () => css("--series-1") },
+  ];
+  legend("legendLast", items);
+  $("descLast").textContent = s.gewerbe
+    ? "Typischer sonniger Betriebstag: Lastprofil, PV-Erzeugung und verbleibender Netzbezug. Die Lastspitzen-Kappung senkt die gemessene Spitze von " +
+      num0(tp.peakOhne < s.lastspitze ? s.lastspitze : tp.peakOhne) + " kW um " + num0(Math.min(s.kappung, s.lastspitze)) + " kW – das spart zusätzlich " + eur0(calc.lpSave) + " Netzkosten pro Jahr."
+    : "Typischer sonniger Tag: Ihr Verbrauch, die PV-Erzeugung und der verbleibende Netzbezug mit Speicher. Untertags und abends deckt die Anlage den Großteil selbst.";
+  renderLast = lineChart("chartLast", {
+    xs: tp.stunden, height: 230, aria: "Tageslastgang mit PV und Speicher",
+    xFmt: h => h + " Uhr", tipSuffix: "",
+    yTickFmt: v => num1(v), valFmt: v => num1(v) + " kW",
+    series: [
+      { name: "Ihr Verbrauch", color: () => css("--gray-series"), values: tp.last, wash: css("--gray-wash") },
+      { name: "PV-Erzeugung", color: () => css("--series-4"), values: tp.pv, wash: css("--series-4-wash") },
+      { name: "Netzbezug mit PV + Speicher", color: () => css("--series-1"), values: tp.netz, width: 2.5 },
+    ],
+    refLine: s.gewerbe ? { value: Math.max(0, s.lastspitze - Math.min(s.kappung, s.lastspitze)), label: "Ziel-Spitze nach Kappung" } : null,
+  });
+  renderLast();
+  table("tableLast", ["Stunde", "Verbrauch (kW)", "PV (kW)", "Netzbezug (kW)"],
+    tp.stunden.map(h => [h + ":00", num1(tp.last[h]), num1(tp.pv[h]), num1(tp.netz[h])]));
+
+  /* --- Chart 5: Österreich 2040 --- */
+  renderAT = colChart("chartAT", {
+    data: AT_BEDARF.map(d => ({ label: String(d.jahr), value: d.twh, prognose: d.prognose })),
+    height: 230, aria: "Strombedarf Österreich bis 2040", seriesName: "Strombedarf", unit: " TWh",
+    valFmt: v => num0(v),
+    annotate: (svg, g) => {
+      const x0 = g.X(1), x1 = g.X(AT_BEDARF.length - 1);
+      const y = g.m.t + 8;
+      const t = svgEl("text", { x: (x0 + x1) / 2 + 40, y: y + 4, "text-anchor": "middle", "font-size": 12, "font-weight": 650, fill: css("--text-secondary") });
+      t.textContent = "≈ Verdopplung bis 2040";
+      svg.appendChild(t);
+    },
+  });
+  renderAT();
+  table("tableAT", ["Jahr", "Strombedarf (TWh)"],
+    AT_BEDARF.map(d => [d.jahr + (d.prognose ? " *" : ""), num0(d.twh)]));
+}
+
+/* =====================================================================
+   Events
+   ===================================================================== */
+const bindings = [
+  ["inVerbrauch", "verbrauch", parseFloat],
+  ["inKwp", "kwp", parseFloat],
+  ["inSpeicher", "speicher", parseFloat],
+  ["inPreis", "preis", parseFloat],
+  ["inEsc", "esc", parseFloat],
+  ["inEinspeise", "einspeise", parseFloat],
+  ["inJahre", "jahre", v => parseInt(v, 10)],
+  ["inLastspitze", "lastspitze", parseFloat],
+  ["inLp", "lp", parseFloat],
+  ["inKappung", "kappung", parseFloat],
+];
+for (const [id, key, parse] of bindings) {
+  $(id).addEventListener("input", ev => { state[key] = parse(ev.target.value); update(); });
+}
+$("inGewerbe").addEventListener("change", ev => {
+  state.gewerbe = ev.target.checked;
+  $("gewerbeControls").hidden = !state.gewerbe;
+  update();
+});
+$("inInvest").addEventListener("input", ev => {
+  const v = parseFloat(ev.target.value);
+  if (!isNaN(v) && v > 0) { state.invest = v; state.investAuto = false; update(); }
+});
+$("btnInvestAuto").addEventListener("click", () => { state.investAuto = true; update(); });
+$("btnReset").addEventListener("click", () => {
+  Object.assign(state, DEFAULTS, { invest: null, investAuto: true });
+  for (const [id, key] of bindings) $(id).value = DEFAULTS[key];
+  $("inGewerbe").checked = false;
+  $("gewerbeControls").hidden = true;
+  update();
+});
+
+let resizeT;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeT);
+  resizeT = setTimeout(() => charts.length && update(), 150);
+});
+const darkMq = window.matchMedia("(prefers-color-scheme: dark)");
+if (darkMq.addEventListener) darkMq.addEventListener("change", () => update());
+
+update();
+</script>
+</body>
+</html>
