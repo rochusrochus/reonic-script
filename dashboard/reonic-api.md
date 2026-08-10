@@ -1,5 +1,14 @@
 # Reonic-API-Zugang einrichten (für Umsatz, Gewinn & Team-Auslastung)
 
+> **Status 10.08.2026: ERLEDIGT.** V3-Schlüssel wurde generiert, die Netzwerkfreigabe gesetzt und
+> Umsatz/Gewinn + Pipeline sind im Dashboard live. Die Anleitung unten bleibt als Referenz
+> (z.B. falls der Schlüssel erneuert wird). Offen ist nur noch die **Team-Auslastung** –
+> sie erfordert, dass die Einsatzplanung (Kalender) in Reonic tatsächlich gepflegt wird.
+>
+> Technische Eckdaten der Anbindung: Basis-URL `https://api.reonic.de/rest/v3`,
+> Auth-Header `X-Authorization: <Key>`, Doku unter https://api.reonic.de/rest/v3/docs,
+> Rate-Limit: bei HTTP 429 mit Backoff wiederholen, Datumsfilter max. 365 Tage.
+
 Gute Nachricht: Laut der Reonic-Mail vom 08.07.2026 („Aktion erforderlich: Migration zur API V3")
 nutzt euer Reonic-Konto die API bereits (noch V2) – und **den neuen V3-Schlüssel könnt ihr selbst
 erzeugen**, ganz ohne Support-Anfrage.

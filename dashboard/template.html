@@ -11,8 +11,8 @@
     --baseline: #3d4740;
     --border: rgba(255,255,255,0.10);
     --accent: #ffb92e;
-    --s1: #3987e5;  /* Angebote */
-    --s2: #d95926;  /* Montagen */
+    --s1: #3987e5;
+    --s2: #d95926;
     --good: #0ca30c;
   }
   html, body { height: 100%; }
@@ -21,71 +21,69 @@
     color: var(--ink);
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     margin: 0;
-    padding: clamp(12px, 1.5vw, 28px);
+    padding: clamp(10px, 1.2vw, 24px);
     box-sizing: border-box;
   }
-  .wrap { max-width: 1880px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(10px, 1.2vw, 22px); min-height: calc(100vh - 2 * clamp(12px, 1.5vw, 28px)); }
+  .wrap { max-width: 1880px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(8px, 1vw, 18px); height: calc(100vh - 2 * clamp(10px, 1.2vw, 24px)); min-height: 0; overflow: hidden; }
   header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  header h1 { font-size: clamp(20px, 2vw, 34px); margin: 0; font-weight: 700; letter-spacing: 0.2px; }
+  header h1 { font-size: clamp(19px, 1.8vw, 30px); margin: 0; font-weight: 700; }
   header h1 .sun { margin-right: 10px; }
-  header .today { font-size: clamp(14px, 1.3vw, 22px); color: var(--ink-2); }
-  main { display: grid; grid-template-columns: 2fr 1fr; gap: clamp(10px, 1.2vw, 22px); flex: 1; }
+  header .today { font-size: clamp(13px, 1.2vw, 20px); color: var(--ink-2); }
+  main { display: grid; grid-template-columns: 2fr 1fr; gap: clamp(8px, 1vw, 18px); flex: 1; min-height: 0; }
   @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 14px;
-    padding: clamp(14px, 1.4vw, 26px);
+    padding: clamp(12px, 1.2vw, 22px);
     box-sizing: border-box;
     display: flex; flex-direction: column;
+    min-height: 0; overflow: hidden;
   }
-  .card h2 { margin: 0 0 4px; font-size: clamp(14px, 1.15vw, 20px); font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.08em; }
-  .card .sub { color: var(--muted); font-size: clamp(12px, 0.95vw, 16px); margin: 0 0 12px; }
-  .col { display: flex; flex-direction: column; gap: clamp(10px, 1.2vw, 22px); }
-  .left > .card { flex: 1; }
+  .card h2 { margin: 0 0 2px; font-size: clamp(13px, 1.05vw, 18px); font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.08em; }
+  .card .sub { color: var(--muted); font-size: clamp(11px, 0.9vw, 15px); margin: 0 0 10px; }
+  .col { display: flex; flex-direction: column; gap: clamp(8px, 1vw, 18px); min-height: 0; }
+  .col > .card { flex: 1; }
 
-  /* KPI tiles */
-  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(8px, 1vw, 18px); margin-bottom: clamp(12px, 1.2vw, 20px); }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(6px, 0.8vw, 14px); margin-bottom: clamp(8px, 1vw, 16px); }
   @media (max-width: 1200px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
-  .kpi { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: clamp(10px, 1.1vw, 20px); }
-  .kpi .label { font-size: clamp(12px, 1vw, 17px); color: var(--ink-2); }
-  .kpi .value { font-size: clamp(34px, 3.4vw, 62px); font-weight: 700; line-height: 1.1; margin: 2px 0; }
-  .kpi .value .unit { font-size: 0.45em; font-weight: 600; color: var(--ink-2); margin-left: 4px; }
-  .kpi .hint { font-size: clamp(11px, 0.9vw, 15px); color: var(--muted); }
-  .kpi.k1 .value { color: var(--s1); }
-  .kpi.k2 .value { color: var(--good); }
-  .kpi.k3 .value { color: var(--s2); }
-  .kpi.k4 .value { color: var(--ink); }
+  .kpi { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: clamp(8px, 0.9vw, 16px); }
+  .kpi .label { font-size: clamp(11px, 0.9vw, 15px); color: var(--ink-2); }
+  .kpi .value { font-size: clamp(24px, 2.3vw, 44px); font-weight: 700; line-height: 1.15; margin: 2px 0; white-space: nowrap; }
+  .kpi .hint { font-size: clamp(10px, 0.8vw, 14px); color: var(--muted); }
+  .kpi.c1 .value { color: var(--s1); }
+  .kpi.c2 .value { color: var(--good); }
+  .kpi.c3 .value { color: var(--s2); }
+  .kpi.c4 .value { color: var(--ink); }
 
-  /* Chart */
-  .chart-wrap { flex: 1; min-height: 220px; position: relative; }
+  .chart-wrap { flex: 1; min-height: 90px; position: relative; }
   .chart-wrap svg { width: 100%; height: 100%; display: block; }
-  .legend { display: flex; gap: 22px; align-items: center; font-size: clamp(12px, 1vw, 17px); color: var(--ink-2); margin: 4px 0 8px; }
-  .legend .swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-right: 7px; vertical-align: -2px; }
-  #tooltip {
+  .legend { display: flex; gap: 20px; align-items: center; font-size: clamp(11px, 0.9vw, 15px); color: var(--ink-2); margin: 2px 0 6px; }
+  .legend .swatch { display: inline-block; width: 13px; height: 13px; border-radius: 4px; margin-right: 6px; vertical-align: -2px; }
+  .tooltip {
     position: absolute; pointer-events: none; display: none;
     background: #0d0f0e; border: 1px solid var(--border); border-radius: 8px;
-    padding: 8px 12px; font-size: 14px; color: var(--ink); white-space: nowrap; z-index: 5;
+    padding: 7px 11px; font-size: 14px; color: var(--ink); white-space: nowrap; z-index: 5;
     box-shadow: 0 4px 14px rgba(0,0,0,0.5);
   }
-  #tooltip .t-week { color: var(--muted); }
+  .tooltip .t-x { color: var(--muted); }
 
-  /* Termine */
-  .events { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-  .events li { display: flex; gap: 12px; align-items: baseline; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; }
-  .events .when { min-width: 9.5em; color: var(--accent); font-weight: 600; font-size: clamp(13px, 1.05vw, 18px); white-space: nowrap; }
-  .events .what { font-size: clamp(13px, 1.1vw, 19px); }
+  .rows { display: flex; flex-direction: column; gap: 8px; }
+  .rows .row { display: flex; align-items: baseline; gap: 12px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; }
+  .rows .num { font-size: clamp(24px, 2.2vw, 42px); font-weight: 700; min-width: 2.6em; text-align: right; }
+  .rows .desc { font-size: clamp(12px, 1vw, 17px); color: var(--ink-2); line-height: 1.3; }
+  .rows .row.r1 .num { color: var(--s1); }
+  .rows .row.r2 .num { color: var(--accent); }
+  .rows .row.r3 .num { color: var(--s2); }
+  .note { font-size: clamp(10px, 0.85vw, 14px); color: var(--muted); margin-top: 10px; line-height: 1.4; }
+
+  .events { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .events li { display: flex; gap: 10px; align-items: baseline; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; }
+  .events .when { min-width: 9em; color: var(--accent); font-weight: 600; font-size: clamp(12px, 0.95vw, 16px); white-space: nowrap; }
+  .events .what { font-size: clamp(12px, 1vw, 17px); }
   .events .flag { color: var(--muted); font-size: 0.85em; margin-left: 6px; }
-  .events-empty { color: var(--muted); font-size: clamp(13px, 1.05vw, 18px); padding: 6px 2px; }
 
-  /* Placeholder */
-  .pending { border-style: dashed; }
-  .pending .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; }
-  .pending .big { font-size: clamp(15px, 1.25vw, 22px); color: var(--ink-2); }
-  .pending .big .ico { margin-right: 8px; }
-  .pending .note { font-size: clamp(12px, 0.95vw, 16px); color: var(--muted); line-height: 1.45; }
-
-  footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: clamp(11px, 0.9vw, 15px); }
+  footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: clamp(10px, 0.85vw, 14px); }
 </style>
 
 <div class="wrap">
@@ -96,32 +94,35 @@
 
   <main>
     <div class="col left">
+      <section class="card" style="flex:1.15">
+        <h2>Umsatz &amp; Gewinn 2026</h2>
+        <p class="sub">Gewonnene Aufträge aus Reonic (netto; Rohertrag = Verkaufs- minus Einkaufspreise)</p>
+        <div class="kpis" id="umsatz-kpis"></div>
+        <div class="legend" id="umsatz-legend"></div>
+        <div class="chart-wrap" id="umsatz-chartwrap">
+          <svg id="umsatz-chart" role="img" aria-label="Umsatz und Rohertrag pro Monat"></svg>
+          <div class="tooltip"></div>
+        </div>
+      </section>
+
       <section class="card">
         <h2>Angebots- &amp; Auftragslage</h2>
-        <p class="sub">Aus Reonic-Benachrichtigungen im Postfach – Näherungswerte, letzte 30 Tage</p>
-        <div class="kpis" id="kpis"></div>
-        <div class="legend" id="legend"></div>
-        <div class="chart-wrap" id="chartwrap">
-          <svg id="chart" role="img" aria-label="Angebote und abgeschlossene Montagen pro Kalenderwoche"></svg>
-          <div id="tooltip"></div>
+        <p class="sub" id="auftrag-sub"></p>
+        <div class="kpis" id="auftrag-kpis"></div>
+        <div class="legend" id="auftrag-legend"></div>
+        <div class="chart-wrap" id="auftrag-chartwrap">
+          <svg id="auftrag-chart" role="img" aria-label="Angebote und abgeschlossene Montagen pro Kalenderwoche"></svg>
+          <div class="tooltip"></div>
         </div>
       </section>
     </div>
 
     <div class="col right">
-      <section class="card pending">
-        <h2>Umsatz &amp; Gewinn</h2>
-        <div class="body">
-          <div class="big"><span class="ico">🔑</span>Wartet auf Reonic-API-Zugang</div>
-          <div class="note">V3-API-Schlüssel in den Reonic-Portaleinstellungen generieren und an Claude übergeben – Anleitung: <code>dashboard/reonic-api.md</code></div>
-        </div>
-      </section>
-      <section class="card pending">
-        <h2>Auslastung Montage-Teams</h2>
-        <div class="body">
-          <div class="big"><span class="ico">🗓️</span>Wartet auf Reonic-API-Zugang</div>
-          <div class="note">Die Einsatzplanung liegt in Reonic – sobald der API-Schlüssel da ist, erscheint hier die Auslastung pro Team/Elektriker (nächste 2 Wochen).</div>
-        </div>
+      <section class="card">
+        <h2>Pipeline &amp; Montage</h2>
+        <p class="sub">Live aus Reonic</p>
+        <div class="rows" id="pipeline"></div>
+        <div class="note" id="pipeline-note"></div>
       </section>
       <section class="card" style="flex:1">
         <h2>Nächste Termine</h2>
@@ -133,36 +134,67 @@
 
   <footer>
     <div>Stand: <span id="stand"></span> · aktualisiert werktags stündlich</div>
-    <div>Quellen: Reonic-Mails &amp; Outlook-Kalender (hutterer@oh-solar.at)</div>
+    <div>Quellen: Reonic-API · Reonic-Mails · Outlook-Kalender (hutterer@oh-solar.at)</div>
   </footer>
 </div>
 
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "10.08.2026, 17:10 Uhr",
+  stand: "10.08.2026, 18:12 Uhr",
   heute: "Montag, 10. August 2026",
-  kpis: [
-    { cls: "k1", label: "Angebote versendet", value: 21, hint: "Juli gesamt: 28" },
-    { cls: "k2", label: "Aufträge unterzeichnet", value: 2, hint: "seit 15.06.: 5" },
-    { cls: "k3", label: "Montagen abgeschlossen", value: 15, hint: "Juli gesamt: 16" },
-    { cls: "k4", label: "Anfragen abgelehnt", value: 7, hint: "davon heute: 4" }
+
+  umsatzKpis: [
+    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.792.771 €", hint: "Juli: 187.834 € · August: noch 0 €" },
+    { cls: "c2", label: "Rohertrag 2026", value: "955.452 €", hint: "53 % vom Umsatz · Juli: 101.945 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "136", hint: "Ø 13.182 € netto pro Auftrag" }
   ],
-  serien: [
+  umsatzSerien: [
+    { name: "Umsatz (netto)", farbe: "var(--s1)" },
+    { name: "Rohertrag", farbe: "var(--s2)" }
+  ],
+  umsatzMonate: [
+    { label: "Jan", werte: [190, 115] },
+    { label: "Feb", werte: [196, 113] },
+    { label: "Mär", werte: [201, 110] },
+    { label: "Apr", werte: [653, 342] },
+    { label: "Mai", werte: [176, 77] },
+    { label: "Jun", werte: [189, 97] },
+    { label: "Jul", werte: [188, 102] },
+    { label: "Aug", werte: [0, 0], laufend: true }
+  ],
+  umsatzEinheit: "T€",
+
+  auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
+  auftragKpis: [
+    { cls: "c1", label: "Angebote versendet", value: "21", hint: "Juli gesamt: 28" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "14", hint: "2026 gesamt: 136" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "15", hint: "Juli gesamt: 16" },
+    { cls: "c4", label: "Anfragen abgelehnt", value: "7", hint: "davon heute: 4" }
+  ],
+  auftragSerien: [
     { name: "Angebote versendet", farbe: "var(--s1)" },
     { name: "Montagen abgeschlossen", farbe: "var(--s2)" }
   ],
-  wochen: [
-    { kw: "KW 25", von: "15.06.", werte: [10, 4] },
-    { kw: "KW 26", von: "22.06.", werte: [4, 3] },
-    { kw: "KW 27", von: "29.06.", werte: [4, 1] },
-    { kw: "KW 28", von: "06.07.", werte: [6, 2] },
-    { kw: "KW 29", von: "13.07.", werte: [2, 5] },
-    { kw: "KW 30", von: "20.07.", werte: [3, 4] },
-    { kw: "KW 31", von: "27.07.", werte: [14, 5] },
-    { kw: "KW 32", von: "03.08.", werte: [1, 1] },
-    { kw: "KW 33", von: "10.08.", werte: [1, 0], laufend: true }
+  auftragWochen: [
+    { label: "KW 25", sub: "ab 15.06.", werte: [10, 4] },
+    { label: "KW 26", sub: "ab 22.06.", werte: [4, 3] },
+    { label: "KW 27", sub: "ab 29.06.", werte: [4, 1] },
+    { label: "KW 28", sub: "ab 06.07.", werte: [6, 2] },
+    { label: "KW 29", sub: "ab 13.07.", werte: [2, 5] },
+    { label: "KW 30", sub: "ab 20.07.", werte: [3, 4] },
+    { label: "KW 31", sub: "ab 27.07.", werte: [14, 5] },
+    { label: "KW 32", sub: "ab 03.08.", werte: [1, 1] },
+    { label: "KW 33", sub: "ab 10.08.", werte: [1, 0], laufend: true }
   ],
+
+  pipeline: [
+    { cls: "r1", num: "786", desc: "offene Angebote beim Kunden" },
+    { cls: "r2", num: "48", desc: "verkauft – Montage noch nicht gestartet" },
+    { cls: "r3", num: "187", desc: "Anlagen in der Montagephase" }
+  ],
+  pipelineNote: "Team-/Elektriker-Auslastung erscheint hier, sobald die Einsatzplanung (Kalender) in Reonic gepflegt wird.",
+
   termineHinweis: "Diese Woche (KW 33) sind keine Termine im Kalender – Ausblick auf KW 34:",
   termine: [
     { when: "Mo 17.08. · 08:30", what: "Termin Xpeng" },
@@ -176,97 +208,125 @@ const DATA = {
 
 document.getElementById("today").textContent = DATA.heute;
 document.getElementById("stand").textContent = DATA.stand;
+document.getElementById("auftrag-sub").textContent = DATA.auftragSub;
 
-const kpisEl = document.getElementById("kpis");
-for (const k of DATA.kpis) {
-  const d = document.createElement("div");
-  d.className = "kpi " + k.cls;
-  d.innerHTML = `<div class="label"></div><div class="value"></div><div class="hint"></div>`;
-  d.querySelector(".label").textContent = k.label;
-  d.querySelector(".value").textContent = k.value;
-  d.querySelector(".hint").textContent = k.hint;
-  kpisEl.appendChild(d);
+function renderKpis(elId, kpis) {
+  const el = document.getElementById(elId);
+  for (const k of kpis) {
+    const d = document.createElement("div");
+    d.className = "kpi " + k.cls;
+    d.innerHTML = `<div class="label"></div><div class="value"></div><div class="hint"></div>`;
+    d.querySelector(".label").textContent = k.label;
+    d.querySelector(".value").textContent = k.value;
+    d.querySelector(".hint").textContent = k.hint;
+    el.appendChild(d);
+  }
 }
+renderKpis("umsatz-kpis", DATA.umsatzKpis);
+renderKpis("auftrag-kpis", DATA.auftragKpis);
+document.getElementById("umsatz-kpis").style.gridTemplateColumns = "repeat(3, 1fr)";
 
-const legendEl = document.getElementById("legend");
-DATA.serien.forEach(s => {
-  const sp = document.createElement("span");
-  const sw = document.createElement("span");
-  sw.className = "swatch";
-  sw.style.background = s.farbe;
-  sp.appendChild(sw);
-  sp.appendChild(document.createTextNode(s.name));
-  legendEl.appendChild(sp);
-});
+function renderLegend(elId, serien) {
+  const el = document.getElementById(elId);
+  serien.forEach(s => {
+    const sp = document.createElement("span");
+    const sw = document.createElement("span");
+    sw.className = "swatch"; sw.style.background = s.farbe;
+    sp.appendChild(sw); sp.appendChild(document.createTextNode(s.name));
+    el.appendChild(sp);
+  });
+}
+renderLegend("umsatz-legend", DATA.umsatzSerien);
+renderLegend("auftrag-legend", DATA.auftragSerien);
 
-/* Balkendiagramm (gruppiert, 2 Serien) */
-(function drawChart() {
-  const svg = document.getElementById("chart");
+/* Gruppiertes Balkendiagramm, 2 Serien */
+function drawGroupedBars(svgId, wrapId, gruppen, serien, yStep, einheit, H) {
+  const svg = document.getElementById(svgId);
+  const wrap = document.getElementById(wrapId);
+  const tooltip = wrap.querySelector(".tooltip");
   const NS = "http://www.w3.org/2000/svg";
-  const W = 1000, H = 400;
+  const W = 1200;
+  H = H || 300;
   svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
   svg.setAttribute("preserveAspectRatio", "none");
-  const m = { top: 26, right: 10, bottom: 52, left: 44 };
+  const m = { top: 26, right: 10, bottom: 48, left: 48 };
   const iw = W - m.left - m.right, ih = H - m.top - m.bottom;
-  const maxVal = Math.max(...DATA.wochen.flatMap(w => w.werte), 1);
-  const yMax = Math.ceil(maxVal / 5) * 5;
+  const maxVal = Math.max(...gruppen.flatMap(g => g.werte), 1);
+  const yMax = Math.ceil(maxVal / yStep) * yStep;
   const y = v => m.top + ih - (v / yMax) * ih;
-
   const el = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); return e; };
 
-  for (let v = 0; v <= yMax; v += 5) {
+  for (let v = 0; v <= yMax; v += yStep) {
     svg.appendChild(el("line", { x1: m.left, x2: W - m.right, y1: y(v), y2: y(v), stroke: v === 0 ? "var(--baseline)" : "var(--grid)", "stroke-width": v === 0 ? 1.5 : 1 }));
-    const t = el("text", { x: m.left - 10, y: y(v) + 5, "text-anchor": "end", fill: "var(--muted)", "font-size": 15, "font-family": "system-ui, sans-serif" });
+    const t = el("text", { x: m.left - 10, y: y(v) + 5, "text-anchor": "end", fill: "var(--muted)", "font-size": 14, "font-family": "system-ui, sans-serif" });
     t.textContent = v;
     svg.appendChild(t);
   }
+  if (einheit) {
+    const u = el("text", { x: m.left - 10, y: 14, "text-anchor": "end", fill: "var(--muted)", "font-size": 13, "font-family": "system-ui, sans-serif" });
+    u.textContent = einheit;
+    svg.appendChild(u);
+  }
 
-  const n = DATA.wochen.length, groupW = iw / n, barW = Math.min(34, (groupW - 18) / 2);
-  const colors = ["var(--s1)", "var(--s2)"];
-  const tooltip = document.getElementById("tooltip"), wrap = document.getElementById("chartwrap");
-
-  DATA.wochen.forEach((w, i) => {
+  const n = gruppen.length, groupW = iw / n, barW = Math.min(36, (groupW - 16) / 2);
+  gruppen.forEach((g, i) => {
     const cx = m.left + groupW * i + groupW / 2;
-    w.werte.forEach((v, si) => {
+    g.werte.forEach((v, si) => {
       const x = cx - barW - 1 + si * (barW + 2);
       const h = Math.max((v / yMax) * ih, v > 0 ? 3 : 0);
       if (v > 0) {
         const r = Math.min(4, h);
         const bar = el("path", {
           d: `M ${x} ${y(0)} V ${y(0) - h + r} Q ${x} ${y(0) - h} ${x + r} ${y(0) - h} H ${x + barW - r} Q ${x + barW} ${y(0) - h} ${x + barW} ${y(0) - h + r} V ${y(0)} Z`,
-          fill: colors[si], opacity: w.laufend ? 0.55 : 1
+          fill: serien[si].farbe, opacity: g.laufend ? 0.55 : 1
         });
         bar.addEventListener("mousemove", ev => {
           const r2 = wrap.getBoundingClientRect();
           tooltip.style.display = "block";
-          tooltip.innerHTML = `<span class="t-week"></span><br><b></b>`;
-          tooltip.querySelector(".t-week").textContent = `${w.kw} (ab ${w.von})${w.laufend ? " – läuft" : ""}`;
-          tooltip.querySelector("b").textContent = `${DATA.serien[si].name}: ${v}`;
-          tooltip.style.left = Math.min(ev.clientX - r2.left + 14, r2.width - 230) + "px";
-          tooltip.style.top = (ev.clientY - r2.top - 40) + "px";
+          tooltip.innerHTML = `<span class="t-x"></span><br><b></b>`;
+          tooltip.querySelector(".t-x").textContent = `${g.label}${g.sub ? " (" + g.sub + ")" : ""}${g.laufend ? " – läuft" : ""}`;
+          tooltip.querySelector("b").textContent = `${serien[si].name}: ${v}${einheit ? " " + einheit : ""}`;
+          tooltip.style.left = Math.min(ev.clientX - r2.left + 14, r2.width - 240) + "px";
+          tooltip.style.top = (ev.clientY - r2.top - 42) + "px";
         });
         bar.addEventListener("mouseleave", () => { tooltip.style.display = "none"; });
         svg.appendChild(bar);
-        const lbl = el("text", { x: x + barW / 2, y: y(0) - h - 7, "text-anchor": "middle", fill: "var(--ink-2)", "font-size": 15, "font-family": "system-ui, sans-serif" });
+        const lbl = el("text", { x: x + barW / 2, y: y(0) - h - 7, "text-anchor": "middle", fill: "var(--ink-2)", "font-size": 14, "font-family": "system-ui, sans-serif" });
         lbl.textContent = v;
         svg.appendChild(lbl);
       }
     });
-    const tx = el("text", { x: cx, y: H - 30, "text-anchor": "middle", fill: "var(--ink-2)", "font-size": 15, "font-weight": 600, "font-family": "system-ui, sans-serif" });
-    tx.textContent = w.kw;
+    const tx = el("text", { x: cx, y: H - 26, "text-anchor": "middle", fill: "var(--ink-2)", "font-size": 14, "font-weight": 600, "font-family": "system-ui, sans-serif" });
+    tx.textContent = g.label;
     svg.appendChild(tx);
-    const tx2 = el("text", { x: cx, y: H - 10, "text-anchor": "middle", fill: "var(--muted)", "font-size": 13, "font-family": "system-ui, sans-serif" });
-    tx2.textContent = "ab " + w.von + (w.laufend ? " ⏳" : "");
-    svg.appendChild(tx2);
+    if (g.sub || g.laufend) {
+      const tx2 = el("text", { x: cx, y: H - 8, "text-anchor": "middle", fill: "var(--muted)", "font-size": 12, "font-family": "system-ui, sans-serif" });
+      tx2.textContent = (g.sub || "") + (g.laufend ? " ⏳" : "");
+      svg.appendChild(tx2);
+    }
   });
-})();
+}
+drawGroupedBars("umsatz-chart", "umsatz-chartwrap", DATA.umsatzMonate, DATA.umsatzSerien, 200, DATA.umsatzEinheit, 260);
+drawGroupedBars("auftrag-chart", "auftrag-chartwrap", DATA.auftragWochen, DATA.auftragSerien, 5, "", 200);
+
+/* Pipeline */
+const pipeEl = document.getElementById("pipeline");
+for (const p of DATA.pipeline) {
+  const d = document.createElement("div");
+  d.className = "row " + p.cls;
+  d.innerHTML = `<span class="num"></span><span class="desc"></span>`;
+  d.querySelector(".num").textContent = p.num;
+  d.querySelector(".desc").textContent = p.desc;
+  pipeEl.appendChild(d);
+}
+document.getElementById("pipeline-note").textContent = DATA.pipelineNote;
 
 /* Termine */
 document.getElementById("events-sub").textContent = DATA.termineHinweis || "";
 const evEl = document.getElementById("events");
 if (!DATA.termine.length) {
   const d = document.createElement("div");
-  d.className = "events-empty";
+  d.className = "sub";
   d.textContent = "Keine anstehenden Termine im Kalender.";
   evEl.replaceWith(d);
 } else {
