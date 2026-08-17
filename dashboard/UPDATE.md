@@ -85,7 +85,12 @@ Abruf jeweils mit `outlook_calendar_search`, `query: "*"`, `afterDateTime: heute
 | `Büro` | ohne `calendarName` (Standardkalender von Hutterer@oh-solar.at) |
 
 Formatierung:
-- Zeiten nach Europe/Vienna umrechnen. Termine mit Uhrzeit: `Mo 17.08. · 08:30`. Ganztägige Mehrtages-Termine: `Mo 17.–Di 18.08.` (Achtung: `end` ist exklusiv – letzter Tag = end − 1 Tag).
+- **Bereits vergangene Termine des heutigen Tages weglassen** – die Kachel heißt „Nächste Termine".
+  Vorsicht beim Filtern: `afterDateTime` wird gegen dieselbe Zeitzone geprüft, in der die Tool-Antwort
+  die Zeiten liefert (`timeZone`, meist UTC). Eine Wiener Uhrzeit als Filter schneidet daher 1–2 Stunden
+  zu viel weg – entweder die aktuelle **UTC**-Zeit als Filter verwenden oder mit `afterDateTime: heute 00:00`
+  abrufen und die vergangenen Termine anschließend selbst herausfiltern.
+- Zeiten nach Europe/Vienna umrechnen (im Sommer UTC+2). Termine mit Uhrzeit: `Mo 17.08. · 08:30`. Ganztägige Mehrtages-Termine: `Mo 17.–Di 18.08.` (Achtung: `end` ist exklusiv – letzter Tag = end − 1 Tag).
 - Montage-Termine: `what` = Kundenname + Ort (Ortsteil/PLZ aus `location`); Betreff „…Vorläufiger Montagetermin" → `flag: "vorläufig"`. `showAs: "tentative"` → `flag: "unter Vorbehalt"`.
 - Max. 5 Einträge je Reiter (sonst wird die Karte abgeschnitten).
 - `hinweis` **einzeilig halten** (max. ~55 Zeichen) – bricht er auf zwei Zeilen um, wird der 5. Termin abgeschnitten.
