@@ -27,6 +27,7 @@ Alle Datums-/Zeitangaben in **Europe/Vienna** (`TZ=Europe/Vienna date`). Wochen 
 - **Basis-URL:** `https://api.reonic.de/rest/v3` · **Auth-Header:** `X-Authorization: <REONIC_API_KEY>`
   (Schlüssel aus der Umgebungsvariable `REONIC_API_KEY`; falls sie fehlt, diese Bereiche mit den zuletzt publizierten Werten unverändert lassen und am Ende kurz darauf hinweisen)
 - **Doku:** https://api.reonic.de/rest/v3/docs (OpenAPI: `/rest/v3/openapi`)
+- **Antwortformat:** jede Antwort ist ein Umschlag `{"data": [...], "pagination": {...}}` – die Liste steht unter `data`, nicht unter `items`.
 - **Rate-Limit beachten:** max. ~3 parallele Anfragen, bei HTTP 429 mit Backoff (2s/4s/8s…) wiederholen. Datumsfilter dürfen max. 365 Tage umspannen.
 
 Abrufe:
@@ -65,6 +66,9 @@ Zählung nach Betreff (`receivedDateTime` bestimmt den Tag):
 | `Der PDF-Export deiner Checkliste ist fertig` | Montagen abgeschlossen (siehe Regeln) |
 | `Ihre Anfrage bei OH Voltaik` | Anfragen abgelehnt |
 
+Mails mit dem Betreff `Angebot unterzeichnet!` **nicht** als Kennzahl zählen – „Aufträge gewonnen"
+und „Aufträge signiert" kommen ausschließlich aus der API (`deal.decidedAt`), sonst wird doppelt gezählt.
+
 Regeln für Checklisten-Mails: Projektname steht in der Summary (z.B. `"Installation - Fila.pdf"`); gleicher Projektname am selben Tag nur 1× zählen; Sammel-Exporte (`"... und N weitere ..."`) nicht zählen; `Anlagendoku…` zählt als abgeschlossene Montage. Ignorieren: `Reonic Login`, Marketing-/HubSpot-Mails, Support-Konversationen.
 
 KPI „Aufträge gewonnen" (letzte 30 Tage + Jahr) kommt aus der API (`deal.decidedAt`), nicht aus Mails.
@@ -84,7 +88,8 @@ Formatierung:
 - Zeiten nach Europe/Vienna umrechnen. Termine mit Uhrzeit: `Mo 17.08. · 08:30`. Ganztägige Mehrtages-Termine: `Mo 17.–Di 18.08.` (Achtung: `end` ist exklusiv – letzter Tag = end − 1 Tag).
 - Montage-Termine: `what` = Kundenname + Ort (Ortsteil/PLZ aus `location`); Betreff „…Vorläufiger Montagetermin" → `flag: "vorläufig"`. `showAs: "tentative"` → `flag: "unter Vorbehalt"`.
 - Max. 5 Einträge je Reiter (sonst wird die Karte abgeschnitten).
-- `hinweis` der Montage-Reiter: **Auslastung** = Anzahl der durch Termine belegten Arbeitstage (Mo–Fr, Vereinigungsmenge der Termintage) in den nächsten 2 Wochen ÷ 10, z.B. `belegt: 3 von 10 Arbeitstagen in den nächsten 2 Wochen`.
+- `hinweis` **einzeilig halten** (max. ~55 Zeichen) – bricht er auf zwei Zeilen um, wird der 5. Termin abgeschnitten.
+- `hinweis` der Montage-Reiter: **Auslastung** = Anzahl der durch Termine belegten Arbeitstage (Mo–Fr, Vereinigungsmenge der Termintage) in den nächsten 2 Wochen ÷ 10, Format `Montagen · 7 von 10 Arbeitstagen belegt (2 Wochen)`.
 - `termineTabWechselSekunden` (Auto-Wechsel der Reiter) unverändert lassen.
 
 Geplant: zusätzlicher Reiter für den **Elektriker-Kalender** – exakter Kalendername muss noch vom

@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "10.08.2026, 22:36 Uhr",
-  heute: "Montag, 10. August 2026",
+  stand: "17.08.2026, 07:35 Uhr",
+  heute: "Montag, 17. August 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.792.771 €", hint: "Juli: 187.834 € · August: noch 0 €" },
@@ -181,38 +181,38 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "21", hint: "Juli gesamt: 28" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "14", hint: "2026 gesamt: 136" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "15", hint: "Juli gesamt: 16" },
-    { cls: "c4", label: "Anfragen abgelehnt", value: "7", hint: "davon heute: 4" }
+    { cls: "c1", label: "Angebote versendet", value: "23", hint: "Juli gesamt: 29" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "8", hint: "2026 gesamt: 136" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "10", hint: "Juli gesamt: 16" },
+    { cls: "c4", label: "Anfragen abgelehnt", value: "7", hint: "davon am 10.08.: 4" }
   ],
   auftragSerien: [
     { name: "Angebote versendet", farbe: "var(--s1)" },
     { name: "Montagen abgeschlossen", farbe: "var(--s2)" }
   ],
   auftragWochen: [
-    { label: "KW 25", sub: "ab 15.06.", werte: [10, 4] },
     { label: "KW 26", sub: "ab 22.06.", werte: [4, 3] },
     { label: "KW 27", sub: "ab 29.06.", werte: [4, 1] },
-    { label: "KW 28", sub: "ab 06.07.", werte: [6, 2] },
+    { label: "KW 28", sub: "ab 06.07.", werte: [7, 2] },
     { label: "KW 29", sub: "ab 13.07.", werte: [2, 5] },
     { label: "KW 30", sub: "ab 20.07.", werte: [3, 4] },
     { label: "KW 31", sub: "ab 27.07.", werte: [14, 5] },
     { label: "KW 32", sub: "ab 03.08.", werte: [1, 1] },
-    { label: "KW 33", sub: "ab 10.08.", werte: [1, 0], laufend: true }
+    { label: "KW 33", sub: "ab 10.08.", werte: [5, 0] },
+    { label: "KW 34", sub: "ab 17.08.", werte: [0, 0], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 33", ist: 1, ziel: 8, anzeige: "1", zielText: "/ 8", soll: 0.20,
-        status: "💪 Noch 1 bis zur goldenen Linie – Juli-Schnitt: 6/Woche" },
-      { label: "Aufträge signiert – KW 33", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.20,
-        status: "💪 Der erste Abschluss der Woche wartet!" },
-      { label: "Umsatz August", ist: 0, ziel: 250000, anzeige: "0 €", zielText: "/ 250 T€", soll: 0.32,
-        status: "🔓 Noch offen – Juli schaffte 188 T€" },
-      { label: "Umsatz Jahresziel 2026", ist: 1792771, ziel: 3000000, anzeige: "1,79 Mio", zielText: "/ 3,0 Mio €", soll: 0.61,
-        status: "🔥 Fast auf Kurs – nur 32 T€ bis zur goldenen Linie" }
+      { label: "Angebote versendet – KW 34", ist: 0, ziel: 8, anzeige: "0", zielText: "/ 8", soll: 0.20,
+        status: "🌅 Frische Woche – 8 Angebote sind das Ziel" },
+      { label: "Aufträge signiert – KW 34", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.20,
+        status: "🌅 Neue Woche, neue Chance auf 5 Abschlüsse" },
+      { label: "Umsatz August", ist: 0, ziel: 250000, anzeige: "0 €", zielText: "/ 250 T€", soll: 0.55,
+        status: "🔥 Der erste August-Auftrag zündet den Monat" },
+      { label: "Umsatz Jahresziel 2026", ist: 1792771, ziel: 3000000, anzeige: "1,79 Mio", zielText: "/ 3,0 Mio €", soll: 0.63,
+        status: "💪 60 % geschafft – 89 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 653 T€",
@@ -224,7 +224,7 @@ const DATA = {
   termineTabs: [
     {
       name: "Montageteam A",
-      hinweis: "Montagen (Outlook-Kalender) · belegt: 3 von 10 Arbeitstagen in den nächsten 2 Wochen",
+      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
         { when: "Mo 17.–Di 18.08.", what: "Cindy Marvan – Gerasdorf b. Wien", flag: "vorläufig" },
         { when: "Mo 17.–Di 18.08.", what: "Caspar Graf von Moy – 1190 Wien", flag: "vorläufig" },
@@ -235,7 +235,7 @@ const DATA = {
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen (Outlook-Kalender) · belegt: 2 von 10 Arbeitstagen in den nächsten 2 Wochen",
+      hinweis: "Montagen · 6 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
         { when: "Mi 19.–Do 20.08.", what: "Mario Höritzmiller – 1220 Wien", flag: "vorläufig" },
         { when: "Mi 19.–Do 20.08.", what: "Gerald Höritzmiller – 1220 Wien", flag: "vorläufig" },
@@ -246,13 +246,13 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine (Kalender R. Hutterer) – diese Woche keine, Ausblick KW 34:",
+      hinweis: "Besichtigungen & Termine · 8 in den nächsten 3 Wochen",
       termine: [
         { when: "Mo 17.08. · 08:30", what: "Termin Xpeng" },
+        { when: "Mo 17.08. · 09:30", what: "Elizabeth Edwards – Büro" },
+        { when: "Mo 17.08. · 11:00", what: "Petr Olszar – Büro" },
         { when: "Di 18.08. · 08:00", what: "Jürgen Höfler – Besichtigung" },
-        { when: "Mi 19.08. · 09:00", what: "Josef Schlinger Ben", flag: "unter Vorbehalt" },
-        { when: "Do 20.08. · 08:30", what: "Andrea Chladek-Schreiblehner – Besichtigung" },
-        { when: "Fr 21.08. · 08:00", what: "Avdyl Bajrami" }
+        { when: "Mi 19.08. · 09:00", what: "Josef Schlinger Ben", flag: "unter Vorbehalt" }
       ]
     }
   ],
