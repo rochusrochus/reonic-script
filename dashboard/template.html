@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "19.08.2026, 12:15 Uhr",
+  stand: "19.08.2026, 13:15 Uhr",
   heute: "Mittwoch, 19. August 2026",
 
   umsatzKpis: [
-    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.843.231 €", hint: "Juli: 207.084 € · August: 31.210 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "985.952 €", hint: "53 % vom Umsatz · Juli: 113.661 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "139", hint: "Ø 13.261 € netto pro Auftrag" }
+    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.856.564 €", hint: "Juli: 207.084 € · August: 44.543 €" },
+    { cls: "c2", label: "Rohertrag 2026", value: "995.667 €", hint: "54 % vom Umsatz · Juli: 113.661 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "140", hint: "Ø 13.261 € netto pro Auftrag" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -175,14 +175,14 @@ const DATA = {
     { label: "Mai", werte: [176, 77] },
     { label: "Jun", werte: [189, 97] },
     { label: "Jul", werte: [207, 114] },
-    { label: "Aug", werte: [31, 19], laufend: true }
+    { label: "Aug", werte: [45, 28], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "26", hint: "Juli gesamt: 29" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "11", hint: "2026 gesamt: 139" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "12", hint: "2026 gesamt: 140" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "10", hint: "Juli gesamt: 16" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "7", hint: "davon am 10.08.: 4" }
   ],
@@ -207,16 +207,16 @@ const DATA = {
     items: [
       { label: "Angebote versendet – KW 34", ist: 3, ziel: 8, anzeige: "3", zielText: "/ 8", soll: 0.60,
         status: "💪 Noch 2 bis zur goldenen Linie" },
-      { label: "Aufträge signiert – KW 34", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.60,
-        status: "💪 Noch 2 bis zur goldenen Linie" },
-      { label: "Umsatz August", ist: 31210, ziel: 250000, anzeige: "31.210 €", zielText: "/ 250 T€", soll: 0.61,
-        status: "🔥 August läuft – 31 T€ auf dem Konto, 219 T€ zu holen" },
-      { label: "Umsatz Jahresziel 2026", ist: 1843231, ziel: 3000000, anzeige: "1,84 Mio", zielText: "/ 3,0 Mio €", soll: 0.63,
-        status: "💪 61 % geschafft – 55 T€ bis zur goldenen Linie" }
+      { label: "Aufträge signiert – KW 34", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.60,
+        status: "💪 Noch 1 bis zur goldenen Linie" },
+      { label: "Umsatz August", ist: 44543, ziel: 250000, anzeige: "44.543 €", zielText: "/ 250 T€", soll: 0.61,
+        status: "🔥 August läuft – 45 T€ auf dem Konto, 205 T€ zu holen" },
+      { label: "Umsatz Jahresziel 2026", ist: 1856564, ziel: 3000000, anzeige: "1,86 Mio", zielText: "/ 3,0 Mio €", soll: 0.63,
+        status: "💪 62 % geschafft – 42 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 653 T€",
-      "⚡ 139 Anlagen in 2026",
+      "⚡ 140 Anlagen in 2026",
       "🚀 Stärkste Woche: KW 31 – 14 Angebote"
     ]
   },
@@ -246,13 +246,13 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 9 in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 8 in den nächsten 3 Wochen",
       termine: [
-        { when: "Mi 19.08. · 12:00", what: "Anrufen Hundebetreuung" },
         { when: "Do 20.08. · 08:30", what: "Andrea Chladek-Schreiblehner – Besichtigung" },
         { when: "Do 20.08. · 10:00", what: "Martin Ebenhöh – 1100 Wien" },
         { when: "Do 20.08. · 11:00", what: "Andreas Bauer – Besichtigung" },
-        { when: "Fr 21.08. · 08:00", what: "Avdyl Bajrami" }
+        { when: "Fr 21.08. · 08:00", what: "Avdyl Bajrami" },
+        { when: "Di 25.08. · 09:00", what: "Rückgabe Vibe Audi" }
       ]
     }
   ],
