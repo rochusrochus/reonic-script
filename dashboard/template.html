@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "19.08.2026, 18:15 Uhr",
-  heute: "Mittwoch, 19. August 2026",
+  stand: "20.08.2026, 07:15 Uhr",
+  heute: "Donnerstag, 20. August 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.856.564 €", hint: "Juli: 207.084 € · August: 44.543 €" },
@@ -181,9 +181,9 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "26", hint: "Juli gesamt: 29" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "12", hint: "2026 gesamt: 140" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "10", hint: "Juli gesamt: 16" },
+    { cls: "c1", label: "Angebote versendet", value: "25", hint: "Juli gesamt: 29" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "11", hint: "2026 gesamt: 140" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "9", hint: "Juli gesamt: 16" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "7", hint: "davon am 10.08.: 4" }
   ],
   auftragSerien: [
@@ -205,14 +205,14 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 34", ist: 3, ziel: 8, anzeige: "3", zielText: "/ 8", soll: 0.60,
+      { label: "Angebote versendet – KW 34", ist: 3, ziel: 8, anzeige: "3", zielText: "/ 8", soll: 0.80,
+        status: "💪 Noch 3 bis zur goldenen Linie" },
+      { label: "Aufträge signiert – KW 34", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.80,
         status: "💪 Noch 2 bis zur goldenen Linie" },
-      { label: "Aufträge signiert – KW 34", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.60,
-        status: "💪 Noch 1 bis zur goldenen Linie" },
-      { label: "Umsatz August", ist: 44543, ziel: 250000, anzeige: "44.543 €", zielText: "/ 250 T€", soll: 0.61,
+      { label: "Umsatz August", ist: 44543, ziel: 250000, anzeige: "44.543 €", zielText: "/ 250 T€", soll: 0.65,
         status: "🔥 August läuft – 45 T€ auf dem Konto, 205 T€ zu holen" },
-      { label: "Umsatz Jahresziel 2026", ist: 1856564, ziel: 3000000, anzeige: "1,86 Mio", zielText: "/ 3,0 Mio €", soll: 0.63,
-        status: "💪 62 % geschafft – 42 T€ bis zur goldenen Linie" }
+      { label: "Umsatz Jahresziel 2026", ist: 1856564, ziel: 3000000, anzeige: "1,86 Mio", zielText: "/ 3,0 Mio €", soll: 0.64,
+        status: "💪 62 % geschafft – 50 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 653 T€",
@@ -224,7 +224,7 @@ const DATA = {
   termineTabs: [
     {
       name: "Montageteam A",
-      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt (2 Wochen)",
+      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
         { when: "Fr 21.–Sa 22.08.", what: "Ulrike Horniatschek – Korneuburg", flag: "vorläufig" },
         { when: "Mo 24.–Di 25.08.", what: "Christian Sulzer – 1220 Wien", flag: "vorläufig" },
@@ -246,7 +246,7 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 10 in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 11 in den nächsten 3 Wochen",
       termine: [
         { when: "Do 20.08. · 08:30", what: "Andrea Chladek-Schreiblehner – Besichtigung" },
         { when: "Do 20.08. · 10:00", what: "Martin Ebenhöh – 1100 Wien" },
