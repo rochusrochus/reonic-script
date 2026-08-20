@@ -155,7 +155,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "20.08.2026, 15:15 Uhr",
+  stand: "20.08.2026, 16:15 Uhr",
   heute: "Donnerstag, 20. August 2026",
 
   umsatzKpis: [
@@ -181,7 +181,7 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "26", hint: "Juli gesamt: 29" },
+    { cls: "c1", label: "Angebote versendet", value: "28", hint: "Juli gesamt: 29" },
     { cls: "c2", label: "Aufträge gewonnen", value: "12", hint: "2026 gesamt: 140" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "9", hint: "Juli gesamt: 16" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "7", hint: "davon am 10.08.: 4" }
@@ -199,14 +199,14 @@ const DATA = {
     { label: "KW 31", sub: "ab 27.07.", werte: [14, 5] },
     { label: "KW 32", sub: "ab 03.08.", werte: [1, 1] },
     { label: "KW 33", sub: "ab 10.08.", werte: [5, 0] },
-    { label: "KW 34", sub: "ab 17.08.", werte: [4, 0], laufend: true }
+    { label: "KW 34", sub: "ab 17.08.", werte: [6, 0], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 34", ist: 4, ziel: 8, anzeige: "4", zielText: "/ 8", soll: 0.80,
-        status: "💪 Noch 2 bis zur goldenen Linie" },
+      { label: "Angebote versendet – KW 34", ist: 6, ziel: 8, anzeige: "6", zielText: "/ 8", soll: 0.80,
+        status: "🔥 Stark aufgeholt – noch 1 bis zur goldenen Linie" },
       { label: "Aufträge signiert – KW 34", ist: 3, ziel: 5, anzeige: "3", zielText: "/ 5", soll: 0.80,
         status: "💪 Noch 1 bis zur goldenen Linie" },
       { label: "Umsatz August", ist: 46060, ziel: 250000, anzeige: "46.060 €", zielText: "/ 250 T€", soll: 0.65,
@@ -246,13 +246,13 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 16 in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 17 in den nächsten 3 Wochen",
       termine: [
-        { when: "Do 20.08. · 15:00", what: "Matthias Lueger" },
         { when: "Fr 21.08. · 08:00", what: "Avdyl Bajrami" },
         { when: "Fr 21.08. · 15:00", what: "Marko Schulze – Besichtigung" },
         { when: "Sa 22.08. · 09:00", what: "Stockinger – Speicher" },
-        { when: "Mo 24.08. · 08:00", what: "Elisabeth Herl – 1220 Wien" }
+        { when: "Mo 24.08. · 08:00", what: "Elisabeth Herl – 1220 Wien" },
+        { when: "Mo 24.08. · 11:00", what: "Martin Krause – 1220 Wien" }
       ]
     }
   ],
