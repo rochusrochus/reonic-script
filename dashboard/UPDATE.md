@@ -28,6 +28,9 @@ Alle Datums-/Zeitangaben in **Europe/Vienna** (`TZ=Europe/Vienna date`). Wochen 
   (Schlüssel aus der Umgebungsvariable `REONIC_API_KEY`; falls sie fehlt, diese Bereiche mit den zuletzt publizierten Werten unverändert lassen und am Ende kurz darauf hinweisen)
 - **Doku:** https://api.reonic.de/rest/v3/docs (OpenAPI: `/rest/v3/openapi`)
 - **Antwortformat:** jede Antwort ist ein Umschlag `{"data": [...], "pagination": {...}}` – die Liste steht unter `data`, nicht unter `items`.
+- **Verschwundener Deal ≠ verlorener Deal:** Fehlt ein bisher gewonnenes Projekt plötzlich in der Liste,
+  zuerst `GET /residentialProjects/{id}` abfragen. Steht dort weiterhin `state: "Won"`, war es nur ein
+  Aussetzer der Listen-Pagination – den Deal dann **nicht** aus dem Cache entfernen.
 - **Rate-Limit beachten:** max. ~3 parallele Anfragen, bei HTTP 429 mit Backoff (2s/4s/8s…) wiederholen. Datumsfilter dürfen max. 365 Tage umspannen.
 
 Abrufe:
