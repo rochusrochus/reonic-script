@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "21.08.2026, 18:15 Uhr",
-  heute: "Freitag, 21. August 2026",
+  stand: "24.08.2026, 07:15 Uhr",
+  heute: "Montag, 24. August 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.862.738 €", hint: "Juli: 207.084 € · August: 66.476 €" },
@@ -181,17 +181,16 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "27", hint: "Juli gesamt: 29" },
+    { cls: "c1", label: "Angebote versendet", value: "26", hint: "Juli gesamt: 29" },
     { cls: "c2", label: "Aufträge gewonnen", value: "11", hint: "2026 gesamt: 141" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "10", hint: "Juli gesamt: 16" },
-    { cls: "c4", label: "Anfragen abgelehnt", value: "7", hint: "davon am 10.08.: 4" }
+    { cls: "c3", label: "Montagen abgeschlossen", value: "7", hint: "Juli gesamt: 16" },
+    { cls: "c4", label: "Anfragen abgelehnt", value: "9", hint: "davon am 10.08.: 4" }
   ],
   auftragSerien: [
     { name: "Angebote versendet", farbe: "var(--s1)" },
     { name: "Montagen abgeschlossen", farbe: "var(--s2)" }
   ],
   auftragWochen: [
-    { label: "KW 26", sub: "ab 22.06.", werte: [4, 3] },
     { label: "KW 27", sub: "ab 29.06.", werte: [4, 1] },
     { label: "KW 28", sub: "ab 06.07.", werte: [7, 2] },
     { label: "KW 29", sub: "ab 13.07.", werte: [2, 5] },
@@ -199,20 +198,21 @@ const DATA = {
     { label: "KW 31", sub: "ab 27.07.", werte: [14, 5] },
     { label: "KW 32", sub: "ab 03.08.", werte: [1, 1] },
     { label: "KW 33", sub: "ab 10.08.", werte: [5, 0] },
-    { label: "KW 34", sub: "ab 17.08.", werte: [6, 1], laufend: true }
+    { label: "KW 34", sub: "ab 17.08.", werte: [6, 1] },
+    { label: "KW 35", sub: "ab 24.08.", werte: [0, 0], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 34", ist: 6, ziel: 8, anzeige: "6", zielText: "/ 8", soll: 1.00,
-        status: "🔥 Endspurt: noch 2 bis zum Wochenziel" },
-      { label: "Aufträge signiert – KW 34", ist: 4, ziel: 5, anzeige: "4", zielText: "/ 5", soll: 1.00,
-        status: "🔥 Nur noch 1 bis zum Wochenziel!" },
-      { label: "Umsatz August", ist: 66476, ziel: 250000, anzeige: "66.476 €", zielText: "/ 250 T€", soll: 0.68,
+      { label: "Angebote versendet – KW 35", ist: 0, ziel: 8, anzeige: "0", zielText: "/ 8", soll: 0.20,
+        status: "🚀 Neue Woche – auf geht's!" },
+      { label: "Aufträge signiert – KW 35", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.20,
+        status: "🚀 Neue Woche – auf geht's!" },
+      { label: "Umsatz August", ist: 66476, ziel: 250000, anzeige: "66.476 €", zielText: "/ 250 T€", soll: 0.77,
         status: "🔥 August läuft – 66 T€ auf dem Konto, 184 T€ zu holen" },
-      { label: "Umsatz Jahresziel 2026", ist: 1862738, ziel: 3000000, anzeige: "1,86 Mio", zielText: "/ 3,0 Mio €", soll: 0.64,
-        status: "💪 62 % geschafft – 52 T€ bis zur goldenen Linie" }
+      { label: "Umsatz Jahresziel 2026", ist: 1862738, ziel: 3000000, anzeige: "1,86 Mio", zielText: "/ 3,0 Mio €", soll: 0.65,
+        status: "💪 62 % geschafft – 77 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 637 T€",
@@ -224,13 +224,13 @@ const DATA = {
   termineTabs: [
     {
       name: "Montageteam A",
-      hinweis: "Montagen · 9 von 10 Arbeitstagen belegt (2 Wochen)",
+      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "Fr 21.–Sa 22.08.", what: "Ulrike Horniatschek – Korneuburg", flag: "vorläufig" },
         { when: "Mo 24.–Di 25.08.", what: "Christian Sulzer – 1220 Wien", flag: "vorläufig" },
         { when: "Mi 26.–Do 27.08.", what: "Ferdinand Schmidt – Judenau", flag: "vorläufig" },
         { when: "Mo 31.08.–Di 01.09.", what: "Andreas Simon – Würmla", flag: "vorläufig" },
-        { when: "Mi 02.–Do 03.09.", what: "Dominik Vacek – Strasshof", flag: "vorläufig" }
+        { when: "Mi 02.–Do 03.09.", what: "Dominik Vacek – Strasshof", flag: "vorläufig" },
+        { when: "Mo 07.–Di 08.09.", what: "Karl Mildner – Klosterneuburg", flag: "vorläufig" }
       ]
     },
     {
@@ -246,13 +246,13 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 18 in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 17 in den nächsten 3 Wochen",
       termine: [
-        { when: "Sa 22.08. · 09:00", what: "Stockinger – Speicher" },
         { when: "Mo 24.08. · 08:00", what: "Elisabeth Herl – 1220 Wien" },
         { when: "Mo 24.08. · 11:00", what: "Martin Krause – 1220 Wien" },
         { when: "Mo 24.08. · 14:00", what: "Amin Eisa – 1220 Wien" },
-        { when: "Di 25.08. · 09:00", what: "Rückgabe Vibe Audi" }
+        { when: "Di 25.08. · 09:00", what: "Rückgabe Vibe Audi" },
+        { when: "Di 25.08. · 12:30", what: "Matthias Lueger – Münchendorf" }
       ]
     }
   ],
