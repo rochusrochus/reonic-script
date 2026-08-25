@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "25.08.2026, 10:15 Uhr",
+  stand: "25.08.2026, 11:15 Uhr",
   heute: "Dienstag, 25. August 2026",
 
   umsatzKpis: [
-    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.862.738 €", hint: "Juli: 207.084 € · August: 66.476 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "1.001.148 €", hint: "54 % vom Umsatz · Juli: 113.661 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "141", hint: "Ø 13.211 € netto pro Auftrag" }
+    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.878.121 €", hint: "Juli: 207.084 € · August: 81.860 €" },
+    { cls: "c2", label: "Rohertrag 2026", value: "1.010.364 €", hint: "54 % vom Umsatz · Juli: 113.661 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "142", hint: "Ø 13.226 € netto pro Auftrag" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -175,14 +175,14 @@ const DATA = {
     { label: "Mai", werte: [176, 77] },
     { label: "Jun", werte: [189, 97] },
     { label: "Jul", werte: [207, 114] },
-    { label: "Aug", werte: [66, 41], laufend: true }
+    { label: "Aug", werte: [82, 50], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "28", hint: "Juli gesamt: 29" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "11", hint: "2026 gesamt: 141" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "12", hint: "2026 gesamt: 142" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "7", hint: "Juli gesamt: 16" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "9", hint: "davon am 10.08.: 4" }
   ],
@@ -207,16 +207,16 @@ const DATA = {
     items: [
       { label: "Angebote versendet – KW 35", ist: 2, ziel: 8, anzeige: "2", zielText: "/ 8", soll: 0.40,
         status: "📈 2 von 8 – heute zählt jedes Angebot" },
-      { label: "Aufträge signiert – KW 35", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.40,
-        status: "🎯 Noch offen – der erste Abschluss der Woche fehlt" },
-      { label: "Umsatz August", ist: 66476, ziel: 250000, anzeige: "66.476 €", zielText: "/ 250 T€", soll: 0.81,
-        status: "🔥 66 T€ auf dem Konto – 184 T€ bis zum Monatsziel" },
-      { label: "Umsatz Jahresziel 2026", ist: 1862738, ziel: 3000000, anzeige: "1,86 Mio", zielText: "/ 3,0 Mio €", soll: 0.65,
-        status: "💪 62 % geschafft – 85 T€ bis zur goldenen Linie" }
+      { label: "Aufträge signiert – KW 35", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.40,
+        status: "✅ Erster Auftrag der Woche steht – Marko Schulze" },
+      { label: "Umsatz August", ist: 81860, ziel: 250000, anzeige: "81.860 €", zielText: "/ 250 T€", soll: 0.81,
+        status: "🔥 82 T€ auf dem Konto – 168 T€ bis zum Monatsziel" },
+      { label: "Umsatz Jahresziel 2026", ist: 1878121, ziel: 3000000, anzeige: "1,88 Mio", zielText: "/ 3,0 Mio €", soll: 0.65,
+        status: "💪 63 % geschafft – 70 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 637 T€",
-      "⚡ 141 Anlagen in 2026",
+      "⚡ 142 Anlagen in 2026",
       "🚀 Stärkste Woche: KW 31 – 14 Angebote"
     ]
   },
@@ -246,13 +246,13 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 21 in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 22 in den nächsten 3 Wochen",
       termine: [
         { when: "Di 25.08. · 12:30", what: "Matthias Lueger – Münchendorf" },
-        { when: "Di 25.08. · 14:00", what: "Stepan Turnovsky – Gaaden" },
+        { when: "Di 25.08. · 13:00", what: "Stepan Turnovsky – Gaaden" },
+        { when: "Di 25.08. · 15:00", what: "Davor Mitrovic – Ebergassing" },
         { when: "Mi 26.08. · 08:00", what: "Tanja Pfeil" },
-        { when: "Mi 26.08. · 10:00", what: "Alexander Kozlowsky – Schönkirchen" },
-        { when: "Mi 26.08. · 12:00", what: "Jason Hundetermin" }
+        { when: "Mi 26.08. · 10:00", what: "Alexander Kozlowsky – Schönkirchen" }
       ]
     }
   ],
