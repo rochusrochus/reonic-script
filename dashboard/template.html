@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "27.08.2026, 17:15 Uhr",
+  stand: "27.08.2026, 18:15 Uhr",
   heute: "Donnerstag, 27. August 2026",
 
   umsatzKpis: [
-    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.887.840 €", hint: "Juli: 207.084 € · August: 91.578 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "1.014.518 €", hint: "54 % vom Umsatz · Juli: 113.661 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "143", hint: "Ø 13.202 € netto pro Auftrag" }
+    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.901.673 €", hint: "Juli: 207.084 € · August: 105.411 €" },
+    { cls: "c2", label: "Rohertrag 2026", value: "1.023.772 €", hint: "54 % vom Umsatz · Juli: 113.661 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "144", hint: "Ø 13.206 € netto pro Auftrag" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -175,14 +175,14 @@ const DATA = {
     { label: "Mai", werte: [176, 77] },
     { label: "Jun", werte: [189, 97] },
     { label: "Jul", werte: [207, 114] },
-    { label: "Aug", werte: [92, 54], laufend: true }
+    { label: "Aug", werte: [105, 64], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "28", hint: "Juli gesamt: 29" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "12", hint: "2026 gesamt: 143" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "13", hint: "2026 gesamt: 144" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "7", hint: "Juli gesamt: 16" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "9", hint: "davon am 10.08.: 4" }
   ],
@@ -207,16 +207,16 @@ const DATA = {
     items: [
       { label: "Angebote versendet – KW 35", ist: 2, ziel: 8, anzeige: "2", zielText: "/ 8", soll: 0.80,
         status: "📉 2 von 8 – zwei Tage für den Endspurt" },
-      { label: "Aufträge signiert – KW 35", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.80,
-        status: "💪 2 von 5 – Donnerstag und Freitag entscheiden" },
-      { label: "Umsatz August", ist: 91578, ziel: 250000, anzeige: "91.578 €", zielText: "/ 250 T€", soll: 0.87,
-        status: "🔥 92 T€ auf dem Konto – 158 T€ bis zum Monatsziel" },
-      { label: "Umsatz Jahresziel 2026", ist: 1887840, ziel: 3000000, anzeige: "1,89 Mio", zielText: "/ 3,0 Mio €", soll: 0.65,
-        status: "💪 63 % geschafft – 77 T€ bis zur goldenen Linie" }
+      { label: "Aufträge signiert – KW 35", ist: 3, ziel: 5, anzeige: "3", zielText: "/ 5", soll: 0.80,
+        status: "🔥 Dritter Auftrag der Woche – Regina Prachner unterschrieben" },
+      { label: "Umsatz August", ist: 105411, ziel: 250000, anzeige: "105.411 €", zielText: "/ 250 T€", soll: 0.87,
+        status: "🔥 105 T€ im August – die 6-stellige Marke ist geknackt" },
+      { label: "Umsatz Jahresziel 2026", ist: 1901673, ziel: 3000000, anzeige: "1,90 Mio", zielText: "/ 3,0 Mio €", soll: 0.65,
+        status: "💪 63 % geschafft – 63 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 637 T€",
-      "⚡ 143 Anlagen in 2026",
+      "⚡ 144 Anlagen in 2026",
       "🚀 Stärkste Woche: KW 31 – 14 Angebote"
     ]
   },
