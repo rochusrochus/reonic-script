@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "26.08.2026, 18:15 Uhr",
-  heute: "Mittwoch, 26. August 2026",
+  stand: "27.08.2026, 07:15 Uhr",
+  heute: "Donnerstag, 27. August 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.887.840 €", hint: "Juli: 207.084 € · August: 91.578 €" },
@@ -182,7 +182,7 @@ const DATA = {
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "28", hint: "Juli gesamt: 29" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "13", hint: "2026 gesamt: 143" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "12", hint: "2026 gesamt: 143" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "7", hint: "Juli gesamt: 16" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "9", hint: "davon am 10.08.: 4" }
   ],
@@ -205,14 +205,14 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 35", ist: 2, ziel: 8, anzeige: "2", zielText: "/ 8", soll: 0.60,
-        status: "📈 2 von 8 – Halbzeit, da geht noch was" },
-      { label: "Aufträge signiert – KW 35", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.60,
-        status: "💪 2 von 5 – noch drei Abschlüsse bis Freitag" },
-      { label: "Umsatz August", ist: 91578, ziel: 250000, anzeige: "91.578 €", zielText: "/ 250 T€", soll: 0.84,
+      { label: "Angebote versendet – KW 35", ist: 2, ziel: 8, anzeige: "2", zielText: "/ 8", soll: 0.80,
+        status: "📉 2 von 8 – zwei Tage für den Endspurt" },
+      { label: "Aufträge signiert – KW 35", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.80,
+        status: "💪 2 von 5 – Donnerstag und Freitag entscheiden" },
+      { label: "Umsatz August", ist: 91578, ziel: 250000, anzeige: "91.578 €", zielText: "/ 250 T€", soll: 0.87,
         status: "🔥 92 T€ auf dem Konto – 158 T€ bis zum Monatsziel" },
       { label: "Umsatz Jahresziel 2026", ist: 1887840, ziel: 3000000, anzeige: "1,89 Mio", zielText: "/ 3,0 Mio €", soll: 0.65,
-        status: "💪 63 % geschafft – 68 T€ bis zur goldenen Linie" }
+        status: "💪 63 % geschafft – 77 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 637 T€",
