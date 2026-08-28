@@ -59,7 +59,21 @@ Hinweis: Die API cached Antworten 1 Stunde – das passt zum Stundenrhythmus. F�
 
 ### 3. Reonic-Mails (Wochen-Chart + übrige KPIs)
 
-`outlook_email_search` mit `sender: "reonic"`, `afterDateTime: <Montag der ältesten anzuzeigenden KW>` (8 abgeschlossene Wochen + laufende Woche = 9 KWs). **Alle Seiten paginieren** (`offset` = `nextOffset`, solange `moreResults`).
+**Achtung – Suchmethode:** Die Kombination `sender` + `afterDateTime` liefert im Graph-Backend zeitweise
+**stillschweigend keine Treffer** (kein Fehler, einfach leeres Ergebnis) – am 26./27.08.2026 sind so mehrere
+Angebots-Mails durchgerutscht. Deshalb **immer über den Betreff suchen**, je eine Abfrage pro Kennzahl:
+
+```
+outlook_email_search  query: "Ihr Photovoltaik-Angebot steht bereit"   limit: 25   (offset 0,25,50,… )
+outlook_email_search  query: "Der PDF-Export deiner Checkliste ist fertig"
+outlook_email_search  query: "Ihre Anfrage bei OH Voltaik"
+```
+
+Die Treffer kommen nach `receivedDateTime` absteigend; **nur Mails von `noreply@reonic-email.de` zählen**
+(Antworten von `Hutterer@oh-solar.at` bzw. Kunden tragen denselben Betreff mit `Re:`/`Aw:` und zählen nicht).
+Solange die neueste Mail jünger als der Fenster-Anfang ist, weiter paginieren (`offset` erhöhen).
+Wenn eine Zählung plausibel erscheint, sie gegen die Balken der abgeschlossenen KWs im Chart gegenprüfen –
+die dürfen sich rückwirkend nicht ändern.
 
 Zählung nach Betreff (`receivedDateTime` bestimmt den Tag):
 
