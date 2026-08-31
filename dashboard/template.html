@@ -155,7 +155,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "31.08.2026, 11:15 Uhr",
+  stand: "31.08.2026, 12:15 Uhr",
   heute: "Montag, 31. August 2026",
 
   umsatzKpis: [
@@ -181,7 +181,7 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "23", hint: "Juli gesamt: 29" },
+    { cls: "c1", label: "Angebote versendet", value: "27", hint: "Juli gesamt: 29" },
     { cls: "c2", label: "Aufträge gewonnen", value: "8", hint: "2026 gesamt: 144" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "4", hint: "Juli gesamt: 16" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "6", hint: "davon am 10.08.: 4" }
@@ -199,14 +199,14 @@ const DATA = {
     { label: "KW 33", sub: "ab 10.08.", werte: [5, 0] },
     { label: "KW 34", sub: "ab 17.08.", werte: [6, 1] },
     { label: "KW 35", sub: "ab 24.08.", werte: [10, 2] },
-    { label: "KW 36", sub: "ab 31.08.", werte: [1, 0], laufend: true }
+    { label: "KW 36", sub: "ab 31.08.", werte: [5, 0], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 36", ist: 1, ziel: 8, anzeige: "1", zielText: "/ 8", soll: 0.20,
-        status: "🚀 Erstes Angebot der Woche ist raus – 7 fehlen" },
+      { label: "Angebote versendet – KW 36", ist: 5, ziel: 8, anzeige: "5", zielText: "/ 8", soll: 0.20,
+        status: "🔥 5 von 8 schon am Montagvormittag – starker Start" },
       { label: "Aufträge signiert – KW 36", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.20,
         status: "💪 Frischer Start – 5 Abschlüsse bis Freitag" },
       { label: "Umsatz August", ist: 105411, ziel: 250000, anzeige: "105.411 €", zielText: "/ 250 T€", soll: 1.00,
@@ -246,13 +246,13 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 13 in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 12 in den nächsten 3 Wochen",
       termine: [
-        { when: "Mo 31.08. · 10:30", what: "Kristian Mayrhauser – Ebreichsdorf" },
         { when: "Mo 31.08. · 12:30", what: "Daniel Burchhart – 1100 Wien" },
         { when: "Di 01.09. · 07:00", what: "Mitarbeitergespräch – Büro" },
         { when: "Di 01.09. · 12:00", what: "Günkel – Besichtigung" },
-        { when: "Mi 02.09. · 08:00", what: "Stefan Gschiel – Besichtigung" }
+        { when: "Mi 02.09. · 08:00", what: "Stefan Gschiel – Besichtigung" },
+        { when: "Mi 02.09. · 09:00", what: "Elektro Haus – ganztags" }
       ]
     }
   ],
