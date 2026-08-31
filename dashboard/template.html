@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "31.08.2026, 13:15 Uhr",
+  stand: "31.08.2026, 14:15 Uhr",
   heute: "Montag, 31. August 2026",
 
   umsatzKpis: [
-    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.901.673 €", hint: "Juli: 207.084 € · August: 105.411 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "1.023.772 €", hint: "54 % vom Umsatz · Juli: 113.661 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "144", hint: "Ø 13.206 € netto pro Auftrag" }
+    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.903.153 €", hint: "Juli: 207.084 € · August: 106.891 €" },
+    { cls: "c2", label: "Rohertrag 2026", value: "1.024.592 €", hint: "54 % vom Umsatz · Juli: 113.661 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "145", hint: "Ø 13.125 € netto pro Auftrag" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -175,14 +175,14 @@ const DATA = {
     { label: "Mai", werte: [176, 77] },
     { label: "Jun", werte: [189, 97] },
     { label: "Jul", werte: [207, 114] },
-    { label: "Aug", werte: [105, 64], laufend: true }
+    { label: "Aug", werte: [107, 65], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "27", hint: "Juli gesamt: 29" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "8", hint: "2026 gesamt: 144" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "9", hint: "2026 gesamt: 145" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "4", hint: "Juli gesamt: 16" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "6", hint: "davon am 10.08.: 4" }
   ],
@@ -207,16 +207,16 @@ const DATA = {
     items: [
       { label: "Angebote versendet – KW 36", ist: 5, ziel: 8, anzeige: "5", zielText: "/ 8", soll: 0.20,
         status: "🔥 5 von 8 schon am Montagvormittag – starker Start" },
-      { label: "Aufträge signiert – KW 36", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.20,
-        status: "💪 Frischer Start – 5 Abschlüsse bis Freitag" },
-      { label: "Umsatz August", ist: 105411, ziel: 250000, anzeige: "105.411 €", zielText: "/ 250 T€", soll: 1.00,
-        status: "🔥 105 T€ im August – heute ist der letzte Monatstag" },
-      { label: "Umsatz Jahresziel 2026", ist: 1901673, ziel: 3000000, anzeige: "1,90 Mio", zielText: "/ 3,0 Mio €", soll: 0.67,
-        status: "💪 63 % geschafft – 96 T€ bis zur goldenen Linie" }
+      { label: "Aufträge signiert – KW 36", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.20,
+        status: "✅ Erster Abschluss der Woche steht – 4 fehlen" },
+      { label: "Umsatz August", ist: 106891, ziel: 250000, anzeige: "106.891 €", zielText: "/ 250 T€", soll: 1.00,
+        status: "🔥 107 T€ im August – heute ist der letzte Monatstag" },
+      { label: "Umsatz Jahresziel 2026", ist: 1903153, ziel: 3000000, anzeige: "1,90 Mio", zielText: "/ 3,0 Mio €", soll: 0.67,
+        status: "💪 63 % geschafft – 94 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 637 T€",
-      "⚡ 144 Anlagen in 2026",
+      "⚡ 145 Anlagen in 2026",
       "🚀 Stärkste Woche: KW 31 – 14 Angebote"
     ]
   },
@@ -246,13 +246,13 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 12 in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 11 in den nächsten 3 Wochen",
       termine: [
-        { when: "Mo 31.08. · 12:30", what: "Daniel Burchhart – 1100 Wien" },
         { when: "Di 01.09. · 07:00", what: "Mitarbeitergespräch – Büro" },
         { when: "Di 01.09. · 12:00", what: "Günkel – Besichtigung" },
         { when: "Mi 02.09. · 08:00", what: "Stefan Gschiel – Besichtigung" },
-        { when: "Mi 02.09. · 09:00", what: "Elektro Haus – ganztags" }
+        { when: "Mi 02.09. · 09:00", what: "Elektro Haus – ganztags" },
+        { when: "Do 03.09. · 08:00", what: "Andreas Tuczka – 1190 Wien" }
       ]
     }
   ],
