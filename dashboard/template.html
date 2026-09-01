@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "31.08.2026, 18:15 Uhr",
-  heute: "Montag, 31. August 2026",
+  stand: "01.09.2026, 07:15 Uhr",
+  heute: "Dienstag, 1. September 2026",
 
   umsatzKpis: [
-    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.903.153 €", hint: "Juli: 207.084 € · August: 106.891 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "1.024.592 €", hint: "54 % vom Umsatz · Juli: 113.661 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "145", hint: "Ø 13.125 € netto pro Auftrag" }
+    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.918.536 €", hint: "August: 122.274 € · September: 0 €" },
+    { cls: "c2", label: "Rohertrag 2026", value: "1.034.226 €", hint: "54 % vom Umsatz · August: 74.207 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "146", hint: "Ø 13.141 € netto pro Auftrag" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -175,15 +175,16 @@ const DATA = {
     { label: "Mai", werte: [176, 77] },
     { label: "Jun", werte: [189, 97] },
     { label: "Jul", werte: [207, 114] },
-    { label: "Aug", werte: [107, 65], laufend: true }
+    { label: "Aug", werte: [122, 74] },
+    { label: "Sep", werte: [0, 0], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "27", hint: "Juli gesamt: 29" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "9", hint: "2026 gesamt: 145" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "4", hint: "Juli gesamt: 16" },
+    { cls: "c1", label: "Angebote versendet", value: "27", hint: "August gesamt: 22" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "10", hint: "2026 gesamt: 146" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "4", hint: "August gesamt: 4" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "6", hint: "davon am 10.08.: 4" }
   ],
   auftragSerien: [
@@ -205,18 +206,18 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 36", ist: 5, ziel: 8, anzeige: "5", zielText: "/ 8", soll: 0.20,
-        status: "🔥 5 von 8 schon am Montagvormittag – starker Start" },
-      { label: "Aufträge signiert – KW 36", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.20,
-        status: "✅ Erster Abschluss der Woche steht – 4 fehlen" },
-      { label: "Umsatz August", ist: 106891, ziel: 250000, anzeige: "106.891 €", zielText: "/ 250 T€", soll: 1.00,
-        status: "🔥 107 T€ im August – heute ist der letzte Monatstag" },
-      { label: "Umsatz Jahresziel 2026", ist: 1903153, ziel: 3000000, anzeige: "1,90 Mio", zielText: "/ 3,0 Mio €", soll: 0.67,
-        status: "💪 63 % geschafft – 94 T€ bis zur goldenen Linie" }
+      { label: "Angebote versendet – KW 36", ist: 5, ziel: 8, anzeige: "5", zielText: "/ 8", soll: 0.40,
+        status: "🔥 5 von 8 – über der goldenen Linie" },
+      { label: "Aufträge signiert – KW 36", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.40,
+        status: "✅ 2 von 5 – genau auf Kurs" },
+      { label: "Umsatz September", ist: 0, ziel: 250000, anzeige: "0 €", zielText: "/ 250 T€", soll: 0.03,
+        status: "🚀 Neuer Monat – 250 T€ sind das Septemberziel" },
+      { label: "Umsatz Jahresziel 2026", ist: 1918536, ziel: 3000000, anzeige: "1,92 Mio", zielText: "/ 3,0 Mio €", soll: 0.67,
+        status: "💪 64 % geschafft – 87 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 637 T€",
-      "⚡ 145 Anlagen in 2026",
+      "⚡ 146 Anlagen in 2026",
       "🚀 Stärkste Woche: KW 31 – 14 Angebote"
     ]
   },
