@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "01.09.2026, 18:15 Uhr",
-  heute: "Dienstag, 1. September 2026",
+  stand: "02.09.2026, 07:15 Uhr",
+  heute: "Mittwoch, 2. September 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.951.324 €", hint: "August: 122.274 € · September: 32.788 €" },
@@ -184,7 +184,7 @@ const DATA = {
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "29", hint: "August gesamt: 22" },
     { cls: "c2", label: "Aufträge gewonnen", value: "12", hint: "2026 gesamt: 148" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "4", hint: "August gesamt: 4" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "5", hint: "August gesamt: 4" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "6", hint: "davon am 10.08.: 4" }
   ],
   auftragSerien: [
@@ -200,20 +200,20 @@ const DATA = {
     { label: "KW 33", sub: "ab 10.08.", werte: [5, 0] },
     { label: "KW 34", sub: "ab 17.08.", werte: [6, 1] },
     { label: "KW 35", sub: "ab 24.08.", werte: [10, 2] },
-    { label: "KW 36", sub: "ab 31.08.", werte: [7, 0], laufend: true }
+    { label: "KW 36", sub: "ab 31.08.", werte: [7, 1], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 36", ist: 7, ziel: 8, anzeige: "7", zielText: "/ 8", soll: 0.40,
+      { label: "Angebote versendet – KW 36", ist: 7, ziel: 8, anzeige: "7", zielText: "/ 8", soll: 0.60,
         status: "🔥 7 von 8 – ein Angebot fehlt zum Wochenziel" },
-      { label: "Aufträge signiert – KW 36", ist: 4, ziel: 5, anzeige: "4", zielText: "/ 5", soll: 0.40,
+      { label: "Aufträge signiert – KW 36", ist: 4, ziel: 5, anzeige: "4", zielText: "/ 5", soll: 0.60,
         status: "🔥 4 von 5 – nur noch ein Abschluss zum Wochenziel" },
-      { label: "Umsatz September", ist: 32788, ziel: 250000, anzeige: "32.788 €", zielText: "/ 250 T€", soll: 0.03,
-        status: "🚀 32,8 T€ am ersten Septembertag – starker Auftakt" },
+      { label: "Umsatz September", ist: 32788, ziel: 250000, anzeige: "32.788 €", zielText: "/ 250 T€", soll: 0.07,
+        status: "🚀 32,8 T€ nach zwei Septembertagen – deutlich über Plan" },
       { label: "Umsatz Jahresziel 2026", ist: 1951324, ziel: 3000000, anzeige: "1,95 Mio", zielText: "/ 3,0 Mio €", soll: 0.67,
-        status: "💪 65 % geschafft – 54 T€ bis zur goldenen Linie" }
+        status: "💪 65 % geschafft – 62 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 637 T€",
@@ -227,22 +227,22 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "Mo 31.08.–Di 01.09.", what: "Andreas Simon – Würmla", flag: "vorläufig" },
         { when: "Mi 02.–Do 03.09.", what: "Dominik Vacek – Strasshof", flag: "vorläufig" },
         { when: "Mo 07.–Di 08.09.", what: "Karl Mildner – Klosterneuburg", flag: "vorläufig" },
         { when: "Mi 09.–Do 10.09.", what: "Brigitte Häusler – Markersdorf", flag: "vorläufig" },
-        { when: "Mo 14.–Di 15.09.", what: "Hannes Eichtinger – 1120 Wien", flag: "vorläufig" }
+        { when: "Mo 14.–Di 15.09.", what: "Hannes Eichtinger – 1120 Wien", flag: "vorläufig" },
+        { when: "Mi 16.–Do 17.09.", what: "Johann Jimenez", flag: "vorläufig" }
       ]
     },
     {
       name: "Montageteam B",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "Mo 31.08.–Di 01.09.", what: "Dr. Nabeel Umar – 1220 Wien", flag: "vorläufig" },
         { when: "Mi 02.–Do 03.09.", what: "Tobias Trescher – Gölsen", flag: "vorläufig" },
         { when: "Mo 07.–Di 08.09.", what: "Margit Schratzenstaller – 1140 Wien", flag: "vorläufig" },
         { when: "Mi 09.–Do 10.09.", what: "Peter Hörzer – Achau", flag: "vorläufig" },
-        { when: "Mo 14.–Di 15.09.", what: "Nino Tatzgern – Steinabrückl", flag: "vorläufig" }
+        { when: "Mo 14.–Di 15.09.", what: "Nino Tatzgern – Steinabrückl", flag: "vorläufig" },
+        { when: "Mi 16.–Do 17.09.", what: "Michael Molzar – 1220 Wien", flag: "vorläufig" }
       ]
     },
     {
