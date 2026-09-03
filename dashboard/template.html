@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "03.09.2026, 15:15 Uhr",
+  stand: "03.09.2026, 16:15 Uhr",
   heute: "Donnerstag, 3. September 2026",
 
   umsatzKpis: [
-    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.951.324 €", hint: "August: 122.274 € · September: 32.788 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "1.054.482 €", hint: "54 % vom Umsatz · August: 74.207 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "148", hint: "Ø 13.185 € netto pro Auftrag" }
+    { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.969.791 €", hint: "August: 122.274 € · September: 51.255 €" },
+    { cls: "c2", label: "Rohertrag 2026", value: "1.065.861 €", hint: "54 % vom Umsatz · August: 74.207 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "149", hint: "Ø 13.220 € netto pro Auftrag" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -176,14 +176,14 @@ const DATA = {
     { label: "Jun", werte: [189, 97] },
     { label: "Jul", werte: [207, 114] },
     { label: "Aug", werte: [122, 74] },
-    { label: "Sep", werte: [33, 20], laufend: true }
+    { label: "Sep", werte: [51, 32], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "29", hint: "August gesamt: 22" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "12", hint: "2026 gesamt: 148" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "13", hint: "2026 gesamt: 149" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "5", hint: "August gesamt: 4" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "6", hint: "davon am 10.08.: 4" }
   ],
@@ -208,16 +208,16 @@ const DATA = {
     items: [
       { label: "Angebote versendet – KW 36", ist: 7, ziel: 8, anzeige: "7", zielText: "/ 8", soll: 0.80,
         status: "🔥 7 von 8 – ein Angebot fehlt zum Wochenziel" },
-      { label: "Aufträge signiert – KW 36", ist: 4, ziel: 5, anzeige: "4", zielText: "/ 5", soll: 0.80,
-        status: "🔥 4 von 5 – nur noch ein Abschluss zum Wochenziel" },
-      { label: "Umsatz September", ist: 32788, ziel: 250000, anzeige: "32.788 €", zielText: "/ 250 T€", soll: 0.10,
-        status: "🚀 32,8 T€ nach drei Septembertagen – über Plan" },
-      { label: "Umsatz Jahresziel 2026", ist: 1951324, ziel: 3000000, anzeige: "1,95 Mio", zielText: "/ 3,0 Mio €", soll: 0.67,
-        status: "💪 65 % geschafft – 71 T€ bis zur goldenen Linie" }
+      { label: "Aufträge signiert – KW 36", ist: 5, ziel: 5, anzeige: "5", zielText: "/ 5", soll: 0.80,
+        status: "🎉 Wochenziel erreicht – 5 Aufträge in KW 36" },
+      { label: "Umsatz September", ist: 51255, ziel: 250000, anzeige: "51.255 €", zielText: "/ 250 T€", soll: 0.10,
+        status: "🔥 51 T€ nach drei Septembertagen – weit über Plan" },
+      { label: "Umsatz Jahresziel 2026", ist: 1969791, ziel: 3000000, anzeige: "1,97 Mio", zielText: "/ 3,0 Mio €", soll: 0.67,
+        status: "💪 66 % geschafft – 52 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 637 T€",
-      "⚡ 148 Anlagen in 2026",
+      "⚡ 149 Anlagen in 2026",
       "🚀 Stärkste Woche: KW 31 – 14 Angebote"
     ]
   },
@@ -247,9 +247,8 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 5 in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 4 in den nächsten 3 Wochen",
       termine: [
-        { when: "Do 03.09. · 14:30", what: "Michael Meltke – Baden" },
         { when: "Fr 04.09. · 08:30", what: "Martin Bittner – Brand-Laaben" },
         { when: "Fr 04.09. · 11:00", what: "Stefan Gschiel – Besichtigung" },
         { when: "Fr 04.09. · 13:00", what: "Falafilo GmbH – 1100 Wien" },
