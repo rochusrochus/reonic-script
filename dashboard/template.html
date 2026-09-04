@@ -155,7 +155,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "04.09.2026, 12:15 Uhr",
+  stand: "04.09.2026, 13:15 Uhr",
   heute: "Freitag, 4. September 2026",
 
   umsatzKpis: [
@@ -182,7 +182,7 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "29", hint: "August gesamt: 22" },
+    { cls: "c1", label: "Angebote versendet", value: "31", hint: "August gesamt: 22" },
     { cls: "c2", label: "Aufträge gewonnen", value: "13", hint: "2026 gesamt: 149" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "5", hint: "August gesamt: 4" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "6", hint: "davon am 10.08.: 4" }
@@ -200,14 +200,14 @@ const DATA = {
     { label: "KW 33", sub: "ab 10.08.", werte: [5, 0] },
     { label: "KW 34", sub: "ab 17.08.", werte: [6, 1] },
     { label: "KW 35", sub: "ab 24.08.", werte: [10, 2] },
-    { label: "KW 36", sub: "ab 31.08.", werte: [7, 1], laufend: true }
+    { label: "KW 36", sub: "ab 31.08.", werte: [9, 1], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 36", ist: 7, ziel: 8, anzeige: "7", zielText: "/ 8", soll: 1.00,
-        status: "🔥 7 von 8 – ein Angebot fehlt zum Wochenziel" },
+      { label: "Angebote versendet – KW 36", ist: 9, ziel: 8, anzeige: "9", zielText: "/ 8", soll: 1.00,
+        status: "🎉 Wochenziel übertroffen – 9 Angebote in KW 36" },
       { label: "Aufträge signiert – KW 36", ist: 5, ziel: 5, anzeige: "5", zielText: "/ 5", soll: 1.00,
         status: "🎉 Wochenziel erreicht – 5 Aufträge in KW 36" },
       { label: "Umsatz September", ist: 51255, ziel: 250000, anzeige: "51.255 €", zielText: "/ 250 T€", soll: 0.13,
