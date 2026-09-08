@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "07.09.2026, 18:15 Uhr",
-  heute: "Montag, 7. September 2026",
+  stand: "08.09.2026, 07:15 Uhr",
+  heute: "Dienstag, 8. September 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.969.791 €", hint: "August: 122.274 € · September: 51.255 €" },
@@ -182,7 +182,7 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "34", hint: "August gesamt: 22" },
+    { cls: "c1", label: "Angebote versendet", value: "33", hint: "August gesamt: 22" },
     { cls: "c2", label: "Aufträge gewonnen", value: "13", hint: "2026 gesamt: 149" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "4", hint: "August gesamt: 4" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "6", hint: "davon am 10.08.: 4" }
@@ -206,14 +206,14 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 37", ist: 1, ziel: 8, anzeige: "1", zielText: "/ 8", soll: 0.20,
-        status: "📈 Erstes Angebot in KW 37 – noch 7 bis zum Wochenziel" },
-      { label: "Aufträge signiert – KW 37", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.20,
-        status: "🌅 Neue Woche – KW 37 startet, Ziel sind 5 Aufträge" },
-      { label: "Umsatz September", ist: 51255, ziel: 250000, anzeige: "51.255 €", zielText: "/ 250 T€", soll: 0.23,
-        status: "🔥 51 T€ nach einer Septemberwoche – 7 T€ bis zur goldenen Linie" },
-      { label: "Umsatz Jahresziel 2026", ist: 1969791, ziel: 3000000, anzeige: "1,97 Mio", zielText: "/ 3,0 Mio €", soll: 0.68,
-        status: "💪 66 % geschafft – 85 T€ bis zur goldenen Linie" }
+      { label: "Angebote versendet – KW 37", ist: 1, ziel: 8, anzeige: "1", zielText: "/ 8", soll: 0.40,
+        status: "📈 1 Angebot in KW 37 – noch 7 bis zum Wochenziel" },
+      { label: "Aufträge signiert – KW 37", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.40,
+        status: "⏳ Noch kein Auftrag in KW 37 – Ziel sind 5" },
+      { label: "Umsatz September", ist: 51255, ziel: 250000, anzeige: "51.255 €", zielText: "/ 250 T€", soll: 0.27,
+        status: "🔥 51 T€ im September – 15 T€ bis zur goldenen Linie" },
+      { label: "Umsatz Jahresziel 2026", ist: 1969791, ziel: 3000000, anzeige: "1,97 Mio", zielText: "/ 3,0 Mio €", soll: 0.69,
+        status: "💪 66 % geschafft – 93 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 637 T€",
