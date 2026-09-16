@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "15.09.2026, 18:15 Uhr",
-  heute: "Dienstag, 15. September 2026",
+  stand: "16.09.2026, 07:15 Uhr",
+  heute: "Mittwoch, 16. September 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.973.853 €", hint: "August: 122.274 € · September: 74.162 €" },
@@ -206,14 +206,14 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 38", ist: 2, ziel: 8, anzeige: "2", zielText: "/ 8", soll: 0.40,
-        status: "📈 2 Angebote in KW 38 – noch 6 bis zum Wochenziel" },
-      { label: "Aufträge signiert – KW 38", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.40,
+      { label: "Angebote versendet – KW 38", ist: 2, ziel: 8, anzeige: "2", zielText: "/ 8", soll: 0.60,
+        status: "📉 2 Angebote in KW 38 – Wochenziel 8 rückt in weite Ferne" },
+      { label: "Aufträge signiert – KW 38", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.60,
         status: "✍️ 1 Auftrag in KW 38 – 5.664 € netto" },
-      { label: "Umsatz September", ist: 74162, ziel: 250000, anzeige: "74.162 €", zielText: "/ 250 T€", soll: 0.50,
-        status: "⚠️ 74 T€ zur Monatsmitte – 51 T€ bis zur goldenen Linie" },
+      { label: "Umsatz September", ist: 74162, ziel: 250000, anzeige: "74.162 €", zielText: "/ 250 T€", soll: 0.53,
+        status: "⚠️ 74 T€ im September – 59 T€ bis zur goldenen Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 1973853, ziel: 3000000, anzeige: "1,97 Mio", zielText: "/ 3,0 Mio €", soll: 0.71,
-        status: "💪 66 % geschafft – 147 T€ bis zur goldenen Linie" }
+        status: "💪 66 % geschafft – 155 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 617 T€",
@@ -225,24 +225,24 @@ const DATA = {
   termineTabs: [
     {
       name: "Montageteam A",
-      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
+      hinweis: "Montagen · 6 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "Mo 14.–Di 15.09.", what: "Hannes Eichtinger – 1120 Wien", flag: "vorläufig" },
         { when: "Mi 16.–Do 17.09.", what: "Johann Jimenez", flag: "vorläufig" },
+        { when: "Mi 16.–Do 17.09.", what: "Bernhard Uhl – 1230 Wien", flag: "vorläufig" },
         { when: "Mo 21.–Di 22.09.", what: "Raimund Holzinger – Marchegg", flag: "vorläufig" },
-        { when: "Mi 23.–Do 24.09.", what: "Bernhard Uhl – 1230 Wien", flag: "vorläufig" },
-        { when: "Mo 28.–Di 29.09.", what: "Michael Mayer – Purkersdorf", flag: "vorläufig" }
+        { when: "Mo 28.–Di 29.09.", what: "Michael Mayer – Purkersdorf", flag: "vorläufig" },
+        { when: "Mi 30.09.–Do 01.10.", what: "Peter Schindlecker – Gerasdorf", flag: "vorläufig" }
       ]
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen · 9 von 10 Arbeitstagen belegt (2 Wochen)",
+      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "Mo 14.–Di 15.09.", what: "Nino Tatzgern – Steinabrückl", flag: "vorläufig" },
-        { when: "Mi 16.–Do 17.09.", what: "Michael Molzar – 1220 Wien", flag: "vorläufig" },
         { when: "Mo 21.–Di 22.09.", what: "Renate Sax – 1210 Wien", flag: "vorläufig" },
+        { when: "Mi 23.–Do 24.09.", what: "Michael Molzar – 1220 Wien", flag: "vorläufig" },
         { when: "Mi 23.–Mo 28.09.", what: "Bernhard Elnrieder – Maria Lanzendorf", flag: "vorläufig" },
-        { when: "Di 29.–Mi 30.09.", what: "Hasim Timurtas – 1110 Wien", flag: "vorläufig" }
+        { when: "Di 29.–Mi 30.09.", what: "Hasim Timurtas – 1110 Wien", flag: "vorläufig" },
+        { when: "Do 01.–Mo 05.10.", what: "Markus Walouschek – 1220 Wien", flag: "vorläufig" }
       ]
     },
     {
