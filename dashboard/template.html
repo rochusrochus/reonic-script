@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "16.09.2026, 18:15 Uhr",
-  heute: "Mittwoch, 16. September 2026",
+  stand: "17.09.2026, 07:15 Uhr",
+  heute: "Donnerstag, 17. September 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "1.973.853 €", hint: "August: 122.274 € · September: 74.162 €" },
@@ -182,7 +182,7 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "33", hint: "2 neu am 16.09. · August gesamt: 22" },
+    { cls: "c1", label: "Angebote versendet", value: "31", hint: "2 neu am 16.09. · August gesamt: 22" },
     { cls: "c2", label: "Aufträge gewonnen", value: "14", hint: "2026 gesamt: 151" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "12", hint: "davon 8 am 08.09. · August gesamt: 4" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "2", hint: "beide am 23.08." }
@@ -206,14 +206,14 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 38", ist: 4, ziel: 8, anzeige: "4", zielText: "/ 8", soll: 0.60,
-        status: "📈 4 Angebote in KW 38 – 2 davon heute, knapp unter der goldenen Linie" },
-      { label: "Aufträge signiert – KW 38", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.60,
+      { label: "Angebote versendet – KW 38", ist: 4, ziel: 8, anzeige: "4", zielText: "/ 8", soll: 0.80,
+        status: "📉 4 Angebote in KW 38 – die goldene Linie steht schon bei 6" },
+      { label: "Aufträge signiert – KW 38", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.80,
         status: "✍️ 1 Auftrag in KW 38 – 5.664 € netto" },
-      { label: "Umsatz September", ist: 74162, ziel: 250000, anzeige: "74.162 €", zielText: "/ 250 T€", soll: 0.53,
-        status: "⚠️ 74 T€ im September – 59 T€ bis zur goldenen Linie" },
+      { label: "Umsatz September", ist: 74162, ziel: 250000, anzeige: "74.162 €", zielText: "/ 250 T€", soll: 0.57,
+        status: "⚠️ 74 T€ im September – 68 T€ bis zur goldenen Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 1973853, ziel: 3000000, anzeige: "1,97 Mio", zielText: "/ 3,0 Mio €", soll: 0.71,
-        status: "💪 66 % geschafft – 155 T€ bis zur goldenen Linie" }
+        status: "💪 66 % geschafft – 156 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 617 T€",
@@ -236,7 +236,7 @@ const DATA = {
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt (2 Wochen)",
+      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
         { when: "Mo 21.–Di 22.09.", what: "Renate Sax – 1210 Wien", flag: "vorläufig" },
         { when: "Mi 23.–Do 24.09.", what: "Michael Molzar – 1220 Wien", flag: "vorläufig" },
