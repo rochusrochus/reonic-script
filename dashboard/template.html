@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "22.09.2026, 18:15 Uhr",
-  heute: "Dienstag, 22. September 2026",
+  stand: "23.09.2026, 07:15 Uhr",
+  heute: "Mittwoch, 23. September 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.051.007 €", hint: "August: 122.274 € · September: 151.316 €" },
@@ -185,7 +185,7 @@ const DATA = {
     { cls: "c1", label: "Angebote versendet", value: "28", hint: "5 in KW 38 · August gesamt: 22" },
     { cls: "c2", label: "Aufträge gewonnen", value: "17", hint: "2026 gesamt: 158" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "11", hint: "davon 8 am 08.09. · August gesamt: 4" },
-    { cls: "c4", label: "Anfragen abgelehnt", value: "2", hint: "beide am 23.08." }
+    { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
   auftragSerien: [
     { name: "Angebote versendet", farbe: "var(--s1)" },
@@ -206,12 +206,12 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 39", ist: 0, ziel: 8, anzeige: "0", zielText: "/ 8", soll: 0.40,
-        status: "📭 Noch kein Angebot in KW 39 – das Wochenziel sind 8" },
-      { label: "Aufträge signiert – KW 39", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.40,
+      { label: "Angebote versendet – KW 39", ist: 0, ziel: 8, anzeige: "0", zielText: "/ 8", soll: 0.60,
+        status: "📭 Halbzeit in KW 39 und noch kein Angebot – Wochenziel 8" },
+      { label: "Aufträge signiert – KW 39", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.60,
         status: "✍️ 2 Aufträge in KW 39 – zusammen 5.908 € netto" },
-      { label: "Umsatz September", ist: 151316, ziel: 250000, anzeige: "151.316 €", zielText: "/ 250 T€", soll: 0.73,
-        status: "📈 151 T€ im September – 31 T€ bis zur goldenen Linie" },
+      { label: "Umsatz September", ist: 151316, ziel: 250000, anzeige: "151.316 €", zielText: "/ 250 T€", soll: 0.77,
+        status: "⚠️ 151 T€ im September – 41 T€ bis zur goldenen Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 2051007, ziel: 3000000, anzeige: "2,05 Mio", zielText: "/ 3,0 Mio €", soll: 0.73,
         status: "💪 68 % vom Jahresziel geschafft – 139 T€ bis zur goldenen Linie" }
     ],
@@ -227,22 +227,22 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 6 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "Mo 21.–Di 22.09.", what: "Raimund Holzinger – Marchegg", flag: "vorläufig" },
         { when: "Mo 28.–Di 29.09.", what: "Michael Mayer – Purkersdorf", flag: "vorläufig" },
         { when: "Mi 30.09.–Do 01.10.", what: "Peter Schindlecker – Gerasdorf", flag: "vorläufig" },
         { when: "Mo 05.–Di 06.10.", what: "Ronny Irschik – Kittsee", flag: "vorläufig" },
-        { when: "Mi 07.–Do 08.10.", what: "Regina Prachner – St. Andrä-Wördern", flag: "vorläufig" }
+        { when: "Mi 07.–Do 08.10.", what: "Regina Prachner – St. Andrä-Wördern", flag: "vorläufig" },
+        { when: "Mo 12.–Di 13.10.", what: "Christoph Havelka – Schönfeld im Marchfeld", flag: "vorläufig" }
       ]
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen · 10 von 10 Arbeitstagen belegt (2 Wochen)",
+      hinweis: "Montagen · 9 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "Mo 21.–Di 22.09.", what: "Renate Sax – 1210 Wien", flag: "vorläufig" },
         { when: "Mi 23.–Do 24.09.", what: "Michael Molzar – 1220 Wien", flag: "vorläufig" },
         { when: "Mi 23.–Mo 28.09.", what: "Bernhard Elnrieder – Maria Lanzendorf", flag: "vorläufig" },
         { when: "Di 29.–Mi 30.09.", what: "Hasim Timurtas – 1110 Wien", flag: "vorläufig" },
-        { when: "Do 01.–Mo 05.10.", what: "Markus Walouschek – 1220 Wien", flag: "vorläufig" }
+        { when: "Do 01.–Mo 05.10.", what: "Markus Walouschek – 1220 Wien", flag: "vorläufig" },
+        { when: "Mi 07.–Do 08.10.", what: "Petr Olszar – 1210 Wien", flag: "vorläufig" }
       ]
     },
     {
