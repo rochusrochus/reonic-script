@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "24.09.2026, 07:15 Uhr",
+  stand: "24.09.2026, 08:15 Uhr",
   heute: "Donnerstag, 24. September 2026",
 
   umsatzKpis: [
-    { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.051.007 €", hint: "August: 122.274 € · September: 151.316 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "1.123.111 €", hint: "55 % vom Umsatz · August: 74.207 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "158", hint: "Ø 12.981 € netto pro Auftrag" }
+    { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.056.556 €", hint: "August: 122.274 € · September: 156.865 €" },
+    { cls: "c2", label: "Rohertrag 2026", value: "1.125.650 €", hint: "55 % vom Umsatz · August: 74.207 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "159", hint: "Ø 12.934 € netto pro Auftrag" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -176,14 +176,14 @@ const DATA = {
     { label: "Jun", werte: [189, 97] },
     { label: "Jul", werte: [209, 114] },
     { label: "Aug", werte: [122, 74] },
-    { label: "Sep", werte: [151, 92], laufend: true }
+    { label: "Sep", werte: [157, 94], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "25", hint: "5 in KW 38 · noch keines in KW 39" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "16", hint: "2026 gesamt: 158" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "17", hint: "2026 gesamt: 159" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "11", hint: "davon 8 am 08.09. · August gesamt: 4" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
@@ -210,14 +210,14 @@ const DATA = {
         status: "📭 Vierter Tag ohne Angebot in KW 39 – Wochenziel 8" },
       { label: "Aufträge signiert – KW 39", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.80,
         status: "✍️ 2 Aufträge in KW 39 – zusammen 5.908 € netto" },
-      { label: "Umsatz September", ist: 151316, ziel: 250000, anzeige: "151.316 €", zielText: "/ 250 T€", soll: 0.80,
-        status: "⚠️ 151 T€ im September – 49 T€ bis zur goldenen Linie" },
-      { label: "Umsatz Jahresziel 2026", ist: 2051007, ziel: 3000000, anzeige: "2,05 Mio", zielText: "/ 3,0 Mio €", soll: 0.73,
-        status: "💪 68 % vom Jahresziel geschafft – 139 T€ bis zur goldenen Linie" }
+      { label: "Umsatz September", ist: 156865, ziel: 250000, anzeige: "156.865 €", zielText: "/ 250 T€", soll: 0.80,
+        status: "⚠️ 157 T€ im September – 43 T€ bis zur goldenen Linie" },
+      { label: "Umsatz Jahresziel 2026", ist: 2056556, ziel: 3000000, anzeige: "2,06 Mio", zielText: "/ 3,0 Mio €", soll: 0.73,
+        status: "💪 69 % vom Jahresziel geschafft – 133 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 617 T€",
-      "⚡ 158 Anlagen in 2026",
+      "⚡ 159 Anlagen in 2026",
       "🚀 Stärkste Woche: KW 31 – 14 Angebote"
     ]
   },
