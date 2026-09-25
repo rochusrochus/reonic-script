@@ -155,7 +155,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "25.09.2026, 16:15 Uhr",
+  stand: "25.09.2026, 17:15 Uhr",
   heute: "Freitag, 25. September 2026",
 
   umsatzKpis: [
@@ -247,8 +247,21 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · keine in den nächsten 3 Wochen",
-      termine: []
+      hinweis: "Besichtigungen & Termine · 12 Termine in den nächsten 3 Wochen",
+      termine: [
+        { when: "Mo 28.09. 10:30", what: "Besichtigung Herwig Pertl-Mandl – 1210 Wien" },
+        { when: "Mo 28.09. 12:00", what: "Besichtigung Carl-Markus Piswanger – 1210 Wien" },
+        { when: "Mo 28.09. 13:30", what: "Besichtigung Michael Krasanovsky – Bruck an der Leitha" },
+        { when: "Mo 28.09. 15:30", what: "Besichtigung Joanna Nowicka – 1210 Wien" },
+        { when: "Mi 30.09. 08:00", what: "Besichtigung Stefan Strahner – Wetzelsdorf" },
+        { when: "Do 01.10. 10:00", what: "Besichtigung Michaela Foltin – 1210 Wien" },
+        { when: "Fr 02.10. 09:00", what: "Besichtigung Wolfgang Diebler – Perchtoldsdorf" },
+        { when: "Fr 02.10. 11:00", what: "Besichtigung Mehmet Keles – Wiener Neustadt" },
+        { when: "Fr 02.10. 13:00", what: "Besichtigung Young mock Yang – Irenental" },
+        { when: "Mo 05.10. 11:00", what: "Besichtigung Gerald Fischer – Schönabrunn" },
+        { when: "Mi 07.10. 11:00", what: "Besichtigung Sandra Steininger – Raasdorf" },
+        { when: "Mi 07.10. 13:00", what: "Besichtigung Thomas Stompe – 1130 Wien" }
+      ]
     }
   ],
   termineTabWechselSekunden: 20
