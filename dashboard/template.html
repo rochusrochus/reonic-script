@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "06.10.2026, 18:15 Uhr",
-  heute: "Dienstag, 6. Oktober 2026",
+  stand: "07.10.2026, 07:15 Uhr",
+  heute: "Mittwoch, 7. Oktober 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.257.355 €", hint: "September: 228.502 € · Oktober: 95.076 €" },
@@ -207,14 +207,14 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 41", ist: 6, ziel: 8, anzeige: "6", zielText: "/ 8", soll: 0.40,
-        status: "📨 6 von 8 Angeboten schon am Dienstag – klar über der Linie" },
-      { label: "Aufträge signiert – KW 41", ist: 3, ziel: 5, anzeige: "3", zielText: "/ 5", soll: 0.40,
-        status: "🔥 3 von 5 Aufträgen am Dienstag – klar über der Linie" },
-      { label: "Umsatz Oktober", ist: 95076, ziel: 250000, anzeige: "95.076 €", zielText: "/ 250 T€", soll: 0.19,
-        status: "🔥 95 T€ im Oktober – 48 T€ über der goldenen Linie" },
-      { label: "Umsatz Jahresziel 2026", ist: 2257355, ziel: 3000000, anzeige: "2,26 Mio", zielText: "/ 3,0 Mio €", soll: 0.76,
-        status: "💪 75 % vom Jahresziel geschafft – 23 T€ bis zur goldenen Linie" }
+      { label: "Angebote versendet – KW 41", ist: 6, ziel: 8, anzeige: "6", zielText: "/ 8", soll: 0.60,
+        status: "📨 6 von 8 Angeboten – über der goldenen Linie" },
+      { label: "Aufträge signiert – KW 41", ist: 3, ziel: 5, anzeige: "3", zielText: "/ 5", soll: 0.60,
+        status: "✍️ 3 von 5 Aufträgen – genau auf der goldenen Linie" },
+      { label: "Umsatz Oktober", ist: 95076, ziel: 250000, anzeige: "95.076 €", zielText: "/ 250 T€", soll: 0.23,
+        status: "🔥 95 T€ im Oktober – 38 T€ über der goldenen Linie" },
+      { label: "Umsatz Jahresziel 2026", ist: 2257355, ziel: 3000000, anzeige: "2,26 Mio", zielText: "/ 3,0 Mio €", soll: 0.77,
+        status: "💪 75 % vom Jahresziel geschafft – 53 T€ bis zur goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 617 T€",
@@ -228,16 +228,16 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "bis Di 06.10.", what: "Ronny Irschik – Kittsee", flag: "vorläufig" },
         { when: "Mi 07.–Do 08.10.", what: "Regina Prachner – St. Andrä-Wördern", flag: "vorläufig" },
         { when: "Mo 12.–Di 13.10.", what: "Christoph Havelka – Schönfeld im Marchfeld", flag: "vorläufig" },
         { when: "Mi 14.–Do 15.10.", what: "Markus Berger – Schönfeld im Marchfeld", flag: "vorläufig" },
-        { when: "Mo 19.–Di 20.10.", what: "Diego Leon – 1210 Wien", flag: "vorläufig" }
+        { when: "Mo 19.–Di 20.10.", what: "Diego Leon – 1210 Wien", flag: "vorläufig" },
+        { when: "Mi 21.–Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" }
       ]
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt (2 Wochen)",
+      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
         { when: "Mi 07.–Do 08.10.", what: "Petr Olszar – 1210 Wien", flag: "vorläufig" },
         { when: "Mo 12.–Di 13.10.", what: "Elisabeth Freytag – Enzesfeld-Lindabrunn", flag: "vorläufig" },
@@ -248,11 +248,11 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 18 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 17 Termine in den nächsten 3 Wochen",
       termine: [
-        { when: "Mi 07.10. 11:00", what: "Besichtigung Sandra Steininger – Raasdorf" },
-        { when: "Mi 07.10. 13:00", what: "Besichtigung Thomas Stompe – 1130 Wien" },
-        { when: "Mi 07.10. 15:30", what: "Besichtigung Michael Schranz – Maria Enzersdorf" },
+        { when: "heute 11:00", what: "Besichtigung Sandra Steininger – Raasdorf" },
+        { when: "heute 13:00", what: "Besichtigung Thomas Stompe – 1130 Wien" },
+        { when: "heute 15:30", what: "Besichtigung Michael Schranz – Maria Enzersdorf" },
         { when: "Fr 09.10. 08:30", what: "Besichtigung Thomas Korczynski – 1170 Wien" },
         { when: "Fr 09.10. 10:30", what: "Besichtigung Karl Vancura – 1140 Wien" },
         { when: "Fr 09.10. 12:30", what: "Besichtigung Nina Schweiger – 1140 Wien" },
