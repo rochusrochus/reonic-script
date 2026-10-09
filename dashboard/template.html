@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "08.10.2026, 18:15 Uhr",
-  heute: "Donnerstag, 8. Oktober 2026",
+  stand: "09.10.2026, 07:15 Uhr",
+  heute: "Freitag, 9. Oktober 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.305.785 €", hint: "September: 228.502 € · Oktober: 143.507 €" },
@@ -183,9 +183,9 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "28", hint: "12 in KW 40 · 10 in KW 41" },
+    { cls: "c1", label: "Angebote versendet", value: "27", hint: "12 in KW 40 · 10 in KW 41" },
     { cls: "c2", label: "Aufträge gewonnen", value: "26", hint: "2026 gesamt: 177" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "28", hint: "davon 9 am 25.09. · 2 heute" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "20", hint: "davon 9 am 25.09. · 5 in KW 41" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
   auftragSerien: [
@@ -207,12 +207,12 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 41", ist: 10, ziel: 8, anzeige: "10", zielText: "/ 8", soll: 0.80,
+      { label: "Angebote versendet – KW 41", ist: 10, ziel: 8, anzeige: "10", zielText: "/ 8", soll: 1.00,
         status: "🚀 Wochenziel übertroffen – 10 Angebote in KW 41" },
-      { label: "Aufträge signiert – KW 41", ist: 6, ziel: 5, anzeige: "6", zielText: "/ 5", soll: 0.80,
+      { label: "Aufträge signiert – KW 41", ist: 6, ziel: 5, anzeige: "6", zielText: "/ 5", soll: 1.00,
         status: "🏆 Wochenziel übertroffen – 6 Aufträge, 96.611 € netto" },
-      { label: "Umsatz Oktober", ist: 143507, ziel: 250000, anzeige: "143.507 €", zielText: "/ 250 T€", soll: 0.26,
-        status: "🔥 144 T€ im Oktober – 79 T€ über der goldenen Linie" },
+      { label: "Umsatz Oktober", ist: 143507, ziel: 250000, anzeige: "143.507 €", zielText: "/ 250 T€", soll: 0.29,
+        status: "🔥 144 T€ im Oktober – 71 T€ über der goldenen Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 2305785, ziel: 3000000, anzeige: "2,31 Mio", zielText: "/ 3,0 Mio €", soll: 0.77,
         status: "💪 77 % vom Jahresziel geschafft – 4 T€ bis zur goldenen Linie" }
     ],
@@ -228,27 +228,27 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "bis Do 08.10.", what: "Regina Prachner – St. Andrä-Wördern", flag: "vorläufig" },
         { when: "Mo 12.–Di 13.10.", what: "Christoph Havelka – Schönfeld im Marchfeld", flag: "vorläufig" },
         { when: "Mi 14.–Do 15.10.", what: "Markus Berger – Schönfeld im Marchfeld", flag: "vorläufig" },
         { when: "Mo 19.–Di 20.10.", what: "Diego Leon – 1210 Wien", flag: "vorläufig" },
-        { when: "Mi 21.–Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" }
+        { when: "Mi 21.–Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" },
+        { when: "Mi 28.–Do 29.10.", what: "Franz Bichler – 1210 Wien", flag: "vorläufig" }
       ]
     },
     {
       name: "Montageteam B",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "bis Do 08.10.", what: "Petr Olszar – 1210 Wien", flag: "vorläufig" },
         { when: "Mo 12.–Di 13.10.", what: "Elisabeth Freytag – Enzesfeld-Lindabrunn", flag: "vorläufig" },
         { when: "Mi 14.–Do 15.10.", what: "Eva Pillhofer – Pellendorf", flag: "vorläufig" },
         { when: "Mo 19.–Di 20.10.", what: "Andrea Piran – Klosterneuburg", flag: "vorläufig" },
-        { when: "Mi 21.–Do 22.10.", what: "Gerhard Hahn – Leobendorf", flag: "vorläufig" }
+        { when: "Mi 21.–Do 22.10.", what: "Gerhard Hahn – Leobendorf", flag: "vorläufig" },
+        { when: "Di 27.–Do 29.10.", what: "Elisabeth Herl – 1220 Wien", flag: "vorläufig" }
       ]
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 16 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 19 Termine in den nächsten 3 Wochen",
       termine: [
         { when: "Fr 09.10. 08:30", what: "Besichtigung Thomas Korczynski – 1170 Wien" },
         { when: "Fr 09.10. 10:30", what: "Besichtigung Karl Vancura – 1140 Wien" },
@@ -260,7 +260,8 @@ const DATA = {
         { when: "Mi 14.10. 08:30", what: "Besichtigung Martina Wagner – Klosterneuburg" },
         { when: "Mi 14.10. 10:30", what: "Besichtigung Anneliese u. Peter Will – Steinbrunn" },
         { when: "Mi 14.10. 12:30", what: "Besichtigung Lisa Neubauer – Trumau" },
-        { when: "Mi 14.10. 14:30", what: "Besichtigung Sabine Kermer – 1120 Wien" }
+        { when: "Mi 14.10. 14:30", what: "Besichtigung Sabine Kermer – 1120 Wien" },
+        { when: "Mi 14.10. 16:00", what: "Besichtigung Kerstin Herrström – 1170 Wien" }
       ]
     }
   ],
