@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "12.10.2026, 18:15 Uhr",
-  heute: "Montag, 12. Oktober 2026",
+  stand: "13.10.2026, 07:15 Uhr",
+  heute: "Dienstag, 13. Oktober 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.343.094 €", hint: "September: 226.515 € · Oktober: 148.532 €" },
@@ -207,12 +207,12 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 42", ist: 4, ziel: 8, anzeige: "4", zielText: "/ 8", soll: 0.20,
-        status: "🚀 4 Angebote schon am Montag – halbes Wochenziel erreicht" },
-      { label: "Aufträge signiert – KW 42", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.20,
-        status: "🎯 Neue Woche – KW 41 endete mit 6 Aufträgen, 96.612 € netto" },
-      { label: "Umsatz Oktober", ist: 148532, ziel: 250000, anzeige: "148.532 €", zielText: "/ 250 T€", soll: 0.39,
-        status: "🔥 149 T€ im Oktober – 51 T€ über der goldenen Linie" },
+      { label: "Angebote versendet – KW 42", ist: 4, ziel: 8, anzeige: "4", zielText: "/ 8", soll: 0.40,
+        status: "🚀 4 Angebote allein am Montag – halbes Wochenziel steht" },
+      { label: "Aufträge signiert – KW 42", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.40,
+        status: "⏳ KW 42 noch ohne Auftrag – KW 41 endete mit 6" },
+      { label: "Umsatz Oktober", ist: 148532, ziel: 250000, anzeige: "148.532 €", zielText: "/ 250 T€", soll: 0.42,
+        status: "🔥 149 T€ im Oktober – 44 T€ über der goldenen Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 2343094, ziel: 3000000, anzeige: "2,34 Mio", zielText: "/ 3,0 Mio €", soll: 0.78,
         status: "🎉 78 % vom Jahresziel – 3 T€ über der goldenen Linie" }
     ],
@@ -228,7 +228,7 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 9 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "Mo 12.–Di 13.10.", what: "Christoph Havelka – Schönfeld im Marchfeld", flag: "vorläufig" },
+        { when: "bis Di 13.10.", what: "Christoph Havelka – Schönfeld im Marchfeld", flag: "vorläufig" },
         { when: "Mi 14.–Do 15.10.", what: "Markus Berger – Schönfeld im Marchfeld", flag: "vorläufig" },
         { when: "Mo 19.–Di 20.10.", what: "Diego Leon – 1210 Wien", flag: "vorläufig" },
         { when: "Mi 21.–Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" },
@@ -237,9 +237,9 @@ const DATA = {
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (2 Wochen)",
+      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "Mo 12.–Di 13.10.", what: "Elisabeth Freytag – Enzesfeld-Lindabrunn", flag: "vorläufig" },
+        { when: "bis Di 13.10.", what: "Elisabeth Freytag – Enzesfeld-Lindabrunn", flag: "vorläufig" },
         { when: "Mi 14.–Do 15.10.", what: "Eva Pillhofer – Pellendorf", flag: "vorläufig" },
         { when: "Mo 19.–Di 20.10.", what: "Andrea Piran – Klosterneuburg", flag: "vorläufig" },
         { when: "Mi 21.–Do 22.10.", what: "Gerhard Hahn – Leobendorf", flag: "vorläufig" },
@@ -248,11 +248,9 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 15 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 18 Termine in den nächsten 3 Wochen",
       termine: [
-        { when: "Mo 12.10. 11:00", what: "Besichtigung Henrietta Schmoiger – Göllersdorf" },
-        { when: "Mo 12.10. 13:00", what: "Besichtigung Martina Neubauer – Gerasdorf" },
-        { when: "Mo 12.10. 14:30", what: "Besichtigung Gerhard Bayer-Herda – Deutsch-Wagram" },
+        { when: "Di 13.10. 15:30", what: "Besichtigung Thomas Kovaricek – Gerasdorf" },
         { when: "Mi 14.10. 08:30", what: "Besichtigung Martina Wagner – Klosterneuburg" },
         { when: "Mi 14.10. 10:30", what: "Besichtigung Anneliese u. Peter Will – Steinbrunn" },
         { when: "Mi 14.10. 12:30", what: "Besichtigung Lisa Neubauer – Trumau" },
@@ -261,7 +259,9 @@ const DATA = {
         { when: "Fr 16.10. 08:30", what: "Besichtigung Josef Riegelhofer – Gerasdorf" },
         { when: "Fr 16.10. 10:30", what: "Besichtigung Manuel Irzing – 1220 Wien" },
         { when: "Fr 16.10. 12:00", what: "Besichtigung Laura M – 1220 Wien" },
-        { when: "Fr 16.10. 14:00", what: "Besichtigung Markus Haas – Götzendorf an der Leitha" }
+        { when: "Fr 16.10. 14:00", what: "Besichtigung Markus Haas – Götzendorf an der Leitha" },
+        { when: "Mo 19.10. 08:30", what: "Besichtigung Ronny Tutschek – Hohenau an der March" },
+        { when: "Mo 19.10. 11:00", what: "Besichtigung Franz M Stein – 1130 Wien" }
       ]
     }
   ],
