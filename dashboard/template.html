@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "15.10.2026, 18:15 Uhr",
-  heute: "Donnerstag, 15. Oktober 2026",
+  stand: "16.10.2026, 07:15 Uhr",
+  heute: "Freitag, 16. Oktober 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.348.726 €", hint: "September: 226.515 € · Oktober: 154.164 €" },
@@ -185,7 +185,7 @@ const DATA = {
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "42", hint: "11 in KW 41 · 16 bisher in KW 42" },
     { cls: "c2", label: "Aufträge gewonnen", value: "25", hint: "2026 gesamt: 179" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "25", hint: "davon 9 am 25.09. · 3 heute" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "25", hint: "davon 9 am 25.09. · 3 am 15.10." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
   auftragSerien: [
@@ -207,12 +207,12 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 42", ist: 16, ziel: 8, anzeige: "16", zielText: "/ 8", soll: 0.80,
+      { label: "Angebote versendet – KW 42", ist: 16, ziel: 8, anzeige: "16", zielText: "/ 8", soll: 1.00,
         status: "🏆 16 von 8 Angeboten – stärkste Angebotswoche des Jahres" },
-      { label: "Aufträge signiert – KW 42", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.80,
-        status: "💪 2 von 5 Aufträgen in KW 42 – beide Wallboxen, 5.632 € netto" },
-      { label: "Umsatz Oktober", ist: 154164, ziel: 250000, anzeige: "154.164 €", zielText: "/ 250 T€", soll: 0.48,
-        status: "🔥 154 T€ im Oktober – 34 T€ über der goldenen Linie" },
+      { label: "Aufträge signiert – KW 42", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 1.00,
+        status: "🤝 2 von 5 Aufträgen in KW 42 – beide Wallboxen, 5.632 € netto" },
+      { label: "Umsatz Oktober", ist: 154164, ziel: 250000, anzeige: "154.164 €", zielText: "/ 250 T€", soll: 0.52,
+        status: "🔥 154 T€ im Oktober – 24 T€ über der goldenen Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 2348726, ziel: 3000000, anzeige: "2,35 Mio", zielText: "/ 3,0 Mio €", soll: 0.79,
         status: "💪 78 % vom Jahresziel – 21 T€ bis zur goldenen Linie" }
     ],
@@ -228,20 +228,22 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 9 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "bis Do 15.10.", what: "Markus Berger – Schönfeld im Marchfeld", flag: "vorläufig" },
         { when: "Mo 19.–Di 20.10.", what: "Diego Leon – 1210 Wien", flag: "vorläufig" },
         { when: "Mi 21.–Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" },
-        { when: "Mi 28.–Do 29.10.", what: "Franz Bichler – 1210 Wien", flag: "vorläufig" }
+        { when: "Mi 28.–Do 29.10.", what: "Franz Bichler – 1210 Wien", flag: "vorläufig" },
+        { when: "Mo 02.–Di 03.11.", what: "Stefan Günkel – Guntramsdorf", flag: "vorläufig" },
+        { when: "Mi 04.–Do 05.11.", what: "Paola Zuccotti Devenport – 1220 Wien", flag: "vorläufig" }
       ]
     },
     {
       name: "Montageteam B",
       hinweis: "Montagen · 7 von 10 Arbeitstagen belegt (2 Wochen)",
       termine: [
-        { when: "bis Do 15.10.", what: "Eva Pillhofer – Pellendorf", flag: "vorläufig" },
         { when: "Mo 19.–Di 20.10.", what: "Andrea Piran – Klosterneuburg", flag: "vorläufig" },
         { when: "Mi 21.–Do 22.10.", what: "Gerhard Hahn – Leobendorf", flag: "vorläufig" },
-        { when: "Di 27.–Do 29.10.", what: "Elisabeth Herl – 1220 Wien", flag: "vorläufig" }
+        { when: "Di 27.–Do 29.10.", what: "Elisabeth Herl – 1220 Wien", flag: "vorläufig" },
+        { when: "Mo 02.–Di 03.11.", what: "Martin Koller – 1220 Wien", flag: "vorläufig" },
+        { when: "Mi 04.–Do 05.11.", what: "Fritz Frühwirth – 1210 Wien", flag: "vorläufig" }
       ]
     },
     {
