@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "19.10.2026, 18:15 Uhr",
-  heute: "Montag, 19. Oktober 2026",
+  stand: "20.10.2026, 07:15 Uhr",
+  heute: "Dienstag, 20. Oktober 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.416.053 €", hint: "September: 209.272 € · Oktober: 238.734 €" },
@@ -207,11 +207,11 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 43", ist: 4, ziel: 8, anzeige: "4", zielText: "/ 8", soll: 0.20,
+      { label: "Angebote versendet – KW 43", ist: 4, ziel: 8, anzeige: "4", zielText: "/ 8", soll: 0.40,
         status: "🚀 4 Angebote am Montag – halbes Wochenziel an Tag 1" },
-      { label: "Aufträge signiert – KW 43", ist: 3, ziel: 5, anzeige: "3", zielText: "/ 5", soll: 0.20,
+      { label: "Aufträge signiert – KW 43", ist: 3, ziel: 5, anzeige: "3", zielText: "/ 5", soll: 0.40,
         status: "🔥 3 Aufträge am Montag – 49.567 € netto" },
-      { label: "Umsatz Oktober", ist: 238734, ziel: 250000, anzeige: "238.734 €", zielText: "/ 250 T€", soll: 0.61,
+      { label: "Umsatz Oktober", ist: 238734, ziel: 250000, anzeige: "238.734 €", zielText: "/ 250 T€", soll: 0.65,
         status: "🔥 239 T€ im Oktober – nur noch 11 T€ bis zum Monatsziel" },
       { label: "Umsatz Jahresziel 2026", ist: 2416053, ziel: 3000000, anzeige: "2,42 Mio", zielText: "/ 3,0 Mio €", soll: 0.80,
         status: "🎉 81 % vom Jahresziel – 16 T€ über der goldenen Linie" }
@@ -228,7 +228,7 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 9 von 10 Arbeitstagen belegt (ohne 26.10.)",
       termine: [
-        { when: "Mo 19.–Di 20.10.", what: "Diego Leon – 1210 Wien", flag: "vorläufig" },
+        { when: "bis Di 20.10.", what: "Diego Leon – 1210 Wien", flag: "vorläufig" },
         { when: "Mi 21.–Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" },
         { when: "Mi 28.–Do 29.10.", what: "Franz Bichler – 1210 Wien", flag: "vorläufig" },
         { when: "Mo 02.–Di 03.11.", what: "Stefan Günkel – Guntramsdorf", flag: "vorläufig" },
@@ -239,7 +239,7 @@ const DATA = {
       name: "Montageteam B",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (ohne 26.10.)",
       termine: [
-        { when: "Mo 19.–Di 20.10.", what: "Andrea Piran – Klosterneuburg", flag: "vorläufig" },
+        { when: "bis Di 20.10.", what: "Andrea Piran – Klosterneuburg", flag: "vorläufig" },
         { when: "Mi 21.–Do 22.10.", what: "Gerhard Hahn – Leobendorf", flag: "vorläufig" },
         { when: "Di 27.–Do 29.10.", what: "Elisabeth Herl – 1220 Wien", flag: "vorläufig" },
         { when: "Mo 02.–Di 03.11.", what: "Martin Koller – 1220 Wien", flag: "vorläufig" },
@@ -248,17 +248,19 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 9 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 11 Termine in den nächsten 3 Wochen",
       termine: [
-        { when: "Mo 19.10. 11:00", what: "Besichtigung Franz M Stein – 1130 Wien" },
-        { when: "Mo 19.10. 14:30", what: "Besichtigung Susanna Haaa – Bruck an der Leitha" },
         { when: "Mi 21.10. 08:00", what: "Besichtigung Clemens Leitner" },
         { when: "Mi 21.10. 10:00", what: "Besichtigung Mirza Hodic – Eggendorf" },
+        { when: "Mi 21.10. 12:00", what: "Besichtigung Gerhard Böhm – Winzendorf" },
         { when: "Mi 21.10. 14:00", what: "Besichtigung Mario Nemetz – Müllendorf" },
         { when: "Mi 21.10. 16:00", what: "Besichtigung Günther Koller – Ebreichsdorf" },
         { when: "Fr 23.10. 09:30", what: "Besichtigung Cristian Popa" },
         { when: "Fr 23.10. 11:30", what: "Besichtigung Stefan Giffinger – Maria Ellend" },
-        { when: "Fr 23.10. 13:00", what: "Besichtigung Christoph Winckler – 1180 Wien" }
+        { when: "Fr 23.10. 13:00", what: "Besichtigung Christoph Winckler – 1180 Wien" },
+        { when: "Mi 28.10. 13:00", what: "Besichtigung Werner Reindorf – 1030 Wien" },
+        { when: "Fr 30.10. 10:00", what: "Besichtigung Silvia Holzer – 1020 Wien" },
+        { when: "Mo 02.11. 14:30", what: "Besichtigung Rene Kultscher" }
       ]
     }
   ],
