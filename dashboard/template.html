@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "21.10.2026, 18:15 Uhr",
-  heute: "Mittwoch, 21. Oktober 2026",
+  stand: "22.10.2026, 07:15 Uhr",
+  heute: "Donnerstag, 22. Oktober 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.454.641 €", hint: "September: 209.272 € · Oktober: 277.322 €" },
@@ -184,7 +184,7 @@ const DATA = {
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "46", hint: "17 in KW 42 – Rekord · 6 bisher in KW 43" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "29", hint: "2026 gesamt: 187" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "28", hint: "2026 gesamt: 187" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "26", hint: "davon 9 am 25.09. · 3 am 15.10. · 20.10. Pillhofer" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
@@ -207,11 +207,11 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 43", ist: 6, ziel: 8, anzeige: "6", zielText: "/ 8", soll: 0.60,
-        status: "🚀 6 von 8 Angeboten – über der goldenen Linie" },
-      { label: "Aufträge signiert – KW 43", ist: 6, ziel: 5, anzeige: "6", zielText: "/ 5", soll: 0.60,
+      { label: "Angebote versendet – KW 43", ist: 6, ziel: 8, anzeige: "6", zielText: "/ 8", soll: 0.80,
+        status: "📊 6 von 8 Angeboten – knapp unter der goldenen Linie" },
+      { label: "Aufträge signiert – KW 43", ist: 6, ziel: 5, anzeige: "6", zielText: "/ 5", soll: 0.80,
         status: "🏆 Wochenziel übertroffen – 6 Aufträge, 88.154 € netto" },
-      { label: "Umsatz Oktober", ist: 277322, ziel: 250000, anzeige: "277.322 €", zielText: "/ 250 T€", soll: 0.68,
+      { label: "Umsatz Oktober", ist: 277322, ziel: 250000, anzeige: "277.322 €", zielText: "/ 250 T€", soll: 0.71,
         status: "🏆 Monatsziel übertroffen – 277 T€, 27 T€ über dem Ziel" },
       { label: "Umsatz Jahresziel 2026", ist: 2454641, ziel: 3000000, anzeige: "2,45 Mio", zielText: "/ 3,0 Mio €", soll: 0.81,
         status: "🎉 82 % vom Jahresziel – 25 T€ über der goldenen Linie" }
@@ -248,20 +248,15 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 13 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 8 Termine in den nächsten 3 Wochen",
       termine: [
-        { when: "Mi 21.10. 08:00", what: "Besichtigung Clemens Leitner" },
-        { when: "Mi 21.10. 10:00", what: "Besichtigung Mirza Hodic – Eggendorf" },
-        { when: "Mi 21.10. 12:00", what: "Besichtigung Gerhard Böhm – Winzendorf" },
-        { when: "Mi 21.10. 14:00", what: "Besichtigung Mario Nemetz – Müllendorf" },
-        { when: "Mi 21.10. 16:00", what: "Besichtigung Günther Koller – Ebreichsdorf" },
         { when: "Fr 23.10. 09:30", what: "Besichtigung Cristian Popa" },
         { when: "Fr 23.10. 11:30", what: "Besichtigung Franz Hoebarth – 1220 Wien" },
         { when: "Fr 23.10. 13:00", what: "Besichtigung Christoph Winckler – 1180 Wien" },
         { when: "Mi 28.10. 13:00", what: "Besichtigung Werner Reindorf – 1030 Wien" },
         { when: "Fr 30.10. 10:00", what: "Besichtigung Silvia Holzer – 1020 Wien" },
         { when: "Fr 30.10. 12:00", what: "Besichtigung Rene Szeli – Pottendorf" },
-        { when: "Mo 02.11. 12:30", what: "Besichtigung Marian Czarnecki – 1160 Wien" },
+        { when: "Fr 30.10. 14:00", what: "Besichtigung Marian Czarnecki – 1160 Wien" },
         { when: "Mo 02.11. 14:30", what: "Besichtigung Rene Kultscher" }
       ]
     }
