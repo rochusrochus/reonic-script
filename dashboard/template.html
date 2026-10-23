@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "22.10.2026, 18:15 Uhr",
-  heute: "Donnerstag, 22. Oktober 2026",
+  stand: "23.10.2026, 07:15 Uhr",
+  heute: "Freitag, 23. Oktober 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.460.265 €", hint: "September: 209.272 € · Oktober: 282.947 €" },
@@ -207,11 +207,11 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 43", ist: 7, ziel: 8, anzeige: "7", zielText: "/ 8", soll: 0.80,
-        status: "🚀 7 von 8 Angeboten – wieder über der goldenen Linie" },
-      { label: "Aufträge signiert – KW 43", ist: 7, ziel: 5, anzeige: "7", zielText: "/ 5", soll: 0.80,
+      { label: "Angebote versendet – KW 43", ist: 7, ziel: 8, anzeige: "7", zielText: "/ 8", soll: 1.00,
+        status: "📊 7 von 8 Angeboten – eines fehlt noch aufs Wochenziel" },
+      { label: "Aufträge signiert – KW 43", ist: 7, ziel: 5, anzeige: "7", zielText: "/ 5", soll: 1.00,
         status: "🏆 Wochenziel übertroffen – 7 Aufträge, 93.779 € netto" },
-      { label: "Umsatz Oktober", ist: 282947, ziel: 250000, anzeige: "282.947 €", zielText: "/ 250 T€", soll: 0.71,
+      { label: "Umsatz Oktober", ist: 282947, ziel: 250000, anzeige: "282.947 €", zielText: "/ 250 T€", soll: 0.74,
         status: "🏆 Monatsziel übertroffen – 283 T€, 33 T€ über dem Ziel" },
       { label: "Umsatz Jahresziel 2026", ist: 2460265, ziel: 3000000, anzeige: "2,46 Mio", zielText: "/ 3,0 Mio €", soll: 0.81,
         status: "🎉 82 % vom Jahresziel – 30 T€ über der goldenen Linie" }
@@ -226,9 +226,9 @@ const DATA = {
   termineTabs: [
     {
       name: "Montageteam A",
-      hinweis: "Montagen · 9 von 10 Arbeitstagen belegt (ohne 26.10.)",
+      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (ohne 26.10.)",
       termine: [
-        { when: "Mi 21.–Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" },
+        { when: "bis Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" },
         { when: "Mi 28.–Do 29.10.", what: "Franz Bichler – 1210 Wien", flag: "vorläufig" },
         { when: "Mo 02.–Di 03.11.", what: "Stefan Günkel – Guntramsdorf", flag: "vorläufig" },
         { when: "Mi 04.–Do 05.11.", what: "Paola Zuccotti Devenport – 1220 Wien", flag: "vorläufig" },
@@ -237,13 +237,13 @@ const DATA = {
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (ohne 26.10.)",
+      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt (ohne 26.10.)",
       termine: [
-        { when: "Mi 21.–Do 22.10.", what: "Gerhard Hahn – Leobendorf", flag: "vorläufig" },
         { when: "Di 27.–Do 29.10.", what: "Elisabeth Herl – 1220 Wien", flag: "vorläufig" },
         { when: "Mo 02.–Di 03.11.", what: "Martin Koller – 1220 Wien", flag: "vorläufig" },
         { when: "Mi 04.–Do 05.11.", what: "Thomas Boysen – Irenental", flag: "vorläufig" },
-        { when: "Mo 09.–Di 10.11.", what: "Bernhard Malle – Tattendorf", flag: "vorläufig" }
+        { when: "Mo 09.–Di 10.11.", what: "Bernhard Malle – Tattendorf", flag: "vorläufig" },
+        { when: "Mi 11.–Do 12.11.", what: "Andrea Zöberer – 1220 Wien", flag: "vorläufig" }
       ]
     },
     {
