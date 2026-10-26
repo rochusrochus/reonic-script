@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "23.10.2026, 18:15 Uhr",
-  heute: "Freitag, 23. Oktober 2026",
+  stand: "26.10.2026, 07:15 Uhr",
+  heute: "Montag, 26. Oktober 2026 · Nationalfeiertag",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.460.265 €", hint: "September: 209.272 € · Oktober: 282.947 €" },
@@ -184,8 +184,8 @@ const DATA = {
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "48", hint: "17 in KW 42 – Rekord · 8 in KW 43" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "29", hint: "2026 gesamt: 188" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "32", hint: "davon 9 am 25.09. · 4 am 22.10. · 2 heute" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "26", hint: "2026 gesamt: 188" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "23", hint: "davon 4 am 22.10. · 2 am 23.10." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
   auftragSerien: [
@@ -193,7 +193,6 @@ const DATA = {
     { name: "Montagen abgeschlossen", farbe: "var(--s2)" }
   ],
   auftragWochen: [
-    { label: "KW 35", sub: "ab 24.08.", werte: [10, 2] },
     { label: "KW 36", sub: "ab 31.08.", werte: [11, 1] },
     { label: "KW 37", sub: "ab 07.09.", werte: [2, 8] },
     { label: "KW 38", sub: "ab 14.09.", werte: [5, 0] },
@@ -201,32 +200,33 @@ const DATA = {
     { label: "KW 40", sub: "ab 28.09.", werte: [12, 6] },
     { label: "KW 41", sub: "ab 05.10.", werte: [11, 5] },
     { label: "KW 42", sub: "ab 12.10.", werte: [17, 5] },
-    { label: "KW 43", sub: "ab 19.10.", werte: [8, 7], laufend: true }
+    { label: "KW 43", sub: "ab 19.10.", werte: [8, 7] },
+    { label: "KW 44", sub: "ab 26.10.", werte: [0, 0], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 43", ist: 8, ziel: 8, anzeige: "8", zielText: "/ 8", soll: 1.00,
-        status: "🏆 Wochenziel erreicht – 8 von 8 Angeboten" },
-      { label: "Aufträge signiert – KW 43", ist: 7, ziel: 5, anzeige: "7", zielText: "/ 5", soll: 1.00,
-        status: "🏆 Wochenziel übertroffen – 7 Aufträge, 93.779 € netto" },
-      { label: "Umsatz Oktober", ist: 282947, ziel: 250000, anzeige: "282.947 €", zielText: "/ 250 T€", soll: 0.74,
+      { label: "Angebote versendet – KW 44", ist: 0, ziel: 8, anzeige: "0", zielText: "/ 8", soll: 0.00,
+        status: "🇦🇹 Nationalfeiertag – die Woche startet morgen" },
+      { label: "Aufträge signiert – KW 44", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.00,
+        status: "📅 Kurze Woche – vier Arbeitstage für 5 Aufträge" },
+      { label: "Umsatz Oktober", ist: 282947, ziel: 250000, anzeige: "282.947 €", zielText: "/ 250 T€", soll: 0.84,
         status: "🏆 Monatsziel übertroffen – 283 T€, 33 T€ über dem Ziel" },
-      { label: "Umsatz Jahresziel 2026", ist: 2460265, ziel: 3000000, anzeige: "2,46 Mio", zielText: "/ 3,0 Mio €", soll: 0.81,
-        status: "🎉 82 % vom Jahresziel – 30 T€ über der goldenen Linie" }
+      { label: "Umsatz Jahresziel 2026", ist: 2460265, ziel: 3000000, anzeige: "2,46 Mio", zielText: "/ 3,0 Mio €", soll: 0.82,
+        status: "🎯 82 % vom Jahresziel – punktgenau auf der goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 639 T€",
       "⚡ 188 Anlagen in 2026",
-      "🚀 Stärkste Woche: KW 42 – 17 Angebote"
+      "🚀 KW 43: alle drei Wochenziele erreicht"
     ]
   },
 
   termineTabs: [
     {
       name: "Montageteam A",
-      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt (ohne 26.10.)",
+      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
       termine: [
         { when: "bis Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" },
         { when: "Mi 28.–Do 29.10.", what: "Franz Bichler – 1210 Wien", flag: "vorläufig" },
@@ -237,7 +237,7 @@ const DATA = {
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt (ohne 26.10.)",
+      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
       termine: [
         { when: "Di 27.–Do 29.10.", what: "Elisabeth Herl – 1220 Wien", flag: "vorläufig" },
         { when: "Mo 02.–Di 03.11.", what: "Martin Koller – 1220 Wien", flag: "vorläufig" },
@@ -248,11 +248,8 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 8 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 5 Termine in den nächsten 3 Wochen",
       termine: [
-        { when: "Fr 23.10. 09:30", what: "Besichtigung Cristian Popa" },
-        { when: "Fr 23.10. 11:30", what: "Besichtigung Franz Hoebarth – 1220 Wien" },
-        { when: "Fr 23.10. 13:00", what: "Besichtigung Christoph Winckler – 1180 Wien" },
         { when: "Mi 28.10. 13:00", what: "Besichtigung Werner Reindorf – 1030 Wien" },
         { when: "Fr 30.10. 10:00", what: "Besichtigung Silvia Holzer – 1020 Wien" },
         { when: "Fr 30.10. 12:00", what: "Besichtigung Rene Szeli – Pottendorf" },
