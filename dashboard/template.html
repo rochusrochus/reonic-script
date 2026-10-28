@@ -155,7 +155,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "28.10.2026, 08:15 Uhr",
+  stand: "28.10.2026, 09:15 Uhr",
   heute: "Mittwoch, 28. Oktober 2026",
 
   umsatzKpis: [
@@ -183,7 +183,7 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "49", hint: "17 in KW 42 – Rekord · 8 in KW 43 · 1 in KW 44" },
+    { cls: "c1", label: "Angebote versendet", value: "50", hint: "17 in KW 42 – Rekord · 8 in KW 43 · 2 in KW 44" },
     { cls: "c2", label: "Aufträge gewonnen", value: "26", hint: "2026 gesamt: 189" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "23", hint: "davon 4 am 22.10. · 2 am 23.10." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
@@ -201,14 +201,14 @@ const DATA = {
     { label: "KW 41", sub: "ab 05.10.", werte: [11, 5] },
     { label: "KW 42", sub: "ab 12.10.", werte: [17, 5] },
     { label: "KW 43", sub: "ab 19.10.", werte: [8, 7] },
-    { label: "KW 44", sub: "ab 26.10.", werte: [1, 0], laufend: true }
+    { label: "KW 44", sub: "ab 26.10.", werte: [2, 0], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 44", ist: 1, ziel: 8, anzeige: "1", zielText: "/ 8", soll: 0.50,
-        status: "⚠️ Halbzeit der Kurzwoche – 1 von 8, drei hinter der Linie" },
+      { label: "Angebote versendet – KW 44", ist: 2, ziel: 8, anzeige: "2", zielText: "/ 8", soll: 0.50,
+        status: "⚠️ 2 von 8 – zwei hinter der Linie, zwei Arbeitstage bleiben" },
       { label: "Aufträge signiert – KW 44", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.50,
         status: "✍️ 1 von 5 – zwei Arbeitstage bleiben" },
       { label: "Umsatz Oktober", ist: 284527, ziel: 250000, anzeige: "284.527 €", zielText: "/ 250 T€", soll: 0.90,
