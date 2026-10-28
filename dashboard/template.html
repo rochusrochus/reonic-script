@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "27.10.2026, 18:15 Uhr",
-  heute: "Dienstag, 27. Oktober 2026",
+  stand: "28.10.2026, 07:15 Uhr",
+  heute: "Mittwoch, 28. Oktober 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.461.846 €", hint: "September: 209.272 € · Oktober: 284.527 €" },
@@ -184,7 +184,7 @@ const DATA = {
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "49", hint: "17 in KW 42 – Rekord · 8 in KW 43 · 1 in KW 44" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "27", hint: "2026 gesamt: 189" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "26", hint: "2026 gesamt: 189" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "23", hint: "davon 4 am 22.10. · 2 am 23.10." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
@@ -207,11 +207,11 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 44", ist: 1, ziel: 8, anzeige: "1", zielText: "/ 8", soll: 0.25,
-        status: "📨 Erstes Angebot der Woche raus – Martin Zöberer" },
-      { label: "Aufträge signiert – KW 44", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.25,
-        status: "✍️ Erster Auftrag der Woche – Giovanni Lechner, Wallbox" },
-      { label: "Umsatz Oktober", ist: 284527, ziel: 250000, anzeige: "284.527 €", zielText: "/ 250 T€", soll: 0.87,
+      { label: "Angebote versendet – KW 44", ist: 1, ziel: 8, anzeige: "1", zielText: "/ 8", soll: 0.50,
+        status: "⚠️ Halbzeit der Kurzwoche – 1 von 8, drei hinter der Linie" },
+      { label: "Aufträge signiert – KW 44", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.50,
+        status: "✍️ 1 von 5 – zwei Arbeitstage bleiben" },
+      { label: "Umsatz Oktober", ist: 284527, ziel: 250000, anzeige: "284.527 €", zielText: "/ 250 T€", soll: 0.90,
         status: "🏆 Monatsziel übertroffen – 285 T€, 35 T€ über dem Ziel" },
       { label: "Umsatz Jahresziel 2026", ist: 2461846, ziel: 3000000, anzeige: "2,46 Mio", zielText: "/ 3,0 Mio €", soll: 0.82,
         status: "🎯 82 % vom Jahresziel – punktgenau auf der goldenen Linie" }
@@ -228,18 +228,18 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
       termine: [
-        { when: "bis Di 27.10.", what: "Avdyl Bajrami – Berndorf", flag: "vorläufig" },
-        { when: "Mi 28.–Do 29.10.", what: "Franz Bichler – 1210 Wien", flag: "vorläufig" },
+        { when: "bis Do 29.10.", what: "Franz Bichler – 1210 Wien", flag: "vorläufig" },
         { when: "Mo 02.–Di 03.11.", what: "Stefan Günkel – Guntramsdorf", flag: "vorläufig" },
         { when: "Mi 04.–Do 05.11.", what: "Paola Zuccotti Devenport – 1220 Wien", flag: "vorläufig" },
-        { when: "Mo 09.–Di 10.11.", what: "Werner Tomacek – Laab im Walde", flag: "vorläufig" }
+        { when: "Mo 09.–Di 10.11.", what: "Werner Tomacek – Laab im Walde", flag: "vorläufig" },
+        { when: "Mi 11.–Do 12.11.", what: "Petra Neumeister-Heider – Langenlois", flag: "vorläufig" }
       ]
     },
     {
       name: "Montageteam B",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
       termine: [
-        { when: "Di 27.–Do 29.10.", what: "Elisabeth Herl – 1220 Wien", flag: "vorläufig" },
+        { when: "bis Do 29.10.", what: "Elisabeth Herl – 1220 Wien", flag: "vorläufig" },
         { when: "Mo 02.–Di 03.11.", what: "Martin Koller – 1220 Wien", flag: "vorläufig" },
         { when: "Mi 04.–Do 05.11.", what: "Thomas Boysen – Irenental", flag: "vorläufig" },
         { when: "Mo 09.–Di 10.11.", what: "Bernhard Malle – Tattendorf", flag: "vorläufig" },
@@ -248,13 +248,13 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 5 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 9 Termine in den nächsten 3 Wochen",
       termine: [
         { when: "Mi 28.10. 13:00", what: "Besichtigung Werner Reindorf – 1030 Wien" },
+        { when: "Mi 28.10. 15:30", what: "Besichtigung Thomas Cerny" },
+        { when: "Fr 30.10. 08:00", what: "Besichtigung Oliver Rosenberg" },
         { when: "Fr 30.10. 10:00", what: "Besichtigung Silvia Holzer – 1020 Wien" },
-        { when: "Fr 30.10. 12:00", what: "Besichtigung Rene Szeli – Pottendorf" },
-        { when: "Fr 30.10. 14:00", what: "Besichtigung Marian Czarnecki – 1160 Wien" },
-        { when: "Mo 02.11. 14:30", what: "Besichtigung Rene Kultscher" }
+        { when: "Fr 30.10. 12:00", what: "Besichtigung Rene Szeli – Pottendorf" }
       ]
     }
   ],
