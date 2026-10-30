@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "29.10.2026, 18:15 Uhr",
-  heute: "Donnerstag, 29. Oktober 2026",
+  stand: "30.10.2026, 07:15 Uhr",
+  heute: "Freitag, 30. Oktober 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.461.846 €", hint: "September: 209.272 € · Oktober: 284.527 €" },
@@ -183,9 +183,9 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "50", hint: "17 in KW 42 – Rekord · 8 in KW 43 · 6 in KW 44" },
+    { cls: "c1", label: "Angebote versendet", value: "49", hint: "17 in KW 42 – Rekord · 8 in KW 43 · 6 in KW 44" },
     { cls: "c2", label: "Aufträge gewonnen", value: "25", hint: "2026 gesamt: 189" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "23", hint: "davon 4 am 22.10. · 2 am 23.10. · 2 am 29.10." },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "20", hint: "davon 4 am 22.10. · 2 am 23.10. · 2 am 29.10." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
   auftragSerien: [
@@ -207,11 +207,11 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 44", ist: 6, ziel: 8, anzeige: "6", zielText: "/ 8", soll: 0.75,
-        status: "🎯 6 von 8 – genau auf der Linie, zwei heute früh" },
-      { label: "Aufträge signiert – KW 44", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.75,
-        status: "📉 1 von 5 – Wochenziel kaum noch zu schaffen" },
-      { label: "Umsatz Oktober", ist: 284527, ziel: 250000, anzeige: "284.527 €", zielText: "/ 250 T€", soll: 0.94,
+      { label: "Angebote versendet – KW 44", ist: 6, ziel: 8, anzeige: "6", zielText: "/ 8", soll: 1.00,
+        status: "⚠️ Letzter Tag der Kurzwoche – 6 von 8" },
+      { label: "Aufträge signiert – KW 44", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 1.00,
+        status: "📉 Letzter Tag – 1 von 5, Wochenziel verfehlt" },
+      { label: "Umsatz Oktober", ist: 284527, ziel: 250000, anzeige: "284.527 €", zielText: "/ 250 T€", soll: 0.97,
         status: "🏆 Monatsziel übertroffen – 285 T€, 35 T€ über dem Ziel" },
       { label: "Umsatz Jahresziel 2026", ist: 2461846, ziel: 3000000, anzeige: "2,46 Mio", zielText: "/ 3,0 Mio €", soll: 0.83,
         status: "🎯 82 % vom Jahresziel – 28 T€ unter der goldenen Linie" }
@@ -228,27 +228,28 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
       termine: [
-        { when: "bis Do 29.10.", what: "Franz Bichler – 1210 Wien", flag: "vorläufig" },
         { when: "Mo 02.–Di 03.11.", what: "Stefan Günkel – Guntramsdorf", flag: "vorläufig" },
         { when: "Mi 04.–Do 05.11.", what: "Paola Zuccotti Devenport – 1220 Wien", flag: "vorläufig" },
         { when: "Mo 09.–Di 10.11.", what: "Werner Tomacek – Laab im Walde", flag: "vorläufig" },
-        { when: "Mi 11.–Do 12.11.", what: "Petra Neumeister-Heider – Langenlois", flag: "vorläufig" }
+        { when: "Mi 11.–Do 12.11.", what: "Petra Neumeister-Heider – Langenlois", flag: "vorläufig" },
+        { when: "Mi 18.11.", what: "Bernhard Fischer", flag: "vorläufig" }
       ]
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
+      hinweis: "Montagen · 9 von 10 Arbeitstagen belegt",
       termine: [
-        { when: "bis Do 29.10.", what: "Elisabeth Herl – 1220 Wien", flag: "vorläufig" },
         { when: "Mo 02.–Di 03.11.", what: "Martin Koller – 1220 Wien", flag: "vorläufig" },
-        { when: "Mi 04.–Do 05.11.", what: "Thomas Boysen – Irenental", flag: "vorläufig" },
+        { when: "Mi 04.–Fr 06.11.", what: "Martin Krause – 1220 Wien", flag: "vorläufig" },
         { when: "Mo 09.–Di 10.11.", what: "Bernhard Malle – Tattendorf", flag: "vorläufig" },
-        { when: "Mi 11.–Do 12.11.", what: "Andrea Zöberer – 1220 Wien", flag: "vorläufig" }
+        { when: "Mi 11.–Do 12.11.", what: "Andrea Zöberer – 1220 Wien", flag: "vorläufig" },
+        { when: "Mo 16.–Di 17.11.", what: "Wolfgang Seymann – 1210 Wien", flag: "vorläufig" },
+        { when: "Mo 16.–Di 17.11.", what: "Thomas Boysen – Irenental", flag: "vorläufig" }
       ]
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 6 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 7 Termine in den nächsten 3 Wochen",
       termine: [
         { when: "Fr 30.10. 08:00", what: "Besichtigung Oliver Rosenberg" },
         { when: "Fr 30.10. 10:00", what: "Besichtigung Silvia Holzer – 1020 Wien" },
