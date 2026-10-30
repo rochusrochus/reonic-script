@@ -155,7 +155,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "30.10.2026, 15:15 Uhr",
+  stand: "30.10.2026, 16:15 Uhr",
   heute: "Freitag, 30. Oktober 2026",
 
   umsatzKpis: [
@@ -183,7 +183,7 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "49", hint: "17 in KW 42 – Rekord · 8 in KW 43 · 6 in KW 44" },
+    { cls: "c1", label: "Angebote versendet", value: "50", hint: "17 in KW 42 – Rekord · 8 in KW 43 · 7 in KW 44" },
     { cls: "c2", label: "Aufträge gewonnen", value: "26", hint: "2026 gesamt: 190" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "20", hint: "davon 4 am 22.10. · 2 am 23.10. · 2 am 29.10." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
@@ -201,14 +201,14 @@ const DATA = {
     { label: "KW 41", sub: "ab 05.10.", werte: [11, 5] },
     { label: "KW 42", sub: "ab 12.10.", werte: [17, 5] },
     { label: "KW 43", sub: "ab 19.10.", werte: [8, 7] },
-    { label: "KW 44", sub: "ab 26.10.", werte: [6, 2], laufend: true }
+    { label: "KW 44", sub: "ab 26.10.", werte: [7, 2], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 44", ist: 6, ziel: 8, anzeige: "6", zielText: "/ 8", soll: 1.00,
-        status: "⚠️ Letzter Tag der Kurzwoche – 6 von 8" },
+      { label: "Angebote versendet – KW 44", ist: 7, ziel: 8, anzeige: "7", zielText: "/ 8", soll: 1.00,
+        status: "📨 7 von 8 – Riegelhofer am Nachmittag, eines fehlt" },
       { label: "Aufträge signiert – KW 44", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 1.00,
         status: "✍️ Martin Zöberer unterschrieben – 2 von 5" },
       { label: "Umsatz Oktober", ist: 299138, ziel: 250000, anzeige: "299.138 €", zielText: "/ 250 T€", soll: 0.97,
