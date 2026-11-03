@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "02.11.2026, 18:05 Uhr",
-  heute: "Montag, 2. November 2026",
+  stand: "03.11.2026, 06:15 Uhr",
+  heute: "Dienstag, 3. November 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.482.870 €", hint: "Oktober: 299.138 € · November: 6.413 €" },
@@ -208,14 +208,14 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 45", ist: 0, ziel: 8, anzeige: "0", zielText: "/ 8", soll: 0.20,
-        status: "📊 Wochenstart – noch kein Angebot in KW 45" },
-      { label: "Aufträge signiert – KW 45", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.20,
-        status: "🎯 Genau auf der goldenen Linie – 1 Auftrag heute" },
-      { label: "Umsatz November", ist: 6413, ziel: 250000, anzeige: "6.413 €", zielText: "/ 250 T€", soll: 0.07,
-        status: "🌱 Erster Novemberauftrag – noch 11 T€ bis zur Linie" },
+      { label: "Angebote versendet – KW 45", ist: 0, ziel: 8, anzeige: "0", zielText: "/ 8", soll: 0.40,
+        status: "💪 Noch 3 Angebote bis zur goldenen Linie" },
+      { label: "Aufträge signiert – KW 45", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.40,
+        status: "💪 Noch 1 Auftrag bis zur goldenen Linie" },
+      { label: "Umsatz November", ist: 6413, ziel: 250000, anzeige: "6.413 €", zielText: "/ 250 T€", soll: 0.10,
+        status: "💪 Noch 19 T€ bis zur goldenen Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 2482870, ziel: 3000000, anzeige: "2,48 Mio", zielText: "/ 3,0 Mio €", soll: 0.84,
-        status: "🎯 83 % vom Jahresziel – 32 T€ unter der goldenen Linie" }
+        status: "🎯 83 % vom Jahresziel – 37 T€ unter der goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 639 T€",
@@ -227,7 +227,7 @@ const DATA = {
   termineTabs: [
     {
       name: "Montageteam A",
-      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
+      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt",
       termine: [
         { when: "Mo 02.–Di 03.11.", what: "Stefan Günkel – Guntramsdorf", flag: "vorläufig" },
         { when: "Mi 04.–Do 05.11.", what: "Paola Zuccotti Devenport – 1220 Wien", flag: "vorläufig" },
@@ -250,13 +250,13 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen & Termine · 5 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen & Termine · 8 Termine in den nächsten 3 Wochen",
       termine: [
         { when: "Mo 16.11. 12:00", what: "Besichtigung Bianca Wimmer" },
         { when: "Mo 16.11. 14:15", what: "Besichtigung Norbert Friedrich – Strasshof" },
-        { when: "Mi 18.11. 15:30", what: "Besichtigung Rene Kultscher – Göttlesbrunn" },
-        { when: "Fr 20.11. 09:00", what: "Besichtigung Michael Blaschek – 1140 Wien" },
-        { when: "Fr 20.11. 11:00", what: "Besichtigung Bernhard Kamenik" }
+        { when: "Mo 16.11. 16:00", what: "Besichtigung Leo Kiraly – Großwetzdorf" },
+        { when: "Mi 18.11. 08:00", what: "Besichtigung Sebastian Chowaniec – 1220 Wien" },
+        { when: "Mi 18.11. 15:30", what: "Besichtigung Rene Kultscher – Göttlesbrunn" }
       ]
     }
   ],
