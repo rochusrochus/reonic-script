@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "05.11.2026, 09:15 Uhr",
+  stand: "05.11.2026, 10:15 Uhr",
   heute: "Donnerstag, 5. November 2026",
 
   umsatzKpis: [
-    { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.498.773 €", hint: "Oktober: 299.138 € · November: 22.316 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "1.391.934 €", hint: "56 % vom Umsatz · November: 13.700 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "192", hint: "Ø 13.014 € netto pro Auftrag" }
+    { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.516.888 €", hint: "Oktober: 299.138 € · November: 40.432 €" },
+    { cls: "c2", label: "Rohertrag 2026", value: "1.402.818 €", hint: "56 % vom Umsatz · November: 24.584 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "193", hint: "Ø 13.041 € netto pro Auftrag" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -178,14 +178,14 @@ const DATA = {
     { label: "Aug", werte: [156, 93] },
     { label: "Sep", werte: [209, 122] },
     { label: "Okt", werte: [299, 188] },
-    { label: "Nov", werte: [22, 14], laufend: true }
+    { label: "Nov", werte: [40, 25], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "44", hint: "17 in KW 42 – Rekord · 8 in KW 43 · 9 in KW 44" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "20", hint: "2026 gesamt: 192" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "21", hint: "2026 gesamt: 193" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "20", hint: "davon 4 am 22.10. · 2 am 23.10. · 3 in KW 44" },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
@@ -210,16 +210,16 @@ const DATA = {
     items: [
       { label: "Angebote versendet – KW 45", ist: 0, ziel: 8, anzeige: "0", zielText: "/ 8", soll: 0.80,
         status: "💪 Noch 6 Angebote bis zur goldenen Linie" },
-      { label: "Aufträge signiert – KW 45", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.80,
-        status: "💪 Noch 2 Aufträge bis zur goldenen Linie" },
-      { label: "Umsatz November", ist: 22316, ziel: 250000, anzeige: "22.316 €", zielText: "/ 250 T€", soll: 0.17,
-        status: "💪 Noch 20 T€ bis zur goldenen Linie" },
-      { label: "Umsatz Jahresziel 2026", ist: 2498773, ziel: 3000000, anzeige: "2,50 Mio", zielText: "/ 3,0 Mio €", soll: 0.85,
-        status: "🎯 83 % vom Jahresziel – 51 T€ unter der goldenen Linie" }
+      { label: "Aufträge signiert – KW 45", ist: 3, ziel: 5, anzeige: "3", zielText: "/ 5", soll: 0.80,
+        status: "💪 Noch 1 Auftrag bis zur goldenen Linie" },
+      { label: "Umsatz November", ist: 40432, ziel: 250000, anzeige: "40.432 €", zielText: "/ 250 T€", soll: 0.17,
+        status: "🔥 Nur noch 2 T€ bis zur goldenen Linie" },
+      { label: "Umsatz Jahresziel 2026", ist: 2516888, ziel: 3000000, anzeige: "2,52 Mio", zielText: "/ 3,0 Mio €", soll: 0.85,
+        status: "🎯 84 % vom Jahresziel – 33 T€ unter der goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 639 T€",
-      "⚡ 192 Anlagen in 2026",
+      "⚡ 193 Anlagen in 2026",
       "🚀 Oktober: 299 T€ – bester Monat seit April"
     ]
   },
