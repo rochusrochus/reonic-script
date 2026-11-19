@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "19.11.2026, 12:15 Uhr",
+  stand: "19.11.2026, 13:15 Uhr",
   heute: "Donnerstag, 19. November 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.523.675 €", hint: "Oktober: 302.016 € · November: 63.244 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "1.431.762 €", hint: "57 % vom Umsatz · November: 59.189 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "194", hint: "Ø 13.213 € netto · 3 Aufträge noch ohne Preis in Reonic" }
+    { cls: "c2", label: "Rohertrag 2026", value: "1.448.373 €", hint: "57 % vom Umsatz · November: 75.801 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "195", hint: "Ø 13.213 € netto · 4 Aufträge noch ohne Preis in Reonic" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -178,15 +178,15 @@ const DATA = {
     { label: "Aug", werte: [156, 93] },
     { label: "Sep", werte: [207, 121] },
     { label: "Okt", werte: [302, 190] },
-    { label: "Nov", werte: [63, 59], laufend: true }
+    { label: "Nov", werte: [63, 76], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "21", hint: "KW 43 ab 20.10.: 4 · KW 44: 7 · KW 45: 1 · KW 46: 1 · KW 47: 8" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "13", hint: "2026 gesamt: 194" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "20", hint: "davon 1 am Do 19.11. · 1 am Di 17.11. · 3 am Mo 16.11. · 5 am Fr 13.11." },
+    { cls: "c1", label: "Angebote versendet", value: "22", hint: "KW 43 ab 20.10.: 4 · KW 44: 7 · KW 45: 1 · KW 46: 1 · KW 47: 9" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "14", hint: "2026 gesamt: 195" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "21", hint: "davon 2 am Do 19.11. · 1 am Di 17.11. · 3 am Mo 16.11. · 5 am Fr 13.11." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
   auftragSerien: [
@@ -202,16 +202,16 @@ const DATA = {
     { label: "KW 44", sub: "ab 26.10.", werte: [7, 3] },
     { label: "KW 45", sub: "ab 02.11.", werte: [1, 0] },
     { label: "KW 46", sub: "ab 09.11.", werte: [1, 5] },
-    { label: "KW 47", sub: "ab 16.11.", werte: [8, 5], laufend: true }
+    { label: "KW 47", sub: "ab 16.11.", werte: [9, 6], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 47", ist: 8, ziel: 8, anzeige: "8", zielText: "/ 8", soll: 0.80,
-        status: "🏆 Wochenziel erreicht: 8 von 8 Angeboten – 1,6 über der Linie" },
-      { label: "Aufträge signiert – KW 47", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.80,
-        status: "💪 2 von 5 Aufträgen – 2 unter der Linie" },
+      { label: "Angebote versendet – KW 47", ist: 9, ziel: 8, anzeige: "9", zielText: "/ 8", soll: 0.80,
+        status: "🏆 Wochenziel übertroffen: 9 von 8 Angeboten – 2,6 über der Linie" },
+      { label: "Aufträge signiert – KW 47", ist: 3, ziel: 5, anzeige: "3", zielText: "/ 5", soll: 0.80,
+        status: "💪 3 von 5 Aufträgen – 1 unter der Linie" },
       { label: "Umsatz November", ist: 63244, ziel: 250000, anzeige: "63.244 €", zielText: "/ 250 T€", soll: 0.63,
         status: "📈 25 % vom Monatsziel – 95,1 T€ unter der Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 2523675, ziel: 3000000, anzeige: "2,52 Mio", zielText: "/ 3,0 Mio €", soll: 0.88,
@@ -219,7 +219,7 @@ const DATA = {
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 626 T€",
-      "⚡ 194 Anlagen in 2026",
+      "⚡ 195 Anlagen in 2026",
       "🚀 Oktober: 302 T€ – bester Monat seit April"
     ]
   },
@@ -249,7 +249,7 @@ const DATA = {
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen · 32 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen · 33 Termine in den nächsten 3 Wochen",
       termine: [
         { when: "Fr 20.11. 07:30", what: "Besichtigung Christian Machacek – Klosterneuburg" },
         { when: "Fr 20.11. 11:00", what: "Besichtigung Bernhard Kamenik" },
