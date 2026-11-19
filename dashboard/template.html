@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "18.11.2026, 17:15 Uhr",
-  heute: "Mittwoch, 18. November 2026",
+  stand: "19.11.2026, 06:15 Uhr",
+  heute: "Donnerstag, 19. November 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.523.675 €", hint: "Oktober: 302.016 € · November: 63.244 €" },
@@ -184,9 +184,9 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "24", hint: "KW 43: 8 · KW 44: 7 · KW 45: 1 · KW 46: 1 · KW 47: 7" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "16", hint: "2026 gesamt: 194" },
-    { cls: "c3", label: "Montagen abgeschlossen", value: "19", hint: "davon 1 heute · 3 am Mo 16.11. · 5 am Fr 13.11." },
+    { cls: "c1", label: "Angebote versendet", value: "20", hint: "KW 43 ab 20.10.: 4 · KW 44: 7 · KW 45: 1 · KW 46: 1 · KW 47: 7" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "13", hint: "2026 gesamt: 194" },
+    { cls: "c3", label: "Montagen abgeschlossen", value: "19", hint: "davon 1 am Di 17.11. · 3 am Mo 16.11. · 5 am Fr 13.11." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
   auftragSerien: [
@@ -208,14 +208,14 @@ const DATA = {
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 47", ist: 7, ziel: 8, anzeige: "7", zielText: "/ 8", soll: 0.60,
-        status: "🎯 7 von 8 Angeboten – 2,2 über der Linie" },
-      { label: "Aufträge signiert – KW 47", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.60,
-        status: "💪 2 von 5 Aufträgen – 1 unter der Linie" },
-      { label: "Umsatz November", ist: 63244, ziel: 250000, anzeige: "63.244 €", zielText: "/ 250 T€", soll: 0.60,
-        status: "📈 25 % vom Monatsziel – 86,8 T€ unter der Linie" },
+      { label: "Angebote versendet – KW 47", ist: 7, ziel: 8, anzeige: "7", zielText: "/ 8", soll: 0.80,
+        status: "🎯 7 von 8 Angeboten – 0,6 über der Linie" },
+      { label: "Aufträge signiert – KW 47", ist: 2, ziel: 5, anzeige: "2", zielText: "/ 5", soll: 0.80,
+        status: "💪 2 von 5 Aufträgen – 2 unter der Linie" },
+      { label: "Umsatz November", ist: 63244, ziel: 250000, anzeige: "63.244 €", zielText: "/ 250 T€", soll: 0.63,
+        status: "📈 25 % vom Monatsziel – 95,1 T€ unter der Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 2523675, ziel: 3000000, anzeige: "2,52 Mio", zielText: "/ 3,0 Mio €", soll: 0.88,
-        status: "🎯 84 % vom Jahresziel – 123 T€ unter der goldenen Linie" }
+        status: "🎯 84 % vom Jahresziel – 131 T€ unter der goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 626 T€",
@@ -229,27 +229,27 @@ const DATA = {
       name: "Montageteam A",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
       termine: [
-        { when: "Mi 18.11.", what: "Bernhard Fischer", flag: "vorläufig" },
         { when: "Do 19.11.", what: "Harald Scheruga-Rosmarion – 1140 Wien", flag: "vorläufig" },
         { when: "Mo 23.–Di 24.11.", what: "Harald Scheruga-Rosmarion – 1140 Wien", flag: "vorläufig" },
         { when: "Mi 25.–Do 26.11.", what: "Matthias Lueger – Münchendorf", flag: "vorläufig" },
-        { when: "Mo 30.11.–Di 01.12.", what: "Ronny Irschik – Kittsee", flag: "vorläufig" }
+        { when: "Mo 30.11.–Di 01.12.", what: "Ronny Irschik – Kittsee", flag: "vorläufig" },
+        { when: "Mi 02.–Do 03.12.", what: "Kristian Mayrhauser – Ebreichsdorf", flag: "vorläufig" }
       ]
     },
     {
       name: "Montageteam B",
       hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
       termine: [
-        { when: "Mi 18.11.", what: "Martin Stefan Krause – 1220 Wien", flag: "vorläufig" },
         { when: "Do 19.11.", what: "Andrea Marek – 1220 Wien", flag: "vorläufig" },
         { when: "Mo 23.11.", what: "Wolfgang Muffat – Orth an der Donau (Wallbox)", flag: "vorläufig" },
         { when: "Mo 23.–Mi 25.11.", what: "Harald Windisch – 1230 Wien", flag: "vorläufig" },
-        { when: "Do 26.11.", what: "Margarete Zodl – 1210 Wien", flag: "vorläufig" }
+        { when: "Do 26.11.", what: "Margarete Zodl – 1210 Wien", flag: "vorläufig" },
+        { when: "Mo 30.11.–Di 01.12.", what: "Vedran Cvija – Mitterndorf an der Fischa", flag: "vorläufig" }
       ]
     },
     {
       name: "Büro",
-      hinweis: "Besichtigungen · 33 Termine in den nächsten 3 Wochen",
+      hinweis: "Besichtigungen · 29 Termine in den nächsten 3 Wochen",
       termine: [
         { when: "Fr 20.11. 07:30", what: "Besichtigung Christian Machacek – Klosterneuburg" },
         { when: "Fr 20.11. 11:00", what: "Besichtigung Bernhard Kamenik" },
