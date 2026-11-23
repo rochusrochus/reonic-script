@@ -155,13 +155,13 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "23.11.2026, 13:15 Uhr",
+  stand: "23.11.2026, 14:15 Uhr",
   heute: "Montag, 23. November 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.523.675 €", hint: "Oktober: 302.016 € · November: 63.244 €" },
-    { cls: "c2", label: "Rohertrag 2026", value: "1.470.263 €", hint: "58 % vom Umsatz · November: 97.690 €" },
-    { cls: "c4", label: "Aufträge 2026", value: "197", hint: "Ø 13.213 € netto · 6 Aufträge noch ohne Preis in Reonic" }
+    { cls: "c2", label: "Rohertrag 2026", value: "1.474.565 €", hint: "58 % vom Umsatz · November: 101.993 €" },
+    { cls: "c4", label: "Aufträge 2026", value: "198", hint: "Ø 13.213 € netto · 7 Aufträge noch ohne Preis in Reonic" }
   ],
   umsatzSerien: [
     { name: "Umsatz (netto)", farbe: "var(--s1)" },
@@ -178,14 +178,14 @@ const DATA = {
     { label: "Aug", werte: [156, 93] },
     { label: "Sep", werte: [207, 121] },
     { label: "Okt", werte: [302, 190] },
-    { label: "Nov", werte: [63, 98], laufend: true }
+    { label: "Nov", werte: [63, 102], laufend: true }
   ],
   umsatzEinheit: "T€",
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
     { cls: "c1", label: "Angebote versendet", value: "22", hint: "KW 44: 7 · KW 45: 1 · KW 46: 1 · KW 47: 12 · KW 48: 1" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "12", hint: "2026 gesamt: 197" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "13", hint: "2026 gesamt: 198" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "16", hint: "davon 4 am Do 19.11. · 1 am Di 17.11. · 3 am Mo 16.11. · 5 am Fr 13.11." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "0", hint: "keine in den letzten 30 Tagen" }
   ],
@@ -210,8 +210,8 @@ const DATA = {
     items: [
       { label: "Angebote versendet – KW 48", ist: 1, ziel: 8, anzeige: "1", zielText: "/ 8", soll: 0.20,
         status: "💪 1 von 8 Angeboten – 0,6 unter der Linie" },
-      { label: "Aufträge signiert – KW 48", ist: 0, ziel: 5, anzeige: "0", zielText: "/ 5", soll: 0.20,
-        status: "💪 0 von 5 Aufträgen – 1 unter der Linie" },
+      { label: "Aufträge signiert – KW 48", ist: 1, ziel: 5, anzeige: "1", zielText: "/ 5", soll: 0.20,
+        status: "💪 1 von 5 Aufträgen – genau auf der Linie" },
       { label: "Umsatz November", ist: 63244, ziel: 250000, anzeige: "63.244 €", zielText: "/ 250 T€", soll: 0.77,
         status: "📈 25 % vom Monatsziel – 128,4 T€ unter der Linie" },
       { label: "Umsatz Jahresziel 2026", ist: 2523675, ziel: 3000000, anzeige: "2,52 Mio", zielText: "/ 3,0 Mio €", soll: 0.90,
@@ -219,7 +219,7 @@ const DATA = {
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 626 T€",
-      "⚡ 197 Anlagen in 2026",
+      "⚡ 198 Anlagen in 2026",
       "🚀 Oktober: 302 T€ – bester Monat seit April"
     ]
   },
@@ -251,11 +251,11 @@ const DATA = {
       name: "Büro",
       hinweis: "Besichtigungen · 30 Termine in den nächsten 3 Wochen",
       termine: [
-        { when: "Mo 23.11. 14:00", what: "Besichtigung Nabil Barsoum – Langenzersdorf" },
         { when: "Mo 23.11. 16:00", what: "Besichtigung Daniel Langer – 1210 Wien" },
         { when: "Mi 25.11. 08:00", what: "Besichtigung Norbert Almlacher – 1020 Wien" },
         { when: "Mi 25.11. 11:30", what: "Besichtigung Turki Omar – 1220 Wien" },
-        { when: "Mi 25.11. 13:00", what: "Besichtigung Josef Platzer – 1220 Wien" }
+        { when: "Mi 25.11. 13:00", what: "Besichtigung Josef Platzer – 1220 Wien" },
+        { when: "Mi 25.11. 17:00", what: "Besichtigung Christian Frithum – Watzelsdorf" }
       ]
     }
   ],
