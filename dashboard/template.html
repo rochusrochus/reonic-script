@@ -155,8 +155,8 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "26.11.2026, 17:15 Uhr",
-  heute: "Donnerstag, 26. November 2026",
+  stand: "27.11.2026, 06:15 Uhr",
+  heute: "Freitag, 27. November 2026",
 
   umsatzKpis: [
     { cls: "c1", label: "Umsatz 2026 (netto)", value: "2.523.675 €", hint: "Oktober: 302.016 € · November: 63.244 €" },
@@ -184,8 +184,8 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "31", hint: "KW 44: 7 · KW 45: 1 · KW 46: 1 · KW 47: 12 · KW 48: 10" },
-    { cls: "c2", label: "Aufträge gewonnen", value: "16", hint: "2026 gesamt: 201" },
+    { cls: "c1", label: "Angebote versendet", value: "30", hint: "KW 44: 7 · KW 45: 1 · KW 46: 1 · KW 47: 11 · KW 48: 10" },
+    { cls: "c2", label: "Aufträge gewonnen", value: "15", hint: "2026 gesamt: 201" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "19", hint: "davon 1 am Do 26.11. · 2 am Mi 25.11. · 4 am Do 19.11. · 1 am Di 17.11. · 3 am Mo 16.11." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "1", hint: "1 am Mo 23.11." }
   ],
@@ -201,21 +201,21 @@ const DATA = {
     { label: "KW 44", sub: "ab 26.10.", werte: [7, 3] },
     { label: "KW 45", sub: "ab 02.11.", werte: [1, 0] },
     { label: "KW 46", sub: "ab 09.11.", werte: [1, 5] },
-    { label: "KW 47", sub: "ab 16.11.", werte: [12, 8] },
+    { label: "KW 47", sub: "ab 16.11.", werte: [11, 8] },
     { label: "KW 48", sub: "ab 23.11.", werte: [10, 3], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 48", ist: 10, ziel: 8, anzeige: "10", zielText: "/ 8", soll: 0.80,
-        status: "🎉 10 von 8 Angeboten – Wochenziel schon am Mittwoch übertroffen" },
-      { label: "Aufträge signiert – KW 48", ist: 4, ziel: 5, anzeige: "4", zielText: "/ 5", soll: 0.80,
-        status: "💪 4 von 5 Aufträgen – genau auf der Linie" },
-      { label: "Umsatz November", ist: 63244, ziel: 250000, anzeige: "63.244 €", zielText: "/ 250 T€", soll: 0.87,
-        status: "📈 25 % vom Monatsziel – 153,4 T€ unter der Linie" },
-      { label: "Umsatz Jahresziel 2026", ist: 2523675, ziel: 3000000, anzeige: "2,52 Mio", zielText: "/ 3,0 Mio €", soll: 0.90,
-        status: "🎯 84 % vom Jahresziel – 189 T€ unter der goldenen Linie" }
+      { label: "Angebote versendet – KW 48", ist: 10, ziel: 8, anzeige: "10", zielText: "/ 8", soll: 1.00,
+        status: "🎉 10 von 8 Angeboten – Wochenziel um 2 übertroffen" },
+      { label: "Aufträge signiert – KW 48", ist: 4, ziel: 5, anzeige: "4", zielText: "/ 5", soll: 1.00,
+        status: "💪 4 von 5 Aufträgen – einer fehlt noch bis Freitagabend" },
+      { label: "Umsatz November", ist: 63244, ziel: 250000, anzeige: "63.244 €", zielText: "/ 250 T€", soll: 0.90,
+        status: "📈 25 % vom Monatsziel – 161,8 T€ unter der Linie" },
+      { label: "Umsatz Jahresziel 2026", ist: 2523675, ziel: 3000000, anzeige: "2,52 Mio", zielText: "/ 3,0 Mio €", soll: 0.91,
+        status: "🎯 84 % vom Jahresziel – 197 T€ unter der goldenen Linie" }
     ],
     erfolge: [
       "🏆 Rekordmonat: April – 626 T€",
@@ -227,9 +227,8 @@ const DATA = {
   termineTabs: [
     {
       name: "Montageteam A",
-      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt",
+      hinweis: "Montagen · 6 von 10 Arbeitstagen belegt",
       termine: [
-        { when: "Mi 25.–Do 26.11.", what: "Matthias Lueger – Münchendorf", flag: "vorläufig" },
         { when: "Mo 30.11.–Di 01.12.", what: "Ronny Irschik – Kittsee", flag: "vorläufig" },
         { when: "Mi 02.–Do 03.12.", what: "Kristian Mayrhauser – Ebreichsdorf", flag: "vorläufig" },
         { when: "Mi 09.–Do 10.12.", what: "Friedrich Frühwirth – 1210 Wien", flag: "vorläufig" },
@@ -238,13 +237,13 @@ const DATA = {
     },
     {
       name: "Montageteam B",
-      hinweis: "Montagen · 8 von 10 Arbeitstagen belegt",
+      hinweis: "Montagen · 7 von 10 Arbeitstagen belegt",
       termine: [
-        { when: "Do 26.11.", what: "Margarete Zodl – 1210 Wien", flag: "vorläufig" },
         { when: "Mo 30.11.–Di 01.12.", what: "Vedran Cvija – Mitterndorf an der Fischa", flag: "vorläufig" },
         { when: "Mi 02.12.", what: "Magdalena Broucek – 1140 Wien", flag: "vorläufig" },
         { when: "Do 03.12.", what: "Christoph Liebert – 1220 Wien", flag: "vorläufig" },
-        { when: "Mo 07.12.", what: "Christoph Liebert – 1220 Wien", flag: "vorläufig" }
+        { when: "Mo 07.12.", what: "Christoph Liebert – 1220 Wien", flag: "vorläufig" },
+        { when: "Mi 09.–Do 10.12.", what: "Friedrich Mehl – 1230 Wien", flag: "vorläufig" }
       ]
     },
     {
