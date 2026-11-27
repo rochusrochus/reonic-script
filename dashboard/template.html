@@ -155,7 +155,7 @@
 <script>
 /* ==== DATA (wird von der Update-Routine ersetzt – nur diesen Block ändern) ==== */
 const DATA = {
-  stand: "27.11.2026, 09:15 Uhr",
+  stand: "27.11.2026, 10:15 Uhr",
   heute: "Freitag, 27. November 2026",
 
   umsatzKpis: [
@@ -184,7 +184,7 @@ const DATA = {
 
   auftragSub: "Letzte 30 Tage – Aufträge aus der Reonic-API, übrige Werte aus Reonic-Benachrichtigungsmails (Näherung)",
   auftragKpis: [
-    { cls: "c1", label: "Angebote versendet", value: "30", hint: "KW 44: 7 · KW 45: 1 · KW 46: 1 · KW 47: 11 · KW 48: 10" },
+    { cls: "c1", label: "Angebote versendet", value: "31", hint: "KW 44: 7 · KW 45: 1 · KW 46: 1 · KW 47: 11 · KW 48: 11" },
     { cls: "c2", label: "Aufträge gewonnen", value: "15", hint: "2026 gesamt: 201" },
     { cls: "c3", label: "Montagen abgeschlossen", value: "19", hint: "davon 1 am Do 26.11. · 2 am Mi 25.11. · 4 am Do 19.11. · 1 am Di 17.11. · 3 am Mo 16.11." },
     { cls: "c4", label: "Anfragen abgelehnt", value: "1", hint: "1 am Mo 23.11." }
@@ -202,14 +202,14 @@ const DATA = {
     { label: "KW 45", sub: "ab 02.11.", werte: [1, 0] },
     { label: "KW 46", sub: "ab 09.11.", werte: [1, 5] },
     { label: "KW 47", sub: "ab 16.11.", werte: [11, 8] },
-    { label: "KW 48", sub: "ab 23.11.", werte: [10, 3], laufend: true }
+    { label: "KW 48", sub: "ab 23.11.", werte: [11, 3], laufend: true }
   ],
 
   ziele: {
     sub: "Die goldene Linie zeigt, wo ihr heute stehen müsstet",
     items: [
-      { label: "Angebote versendet – KW 48", ist: 10, ziel: 8, anzeige: "10", zielText: "/ 8", soll: 1.00,
-        status: "🎉 10 von 8 Angeboten – Wochenziel um 2 übertroffen" },
+      { label: "Angebote versendet – KW 48", ist: 11, ziel: 8, anzeige: "11", zielText: "/ 8", soll: 1.00,
+        status: "🎉 11 von 8 Angeboten – Wochenziel um 3 übertroffen" },
       { label: "Aufträge signiert – KW 48", ist: 4, ziel: 5, anzeige: "4", zielText: "/ 5", soll: 1.00,
         status: "💪 4 von 5 Aufträgen – einer fehlt noch bis Freitagabend" },
       { label: "Umsatz November", ist: 63244, ziel: 250000, anzeige: "63.244 €", zielText: "/ 250 T€", soll: 0.90,
